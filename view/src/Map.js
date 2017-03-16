@@ -1,45 +1,69 @@
 import React from 'react';
 import MapTile from './MapTile';
+import CharacterPiece from './CharacterPiece';
+import { movePiece } from './Game';
 
-export default class Map extends React.Component {
-    constructor() {
-        super();
-        this.state = {isToggleOn: true};
-        
-        // This binding is necessary to make `this` work in the callback
-        this.drag = this.drag.bind(this);
+class Map extends React.Component {
+    
+    handleTileClick(x,y){
+        movePiece(x,y);
     }
     
-    drag(ev) {
-        console.log('dragging')
-        ev.dataTransfer.setData("text", ev.target.id);
-    }    
-    
-    render(){
+    //This renders a piece inside the Tile if the piece's x and y is on this tile.
+    renderTile(x, y, key){
         
+        var pieces=[];
+        
+        for (var i = 0; i < this.props.playerPieces.length; i++){
+                var playerPiece = this.props.playerPieces[i];
+                var [pieceX, pieceY] = playerPiece.position;
+                if (pieceX === x && pieceY === y){
+                    pieces.push(<CharacterPiece key={i} id={playerPiece.id} label={playerPiece.name}/>);
+                }
+        }
+        
+        return (
+            <div key={key} onClick={()=>this.handleTileClick(x,y)}>
+                <MapTile >
+                    {pieces}
+                </MapTile>
+            </div>
+        );
+    }
+      
+    render(){
+    
         const MapStyle = {
-            width: "1500px",
+            width: "1600px",
+            height: "1600px",
             padding: "0",
-            marin: '0'
+            margin: '0',
+            float: 'left',
+            backgroundImage: "url('"+this.props.playMap+"')"
         };
         
         var tileArray = [];
         
-        for (var i = 0; i < 9; i++){
-            for(var j = 0; j < 15; j++){
-                var keyString = i+ "_" + j;
-                tileArray.push(<MapTile key={keyString}/>);
+        
+        
+        for (var i = 0; i < 16; i++){
+            for(var j = 0; j < 16; j++){
+                var keyString = i+"-"+j;
+                tileArray.push(this.renderTile(j, i, keyString));
             }
         }
         
         return (
             <div className="container" style={MapStyle}>
                 {tileArray}
-                <p id="drag1" draggable="true" onDragStart={(e) => this.drag(e)}>This is a draggable paragraph. Drag this element into the rectangle.</p>
             </div>
-            
-            
-            
+
         );
     }
 }
+
+Map.propTypes = {
+    playerPieces: React.PropTypes.array.isRequired
+};
+
+export default Map;
