@@ -10,7 +10,7 @@ class Map extends React.Component {
     }
     
     //This renders a piece inside the Tile if the piece's x and y is on this tile.
-    renderTile(x, y, key){
+    renderTile(x, y, key, tileSize, mapOptions){
         
         var pieces=[];
         
@@ -18,13 +18,13 @@ class Map extends React.Component {
                 var playerPiece = this.props.playerPieces[i];
                 var [pieceX, pieceY] = playerPiece.position;
                 if (pieceX === x && pieceY === y){
-                    pieces.push(<CharacterPiece key={i} id={playerPiece.id} label={playerPiece.name}/>);
+                    pieces.push(<CharacterPiece key={i} id={playerPiece.id} color={playerPiece.color} label={playerPiece.name}/>);
                 }
         }
         
         return (
             <div key={key} onClick={()=>this.handleTileClick(x,y)}>
-                <MapTile >
+                <MapTile x={x} y={y} size={tileSize} mapOptions={mapOptions}>
                     {pieces}
                 </MapTile>
             </div>
@@ -32,30 +32,45 @@ class Map extends React.Component {
     }
       
     render(){
+        
+        const MapScale = {
+            width: 1700,
+            height: 500,
+            tileSize: 100
+        };
     
         const MapStyle = {
-            width: "1600px",
-            height: "1600px",
+            width: MapScale.width + "px",
             padding: "0",
             margin: '0',
             float: 'left',
-            backgroundImage: "url('"+this.props.playMap+"')"
+        };
+        
+        const imageStyle = {
+            width: MapScale.width-(MapScale.width%MapScale.tileSize) + "px",
+            float: "left"
+        };
+        
+        const tileArrayStyle = {
+            position: "absolute",
+            width: MapScale.width-(MapScale.width%MapScale.tileSize) + "px"
         };
         
         var tileArray = [];
         
-        
-        
-        for (var i = 0; i < 16; i++){
-            for(var j = 0; j < 16; j++){
+        for (var i = 0; i < (MapScale.height/MapScale.tileSize); i++){
+            for(var j = 0; j < (MapScale.width/MapScale.tileSize); j++){
                 var keyString = i+"-"+j;
-                tileArray.push(this.renderTile(j, i, keyString));
+                tileArray.push(this.renderTile(j, i, keyString, MapScale.tileSize, this.props.mapOptions));
             }
         }
         
         return (
             <div className="container" style={MapStyle}>
-                {tileArray}
+                <img src={this.props.mapUrl} alt="backgroundImage" style={imageStyle} />
+                <div style={tileArrayStyle}>
+                    {tileArray}
+                </div>
             </div>
 
         );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { selectCharacter, removeCharacter } from './Game';
+import { selectCharacter, removeCharacter, deselectCharacter} from './Game';
 
 export default class CharacterPiece extends React.Component {
     
@@ -8,23 +8,30 @@ export default class CharacterPiece extends React.Component {
     }
     
     handlePieceRemove(key){
+        deselectCharacter();
         removeCharacter(key);
     }
     
     render(){
         var characterStyle = {
             width: "100%",
-            margin: 'auto',
-            backgroundColor: 'white',
+            margin: '0',
+            backgroundColor: this.props.color,
             borderStyle: 'solid',
             borderWidth: '1px',
+            padding: '0',
+            
             //textAlign: 'center'
+        };
+        
+        var clickAble = {
+            cursor: 'pointer'
         };
         
         return (
             <div style={characterStyle}>
-                <a href="#" onClick={()=>this.handlePieceSelect(this.props.id)}> {this.props.label}</a>
-                <a href="#" onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </a>
+                <span style={clickAble} onClick={()=>this.handlePieceSelect(this.props.id)}> {this.props.label}</span>
+                <span style={clickAble} onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </span>
             </div>
         );
     

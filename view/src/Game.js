@@ -1,30 +1,40 @@
 let nextId = 5;
-let playMap = "http://3.bp.blogspot.com/-ZZb4hn_5Jww/UpOtskYRh4I/AAAAAAAABas/zXX01A8_fIk/s1600/photo-2.jpg";
+let playMap = "http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1396913907/vtimxrajzbuard4hsj78.jpg";
+let mapOptions = {
+    fogOfWar: true,
+    gridLines: true,
+    gridLabels: true
+};
 let playerPieces = [
     {
         id: 0,
         name: "Asher",
-        position: [1,0]
+        position: [1,0],
+        color: "#7df27f"
     },
     {
         id: 1,
         name: "Clive",
-        position: [1, 0]
+        position: [1, 0],
+        color: "#7df27f"
     },
     {
         id: 2,
         name: "Legolas",
-        position: [2, 1]
+        position: [2, 1],
+        color: "#7df27f"
     },
     {
         id: 3,
         name: "Kyle",
-        position: [2, 2]
+        position: [2, 2],
+        color: "#7df27f"
     },
     {
         id: 4,
         name: "Ovarky",
-        position: [3, 0]
+        position: [3, 0],
+        color: "#7df27f"
     }
 ];
 
@@ -41,7 +51,7 @@ export function observe(o){
 }
 
 function emitChange(){
-    observer(playerPieces, playMap);
+    observer(playerPieces, playMap, mapOptions);
     console.log('emitting Change');
     console.log(playerPieces);
 }
@@ -55,6 +65,11 @@ export function movePiece(toX, toY){
 
 export function changeMap(newUrl){
     playMap = newUrl;
+    emitChange();
+}
+
+export function changeMapOptions(newOptions){
+    mapOptions = newOptions;
     emitChange();
 }
 
@@ -72,10 +87,13 @@ export function addCharacter(character){
     playerPieces.push({
         id: nextId,
         name: character.name,
-        position: character.position
+        position: character.position,
+        color: character.color
     });
     
     console.log(playerPieces);
+    
+    nextId++;
     
     emitChange();
 }
