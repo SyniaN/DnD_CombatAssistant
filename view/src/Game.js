@@ -121,6 +121,7 @@ export function addCharacter(character){
 
 export function removeCharacter(id){
     playerPieces[id].position = [-1, -1];
+    deselectCharacter();
     emitChange();
 }
     

@@ -35,8 +35,10 @@ export default class MapTile extends React.Component {
         };
         
         var labelStyle = {
-            backgroundColor: "rgba(255, 255, 255, 0.8)",
-            display: this.props.mapOptions.gridLabels?'':'none'
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+            display: this.props.mapOptions.gridLabels?'':'none',
+            position: "absolute",
+            zIndex: "10"
         };
         
         return (
