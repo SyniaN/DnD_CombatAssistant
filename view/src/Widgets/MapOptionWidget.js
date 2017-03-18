@@ -17,7 +17,7 @@ export default class MapOptionWidget extends React.Component {
         
         this.state = {
             tileSize : getGameState().mapScale.tileSize,
-            rowCount : getGameState().mapScale.height/getGameState().mapScale.tileSize
+            rowCount : Math.floor(getGameState().mapScale.height/getGameState().mapScale.tileSize)
         };
         
     }

@@ -58,7 +58,6 @@ class Map extends React.Component {
         
         for (var i = 0; i < Math.floor(mapScale.height/mapScale.tileSize); i++){
             for(var j = 0; j < Math.floor(mapScale.width/mapScale.tileSize); j++){
-                console.log('columns: '+ mapScale.width/mapScale.tileSize);
                 var keyString = i+"-"+j;
                 tileArray.push(this.renderTile(j, i, keyString, mapScale.tileSize, this.props.mapOptions));
             }
@@ -66,7 +65,7 @@ class Map extends React.Component {
         
         return (
             <div className="container" style={mapStyle}>
-                <img src={this.props.mapUrl} alt="backgroundImage" style={imageStyle} />
+                <img src={this.props.mapUrl} alt="" style={imageStyle} />
                 <div style={tileArrayStyle}>
                     {tileArray}
                 </div>
