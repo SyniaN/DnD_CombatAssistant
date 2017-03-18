@@ -11,7 +11,7 @@ class App extends React.Component {
     render(){
         return (
             <div>
-                <SidePanel playMap={this.props.playMap} mapOptions={this.props.mapOptions}/>
+                <SidePanel mapUrl={this.props.playMap} mapOptions={this.props.mapOptions}/>
                 <Map playerPieces={this.props.playerPieces} mapUrl={this.props.playMap} mapOptions={this.props.mapOptions}/>
             </div>
         );

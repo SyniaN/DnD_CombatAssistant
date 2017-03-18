@@ -24,15 +24,12 @@ export default class MapTile extends React.Component {
         
         var letters=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
         var fogThisTile=this.state.fogOfWar && this.props.mapOptions.fogOfWar;
-        console.log('state.fogOfWar: ' + this.state.fogOfWar);
-        console.log('props.fogOfWar: ' + this.props.mapOptions.fogOfWar);
-        console.log('fogThisTile:' + fogThisTile);
         var divStyle = {
             width: this.props.size+'px',
             height: this.props.size+'px',
-            borderStyle: this.props.mapOptions.gridLines?'solid':null,
+            borderStyle: this.props.mapOptions.gridLines?'inset':null,
             borderWidth: this.props.mapOptions.gridLines?'0.5px':null,
-            borderColor: "rgba(0, 0, 0, 0.5)",
+            borderColor: "rgba(160, 160, 160, 0.4)",
             float: 'left',
             backgroundColor: fogThisTile?'grey':null
         };

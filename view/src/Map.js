@@ -1,9 +1,10 @@
 import React from 'react';
 import MapTile from './MapTile';
 import CharacterPiece from './CharacterPiece';
-import { movePiece } from './Game';
+import { movePiece, getGameState } from './Game';
 
 class Map extends React.Component {
+    
     
     handleTileClick(x,y){
         movePiece(x,y);
@@ -33,40 +34,38 @@ class Map extends React.Component {
       
     render(){
         
-        const MapScale = {
-            width: 1700,
-            height: 500,
-            tileSize: 100
-        };
+        const mapScale = getGameState().mapScale;
+        
     
-        const MapStyle = {
-            width: MapScale.width + "px",
+        const mapStyle = {
+            width: mapScale.width + "px",
             padding: "0",
             margin: '0',
             float: 'left',
         };
         
         const imageStyle = {
-            width: MapScale.width-(MapScale.width%MapScale.tileSize) + "px",
+            width: mapScale.width-(mapScale.width%mapScale.tileSize) + "px",
             float: "left"
         };
         
         const tileArrayStyle = {
             position: "absolute",
-            width: MapScale.width-(MapScale.width%MapScale.tileSize) + "px"
+            width: mapScale.width-(mapScale.width%mapScale.tileSize) + "px"
         };
         
         var tileArray = [];
         
-        for (var i = 0; i < (MapScale.height/MapScale.tileSize); i++){
-            for(var j = 0; j < (MapScale.width/MapScale.tileSize); j++){
+        for (var i = 0; i < Math.floor(mapScale.height/mapScale.tileSize); i++){
+            for(var j = 0; j < Math.floor(mapScale.width/mapScale.tileSize); j++){
+                console.log('columns: '+ mapScale.width/mapScale.tileSize);
                 var keyString = i+"-"+j;
-                tileArray.push(this.renderTile(j, i, keyString, MapScale.tileSize, this.props.mapOptions));
+                tileArray.push(this.renderTile(j, i, keyString, mapScale.tileSize, this.props.mapOptions));
             }
         }
         
         return (
-            <div className="container" style={MapStyle}>
+            <div className="container" style={mapStyle}>
                 <img src={this.props.mapUrl} alt="backgroundImage" style={imageStyle} />
                 <div style={tileArrayStyle}>
                     {tileArray}
