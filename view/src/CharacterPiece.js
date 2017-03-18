@@ -1,5 +1,5 @@
 import React from 'react';
-import { selectCharacter, removeCharacter, deselectCharacter} from './Game';
+import { selectCharacter, removeCharacter, deselectCharacter, getGameState} from './Game';
 
 export default class CharacterPiece extends React.Component {
     
@@ -18,12 +18,13 @@ export default class CharacterPiece extends React.Component {
             margin: '0',
             backgroundColor: this.props.color,
             borderStyle: 'solid',
-            borderWidth: '1px',
+            borderWidth: getGameState().selectedCharacter===this.props.id?'5px':"1px",
             padding: '0',
             backgroundImage:"url('/token_icons/1.png')",
             backgroundRepeat:"round",
             height:"100%",
             position:'relative',
+            float: 'left'
         };
         
         var lableStyle = {

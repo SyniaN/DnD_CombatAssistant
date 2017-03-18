@@ -1,13 +1,14 @@
 let gameState={
     mapScale: {
         width: 1700,
-        height: 500,
-        tileSize: 100
-    }
+        height: 1000,
+        tileSize: 80
+    },
+    selectedCharacter: null
 };
 
 let nextId = 5;
-let playMap = "http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1396913907/vtimxrajzbuard4hsj78.jpg";
+let playMap = "https://rpgcharacters.files.wordpress.com/2009/07/hthad-map1.jpg";
 let mapOptions = {
     fogOfWar: true,
     gridLines: true,
@@ -47,7 +48,6 @@ let playerPieces = [
 ];
 
 let observer = null;
-let selectedCharacter = null;
 
 export function getGameState(){
     return gameState;
@@ -69,8 +69,8 @@ function emitChange(){
 }
 
 export function movePiece(toX, toY){
-    if (selectedCharacter !== null ){
-        playerPieces[selectedCharacter].position = [toX, toY];
+    if (gameState.selectedCharacter !== null ){
+        playerPieces[gameState.selectedCharacter].position = [toX, toY];
         emitChange();
     }
 }
@@ -95,12 +95,13 @@ export function changeMapOptions(newOptions){
 }
 
 export function selectCharacter(id){
-    selectedCharacter = id;
-    console.log(selectedCharacter);
+    gameState.selectedCharacter = id;
+    console.log(gameState.selectedCharacter);
 }
 
 export function deselectCharacter(){
-    selectedCharacter = null;
+    gameState.selectedCharacter = null;
+    emitChange();
     console.log("deselected Character");
 }
 

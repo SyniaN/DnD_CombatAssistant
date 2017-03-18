@@ -1,5 +1,5 @@
 import React from 'react';
-import { deselectCharacter } from './Game';
+import { deselectCharacter, getGameState } from './Game';
 import AddTokenWidget from './Widgets/AddTokenWidget';
 import MapOptionWidget from './Widgets/MapOptionWidget';
 
@@ -19,7 +19,7 @@ export default class SidePanel extends React.Component {
     render(){
         var panelStyle = {
             width: "200px",
-            height: "100%",
+            height: getGameState().mapScale.height,
             float: 'left',
             padding: '10px'
         };

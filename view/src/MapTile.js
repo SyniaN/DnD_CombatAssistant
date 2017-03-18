@@ -38,7 +38,7 @@ export default class MapTile extends React.Component {
             backgroundColor: "rgba(255, 255, 255, 0.9)",
             display: this.props.mapOptions.gridLabels?'':'none',
             position: "absolute",
-            zIndex: "10"
+            zIndex: "20"
         };
         
         return (
