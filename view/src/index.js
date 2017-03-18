@@ -4,11 +4,9 @@ import App from './App';
 import { observe } from './Game';
 import './index.css';
 
-observe((playerPieces, playMap, mapOptions) => {
-      console.log('redrawing');
-      console.log(playerPieces);
+observe((playMap, mapOptions, gameState) => {
       ReactDOM.render(
-        <App playerPieces={playerPieces} playMap={playMap} mapOptions={mapOptions}/>,
+        <App playerPieces={gameState.tokens} playMap={playMap} mapOptions={mapOptions}/>,
         document.getElementById('root')
       );
   }

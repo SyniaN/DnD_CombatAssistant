@@ -4,7 +4,51 @@ let gameState={
         height: 1000,
         tileSize: 80
     },
-    selectedCharacter: null
+    selectedCharacter: null,
+    tokens: [
+        {
+            id: 0,
+            name: "Asher",
+            position: [1,0],
+            color: "#5b4c42",
+            icon: "4.png"
+        },
+        {
+            id: 1,
+            name: "Clive",
+            position: [1, 0],
+            color: "#70819e",
+            icon: "2.png"
+        },
+        {
+            id: 2,
+            name: "Legolas",
+            position: [2, 1],
+            color: "#649180",
+            icon: "10.jpg"
+        },
+        {
+            id: 3,
+            name: "Kyle",
+            position: [2, 2],
+            color: "#879164",
+            icon: "3.png"
+        },
+        {
+            id: 4,
+            name: "Ovarky",
+            position: [3, 0],
+            color: "#7c5f8c",
+            icon: "5.png"
+        },
+        {
+            id: 5,
+            name: "Tarinn",
+            position: [5, 0],
+            color: "#8c5f5f",
+            icon: "9.png"
+        }
+    ]
 };
 
 let nextId = 5;
@@ -14,38 +58,7 @@ let mapOptions = {
     gridLines: true,
     gridLabels: true
 };
-let playerPieces = [
-    {
-        id: 0,
-        name: "Asher",
-        position: [1,0],
-        color: "#7df27f"
-    },
-    {
-        id: 1,
-        name: "Clive",
-        position: [1, 0],
-        color: "#7df27f"
-    },
-    {
-        id: 2,
-        name: "Legolas",
-        position: [2, 1],
-        color: "#7df27f"
-    },
-    {
-        id: 3,
-        name: "Kyle",
-        position: [2, 2],
-        color: "#7df27f"
-    },
-    {
-        id: 4,
-        name: "Ovarky",
-        position: [3, 0],
-        color: "#7df27f"
-    }
-];
+
 
 let observer = null;
 
@@ -63,14 +76,13 @@ export function observe(o){
 }
 
 function emitChange(){
-    observer(playerPieces, playMap, mapOptions, gameState);
+    observer(playMap, mapOptions, gameState);
     console.log('emitting Change');
-    console.log(playerPieces);
 }
 
 export function movePiece(toX, toY){
     if (gameState.selectedCharacter !== null ){
-        playerPieces[gameState.selectedCharacter].position = [toX, toY];
+        gameState.tokens[gameState.selectedCharacter].position = [toX, toY];
         emitChange();
     }
 }
@@ -106,14 +118,12 @@ export function deselectCharacter(){
 }
 
 export function addCharacter(character){
-    playerPieces.push({
+    gameState.tokens.push({
         id: nextId,
         name: character.name,
         position: character.position,
         color: character.color
     });
-    
-    console.log(playerPieces);
     
     nextId++;
     
@@ -121,7 +131,7 @@ export function addCharacter(character){
 }
 
 export function removeCharacter(id){
-    playerPieces[id].position = [-1, -1];
+    gameState.tokens[id].position = [-1, -1];
     deselectCharacter();
     emitChange();
 }
