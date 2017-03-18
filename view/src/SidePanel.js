@@ -2,6 +2,7 @@ import React from 'react';
 import { deselectCharacter, getGameState } from './Game';
 import AddTokenWidget from './Widgets/AddTokenWidget';
 import MapOptionWidget from './Widgets/MapOptionWidget';
+import FreeTextWidget from './Widgets/FreeTextWidget';
 
 export default class SidePanel extends React.Component {
     
@@ -25,6 +26,7 @@ export default class SidePanel extends React.Component {
         };
         return(
             <div style={panelStyle} onClick={this.handleClick}>
+                    <FreeTextWidget></FreeTextWidget>
                     <AddTokenWidget></AddTokenWidget>
                     <MapOptionWidget mapOptions={this.props.mapOptions} mapUrl={this.props.mapUrl}></MapOptionWidget>
             </div>
