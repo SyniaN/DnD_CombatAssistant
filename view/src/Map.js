@@ -13,16 +13,28 @@ class Map extends React.Component {
     //This renders a piece inside the Tile if the piece's x and y is on this tile.
     renderTile(x, y, key, tileSize, mapOptions){
         
-        var pieces=[];
+        var piecesTemp=[];
         
         for (var i = 0; i < this.props.playerPieces.length; i++){
                 var playerPiece = this.props.playerPieces[i];
                 var [pieceX, pieceY] = playerPiece.position;
                 if (pieceX === x && pieceY === y){
-                    pieces.push(<CharacterPiece key={i} id={playerPiece.id} color={playerPiece.color} label={playerPiece.name}/>);
+                    piecesTemp.push({
+                        key: i,
+                        id: playerPiece.id,
+                        color: playerPiece.color,
+                        label: playerPiece.name
+                    })
+                   
                 }
         }
-        
+
+        var pieces=[];
+        for (var j = 0; j < piecesTemp.length; j++){
+            var piece = piecesTemp[j];
+            pieces.push(<CharacterPiece key={piece.key} id={piece.id} color={piece.color} label={piece.label} size={piecesTemp.length>1?"50%":"100%"}/>);
+        }
+
         return (
             <div key={key} onClick={()=>this.handleTileClick(x,y)}>
                 <MapTile x={x} y={y} size={tileSize} mapOptions={mapOptions}>

@@ -16,43 +16,43 @@ let gameState={
         {
             id: 1,
             name: "Clive",
-            position: [1, 0],
+            position: [1, 1],
             color: "#70819e",
             icon: "2.png"
         },
         {
             id: 2,
             name: "Legolas",
-            position: [2, 1],
+            position: [1, 2],
             color: "#649180",
             icon: "10.jpg"
         },
         {
             id: 3,
             name: "Kyle",
-            position: [2, 2],
+            position: [0, 0],
             color: "#879164",
             icon: "3.png"
         },
         {
             id: 4,
             name: "Ovarky",
-            position: [3, 0],
+            position: [0, 1],
             color: "#7c5f8c",
             icon: "5.png"
         },
         {
             id: 5,
             name: "Tarinn",
-            position: [5, 0],
+            position: [0, 2],
             color: "#8c5f5f",
             icon: "9.png"
         }
     ]
 };
 
-let nextId = 5;
-let playMap = "https://rpgcharacters.files.wordpress.com/2009/07/hthad-map1.jpg";
+let nextId = gameState.tokens.length;
+let playMap = "https://lh3.googleusercontent.com/xAMcUtvPvR6Rh51ii7zZdgeV9uZP0j47CaDZlmMza7sCy-dC9Mz6UYRtrWoU9EqEiL0VvChUDhsMUEs=w1920-h1200-no";
 let mapOptions = {
     fogOfWar: true,
     gridLines: true,

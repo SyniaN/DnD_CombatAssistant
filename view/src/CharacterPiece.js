@@ -1,7 +1,45 @@
 import React from 'react';
-import { selectCharacter, removeCharacter, deselectCharacter, getGameState} from './Game';
+import { selectCharacter, removeCharacter, movePiece, deselectCharacter, getGameState} from './Game';
 
 export default class CharacterPiece extends React.Component {
+
+    constructor(){
+        super();
+
+        this.handleKeyPress= this.handleKeyPress.bind(this);
+    }
+
+    componentDidMount(){
+        this.container.focus(); 
+    }
+
+    handleKeyPress(event){
+        event.preventDefault();
+        var posX = getGameState().tokens[this.props.id].position[0];
+        var posY = getGameState().tokens[this.props.id].position[1];
+
+        console.log('posX: ' + posX);
+
+        switch(event.key){
+            case "ArrowRight":
+                posX = ++posX;
+                console.log('posX changed to: ' + posX);
+                break;
+            case "ArrowLeft":
+                posX = posX > 0 ? --posX : posX;
+                break;
+            case "ArrowUp":
+                posY = posY > 0 ? --posY : posY;
+                break;
+            case "ArrowDown":
+                posY = ++posY;
+                break;
+            default:
+                break;
+        }
+
+        movePiece(posX, posY);
+    }
     
     handlePieceSelect(key){
         selectCharacter(key);
@@ -23,7 +61,7 @@ export default class CharacterPiece extends React.Component {
             padding: '0',
             backgroundImage:"url('/token_icons/"+getGameState().tokens[this.props.id].icon+"')",
             backgroundRepeat:"round",
-            height:"100%",
+            height: this.props.size?this.props.size:"100%",
             position:'relative',
             float: 'left'
         };
@@ -49,8 +87,8 @@ export default class CharacterPiece extends React.Component {
         };
         
         return (
-            <div style={characterStyle} >
-                <span style={clickAble} onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </span>
+            <div ref={(div) => { this.container = div }}  tabIndex={this.props.id} onKeyUp={this.handleKeyPress} style={characterStyle} >
+                <span style={clickAble}  onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </span>
                 <div style={selectionFieldStyle} onClick={()=>this.handlePieceSelect(this.props.id)}>
                     <span style={lableStyle}> {this.props.label}</span>
                 </div>

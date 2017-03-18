@@ -2,12 +2,12 @@ import React from 'react';
 
 export default class MapTile extends React.Component {
     
-    constructor(){
+    constructor(props){
         super();
         this.handleClick = this.handleClick.bind(this);
         this.state={
             fogOfWar: true
-        };
+        };        
     }
     
     handleClick(){
@@ -23,7 +23,7 @@ export default class MapTile extends React.Component {
     render(){
         
         var letters=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        var fogThisTile=this.state.fogOfWar && this.props.mapOptions.fogOfWar;
+        var fogThisTile=this.state.fogOfWar && this.props.mapOptions.fogOfWar 
         var divStyle = {
             width: this.props.size+'px',
             height: this.props.size+'px',
@@ -40,11 +40,19 @@ export default class MapTile extends React.Component {
             position: "absolute",
             zIndex: "20"
         };
+
+        var playerHolderStyle = {
+            float: "null",
+            width: "100%",
+            height: "100%"
+        }
         
         return (
             <div style={divStyle} onClick={this.handleClick}> 
                 <label style={labelStyle}>{letters[this.props.x]}{this.props.y}</label>
-                {this.props.children}
+                <div style={playerHolderStyle}>
+                    {this.props.children}
+                </div>
             </div>
         );
     }
