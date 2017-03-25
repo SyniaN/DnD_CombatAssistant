@@ -1,8 +1,9 @@
 import React from 'react';
-import { deselectCharacter, getGameState } from './Game';
+import { deselectCharacter, deselectFogger } from './Game';
 import AddTokenWidget from './Widgets/AddTokenWidget';
 import MapOptionWidget from './Widgets/MapOptionWidget';
 import FreeTextWidget from './Widgets/FreeTextWidget';
+import FogOfWarWidget from './Widgets/FogOfWarWidget';
 
 export default class SidePanel extends React.Component {
     
@@ -14,13 +15,14 @@ export default class SidePanel extends React.Component {
     //Click event
     handleClick(){
         deselectCharacter();
+        deselectFogger();
         console.log('deselecting');
     }
     
     render(){
         var panelStyle = {
             width: "200px",
-            height: getGameState().mapScale.height,
+            //maxHeight: getGameState().mapScale.height,
             float: 'left',
             padding: '10px'
         };
@@ -29,6 +31,7 @@ export default class SidePanel extends React.Component {
                     <FreeTextWidget></FreeTextWidget>
                     <AddTokenWidget></AddTokenWidget>
                     <MapOptionWidget mapOptions={this.props.mapOptions} mapUrl={this.props.mapUrl}></MapOptionWidget>
+                    <FogOfWarWidget></FogOfWarWidget>
             </div>
                 
         );

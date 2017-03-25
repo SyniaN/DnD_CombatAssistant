@@ -1,20 +1,47 @@
 import React from 'react';
+import {getGameState, activateFogger, deactivateFogger } from './Game';
 
 export default class MapTile extends React.Component {
     
     constructor(props){
         super();
-        this.handleClick = this.handleClick.bind(this);
+        this.handleMouseDown = this.handleMouseDown.bind(this);
+        this.handleMouseOver = this.handleMouseOver.bind(this);
+        this.handleMouseUp = this.handleMouseUp.bind(this);
         this.state={
             fogOfWar: true
         };        
     }
     
-    handleClick(){
-        if (this.props.mapOptions.fogOfWar){
-            if(this.state.fogOfWar){
+    handleMouseDown(event){
+        event.preventDefault();
+        if(getGameState().fogOfWar.foggerSelected){
+            activateFogger();
+        }
+        this.handleMouseOver();
+    }
+    
+    handleMouseUp(event){
+        event.preventDefault();
+        if(getGameState().fogOfWar.foggerSelected){
+            deactivateFogger();
+        }
+    }
+    
+    handleMouseOver(){
+        
+        console.log('mouseOverTile');
+
+        
+        var fogOfWarState = getGameState().fogOfWar;
+        
+        if (this.props.mapOptions.fogOfWar && fogOfWarState.foggerSelected && fogOfWarState.inAction){
+            console.log('Changing tile fog state');
+            if(fogOfWarState.foggerMode === "Remove"){
+                console.log('Tile fog set to false');
                 this.setState({fogOfWar: false});
             } else {
+                console.log('Tile fog set to true');
                 this.setState({fogOfWar: true});
             }
         }
@@ -45,10 +72,10 @@ export default class MapTile extends React.Component {
             float: "null",
             width: "100%",
             height: "100%"
-        }
+        };
         
         return (
-            <div style={divStyle} onClick={this.handleClick}> 
+            <div style={divStyle} onMouseUp={this.handleMouseUp} onMouseDown={this.handleMouseDown} onMouseOver={this.handleMouseOver}> 
                 <label style={labelStyle}>{letters[this.props.x]}{this.props.y}</label>
                 <div style={playerHolderStyle}>
                     {this.props.children}
@@ -57,4 +84,3 @@ export default class MapTile extends React.Component {
         );
     }
 }
-

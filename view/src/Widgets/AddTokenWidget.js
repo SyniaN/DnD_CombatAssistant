@@ -62,26 +62,27 @@ export default class AddTokenWidget extends React.Component {
         return(
             <div>
                 <h2>Add Token</h2>
-                    <div>
-                      <div className="form-group">
-                        
+                
+                <div>
+                    <div className="form-group">
                         <h3>Name</h3>
                         <input type="text" className="form-control" placeholder="eg. Bob" value={this.state.name} onChange={this.handleNameChange}/>
-                      </div>
+                    </div>
                       
-                      <div className="form-group">
+                    <div className="form-group">
                         <h3>Position</h3>
                         <input type="text" className="form-control" placeholder="eg. B3" value={this.state.pos} onChange={this.handlePosChange}/>
-                      </div>
+                    </div>
                       
-                      <div className="form-group">
+                    <div className="form-group">
                         <h3>Color</h3>
                         <input type="text" className="form-control" placeholder="eg. yellow OR #4286f4" value={this.state.color} onChange={this.handleColorChange}/>
-                      </div>
-                      
-                      <button type="submit" className="btn btn-default" onClick={this.handleAddCharacterSubmit}>Submit</button>
                     </div>
-                    <hr/>
+                      
+                    <button type="submit" className="btn btn-default" onClick={this.handleAddCharacterSubmit}>Submit</button>
+                </div>
+                
+                <hr/>
             </div>
         );
     }
