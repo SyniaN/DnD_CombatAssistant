@@ -52,7 +52,7 @@ class Map extends React.Component {
         const mapStyle = {
             width: mapScale.width + "px",
             padding: "0",
-            margin: '0',
+            marginLeft: '240px',
             float: 'left',
         };
         
@@ -76,10 +76,12 @@ class Map extends React.Component {
         }
         
         return (
-            <div className="container" style={mapStyle}>
-                <img src={this.props.mapUrl} alt="" style={imageStyle} />
-                <div style={tileArrayStyle}>
-                    {tileArray}
+            <div>
+                <div className="container content" style={mapStyle}>
+                    <img src={this.props.mapUrl} alt="" style={imageStyle} />
+                    <div style={tileArrayStyle}>
+                        {tileArray}
+                    </div>
                 </div>
             </div>
 

@@ -21,17 +21,25 @@ export default class SidePanel extends React.Component {
     
     render(){
         var panelStyle = {
-            width: "200px",
-            //maxHeight: getGameState().mapScale.height,
-            float: 'left',
-            padding: '10px'
+            width: "230px",
+            height: window.innerHeight+'px',
+            //float: 'left',
+            padding: '10px',
+            position: 'fixed',
+            zIndex: 999,
+            backgroundColor: "white",
+            overflow: "scroll"
         };
+        
+        
         return(
             <div style={panelStyle} onClick={this.handleClick}>
-                    <FreeTextWidget></FreeTextWidget>
-                    <AddTokenWidget></AddTokenWidget>
-                    <MapOptionWidget mapOptions={this.props.mapOptions} mapUrl={this.props.mapUrl}></MapOptionWidget>
-                    <FogOfWarWidget></FogOfWarWidget>
+                    <div>
+                        <FreeTextWidget></FreeTextWidget>
+                        <AddTokenWidget></AddTokenWidget>
+                        <MapOptionWidget mapOptions={this.props.mapOptions} mapUrl={this.props.mapUrl}></MapOptionWidget>
+                        <FogOfWarWidget></FogOfWarWidget>
+                    </div>
             </div>
                 
         );

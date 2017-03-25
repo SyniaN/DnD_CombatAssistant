@@ -1,6 +1,6 @@
 let gameState={
         mapScale: {
-            width: 1920,
+            width: 1400,
             height: 1000,
             tileSize: 80
         },

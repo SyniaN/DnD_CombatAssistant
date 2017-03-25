@@ -1,5 +1,5 @@
 import React from 'react';
-import {setFoggerMode, selectFogger, getGameState} from '../Game';
+import {setFoggerMode, selectFogger, getGameState, deselectCharacter} from '../Game';
 
 export default class ForOfWarWidget extends React.Component {
     constructor(){
@@ -10,12 +10,14 @@ export default class ForOfWarWidget extends React.Component {
     
     handleAddFogClick(event){
         event.stopPropagation();
+        deselectCharacter();
         selectFogger();
         setFoggerMode("Add");
     }
     
     handleRemoveFogClick(event){
         event.stopPropagation();
+        deselectCharacter();
         selectFogger();
         setFoggerMode("Remove");
     }
