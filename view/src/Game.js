@@ -1,8 +1,8 @@
 let gameState={
         mapScale: {
-            width: 1400,
-            height: 1000,
-            tileSize: 80
+            width: 1920,
+            height: 1080,
+            tileSize: 60
         },
         selectedCharacter: null,
         fogOfWar: {

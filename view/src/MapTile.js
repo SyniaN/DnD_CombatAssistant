@@ -14,7 +14,7 @@ export default class MapTile extends React.Component {
     }
     
     handleMouseDown(event){
-        event.preventDefault();
+        
         if(getGameState().fogOfWar.foggerSelected){
             activateFogger();
         }
@@ -22,14 +22,14 @@ export default class MapTile extends React.Component {
     }
     
     handleMouseUp(event){
-        event.preventDefault();
         if(getGameState().fogOfWar.foggerSelected){
             deactivateFogger();
         }
     }
     
     handleMouseOver(){
-        
+        event.preventDefault();
+
         console.log('mouseOverTile');
 
         

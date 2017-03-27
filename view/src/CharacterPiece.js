@@ -14,7 +14,6 @@ export default class CharacterPiece extends React.Component {
     }
 
     handleKeyPress(event){
-        event.preventDefault();
         var posX = getGameState().tokens[this.props.id].position[0];
         var posY = getGameState().tokens[this.props.id].position[1];
 
@@ -42,6 +41,7 @@ export default class CharacterPiece extends React.Component {
     }
     
     handlePieceSelect(key){
+        deselectCharacter();
         selectCharacter(key);
     }
     

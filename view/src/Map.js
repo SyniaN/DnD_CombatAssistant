@@ -54,6 +54,9 @@ class Map extends React.Component {
             padding: "0",
             marginLeft: '240px',
             float: 'left',
+            WebkitUserSelect: "none",
+            MozUserSelect: "none",
+            UserSelect: "none",
         };
         
         const imageStyle = {
