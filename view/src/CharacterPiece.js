@@ -14,6 +14,7 @@ export default class CharacterPiece extends React.Component {
     }
 
     handleKeyPress(event){
+        event.preventDefault();
         var posX = getGameState().tokens[this.props.id].position[0];
         var posY = getGameState().tokens[this.props.id].position[1];
 
@@ -87,7 +88,7 @@ export default class CharacterPiece extends React.Component {
         };
         
         return (
-            <div ref={(div) => { this.container = div }}  tabIndex={this.props.id} onKeyUp={this.handleKeyPress} style={characterStyle} >
+            <div ref={(div) => { this.container = div }}  tabIndex={this.props.id} onKeyDown={this.handleKeyPress} style={characterStyle} >
                 <span style={clickAble}  onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </span>
                 <div style={selectionFieldStyle} onClick={()=>this.handlePieceSelect(this.props.id)}>
                     <span style={lableStyle}> {this.props.label}</span>

@@ -28,7 +28,7 @@ export default class MapTile extends React.Component {
     }
     
     handleMouseOver(){
-        event.preventDefault();
+        //event.preventDefault();
 
         console.log('mouseOverTile');
 
