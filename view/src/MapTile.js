@@ -1,5 +1,5 @@
 import React from 'react';
-import {getGameState, activateFogger, deactivateFogger } from './Game';
+import {getGameState, activateFogger, deactivateFogger, changeFogStatus} from './Game';
 
 export default class MapTile extends React.Component {
     
@@ -8,9 +8,6 @@ export default class MapTile extends React.Component {
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseOver = this.handleMouseOver.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
-        this.state={
-            fogOfWar: true
-        };        
     }
     
     handleMouseDown(event){
@@ -39,10 +36,13 @@ export default class MapTile extends React.Component {
             console.log('Changing tile fog state');
             if(fogOfWarState.foggerMode === "Remove"){
                 console.log('Tile fog set to false');
-                this.setState({fogOfWar: false});
+                changeFogStatus(this.props.y, this.props.x, false);
+                console.log('Tile x: ' + this.props.x+ ", " + this.props.y +' fog set to false');
+                //this.setState({fogOfWar: false});
             } else {
-                console.log('Tile fog set to true');
-                this.setState({fogOfWar: true});
+                changeFogStatus(this.props.y, this.props.x, true);
+                console.log('Tile x: ' + this.props.x+ ", " + this.props.y +' fog set to true');
+                //this.setState({fogOfWar: true});
             }
         }
     }
@@ -50,7 +50,7 @@ export default class MapTile extends React.Component {
     render(){
         
         var letters=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        var fogThisTile=this.state.fogOfWar && this.props.mapOptions.fogOfWar 
+        var fogThisTile=this.props.fogStatus && this.props.mapOptions.fogOfWar 
         var divStyle = {
             width: this.props.size+'px',
             height: this.props.size+'px',

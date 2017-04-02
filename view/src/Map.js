@@ -11,7 +11,7 @@ class Map extends React.Component {
     }
     
     //This renders a piece inside the Tile if the piece's x and y is on this tile.
-    renderTile(x, y, key, tileSize, mapOptions){
+    renderTile(x, y, key, tileSize, mapOptions, fogStatus){
         
         var piecesTemp=[];
         
@@ -37,7 +37,7 @@ class Map extends React.Component {
 
         return (
             <div key={key} onClick={()=>this.handleTileClick(x,y)}>
-                <MapTile x={x} y={y} size={tileSize} mapOptions={mapOptions}>
+                <MapTile x={x} y={y} size={tileSize} mapOptions={mapOptions} fogStatus={fogStatus}>
                     {pieces}
                 </MapTile>
             </div>
@@ -47,7 +47,7 @@ class Map extends React.Component {
     render(){
         
         const mapScale = getGameState().mapScale;
-        
+        const fogStatus = getGameState().fogOfWar.status;
     
         const mapStyle = {
             width: mapScale.width + "px",
@@ -74,7 +74,7 @@ class Map extends React.Component {
         for (var i = 0; i < Math.floor(mapScale.height/mapScale.tileSize); i++){
             for(var j = 0; j < Math.floor(mapScale.width/mapScale.tileSize); j++){
                 var keyString = i+"-"+j;
-                tileArray.push(this.renderTile(j, i, keyString, mapScale.tileSize, this.props.mapOptions));
+                tileArray.push(this.renderTile(j, i, keyString, mapScale.tileSize, this.props.mapOptions, fogStatus[i][j]));
             }
         }
         
