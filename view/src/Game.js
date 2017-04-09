@@ -27,42 +27,63 @@ let gameState = {
             name: "Asher",
             position: [1, 0],
             color: "#5b4c42",
-            icon: "4.png"
+            icon: "4.png",
+            hp:"",
+            tempHp:""
         },
         {
             id: 1,
             name: "Clive",
             position: [1, 1],
             color: "#70819e",
-            icon: "2.png"
+            icon: "2.png",
+            hp:"",
+            tempHp:""
         },
         {
             id: 2,
             name: "Legolas",
             position: [1, 2],
             color: "#649180",
-            icon: "10.jpg"
+            icon: "10.jpg",
+            hp:"",
+            tempHp:""
         },
         {
             id: 3,
             name: "Kyle",
             position: [0, 0],
             color: "#879164",
-            icon: "3.png"
+            icon: "3.png",
+            hp:"",
+            tempHp:""
         },
         {
             id: 4,
             name: "Ovarky",
             position: [0, 1],
             color: "#7c5f8c",
-            icon: "5.png"
+            icon: "5.png",
+            hp:"",
+            tempHp:""
         },
         {
             id: 5,
             name: "Tarinn",
             position: [0, 2],
             color: "#8c5f5f",
-            icon: "9.png"
+            icon: "9.png",
+            hp:"",
+            tempHp:""
+        },
+        {
+            id: 6,
+            name: "Alimar",
+            position: [0, 3],
+            color: "8c5f5f",
+            icon:"1.png",
+            hp:"",
+            tempHp:""
         }
     ],
     notes: null
@@ -80,6 +101,12 @@ for (var i = 0; i < Math.floor(gameState.mapScale.height/gameState.mapScale.tile
 
 let observer = null;
 
+export function changePlayerInfo(id, name, hp, tempHp){
+    gameState.tokens[id].name = name;
+    gameState.tokens[id].hp = hp;
+    gameState.tokens[id].tempHp = tempHp;
+    emitChange(true);
+}
 
 //FUNCTIONS
 export function getGameState() {

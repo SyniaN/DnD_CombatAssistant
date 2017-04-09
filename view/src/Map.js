@@ -1,6 +1,7 @@
 import React from 'react';
 import MapTile from './MapTile';
 import CharacterPiece from './CharacterPiece';
+import PlayerPlacements from './PlayerPlacements';
 import { movePiece, getGameState } from './Game';
 
 class Map extends React.Component {
@@ -85,6 +86,8 @@ class Map extends React.Component {
                     <div style={tileArrayStyle}>
                         {tileArray}
                     </div>
+                    
+                    <PlayerPlacements />
                 </div>
             </div>
 
