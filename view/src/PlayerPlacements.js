@@ -5,8 +5,6 @@ export default class PlayerPlacements extends React.Component {
     render(){
         var playerPlacementStyle = {
             position: "absolute",
-            height: "1080",
-            width: "1920",
         };
         
         var tokenArray = getGameState().tokens;
