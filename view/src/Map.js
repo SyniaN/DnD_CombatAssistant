@@ -6,7 +6,6 @@ import { movePiece, getGameState } from './Game';
 
 class Map extends React.Component {
     
-    
     handleTileClick(x,y){
         movePiece(x,y);
     }
@@ -39,7 +38,7 @@ class Map extends React.Component {
         return (
             <div key={key} onClick={()=>this.handleTileClick(x,y)}>
                 <MapTile x={x} y={y} size={tileSize} mapOptions={mapOptions} fogStatus={fogStatus}>
-                    {pieces}
+                    
                 </MapTile>
             </div>
         );
@@ -86,8 +85,8 @@ class Map extends React.Component {
                     <div style={tileArrayStyle}>
                         {tileArray}
                     </div>
+                    <PlayerPlacements/>
                     
-                    <PlayerPlacements />
                 </div>
             </div>
 

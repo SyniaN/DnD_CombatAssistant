@@ -1,5 +1,7 @@
 import React from 'react';
 import {getGameState} from './Game';
+import CharacterPiece from './CharacterPiece';
+
 export default class PlayerPlacements extends React.Component {
     
     render(){
@@ -12,6 +14,8 @@ export default class PlayerPlacements extends React.Component {
         
         for (var i = 0; i < tokenArray.length; i++){
             
+            var token = tokenArray[i];
+            
             var playerTokenStyle = {
                 position: "absolute",
                 height: "60px",
@@ -21,10 +25,10 @@ export default class PlayerPlacements extends React.Component {
                 left: tokenArray[i].position[0] * 60 + "px"
             };
             
-            tokens.push (<div style={playerTokenStyle}></div>);
+            tokens.push (<div key={token.id} style={playerTokenStyle}>
+                <CharacterPiece key={token.id} id={token.id} color={token.color} label={token.label} size="100%"/>
+            </div>);
         }
-        
-        
         
         return (
         <div style={playerPlacementStyle}>

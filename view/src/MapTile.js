@@ -24,31 +24,33 @@ export default class MapTile extends React.Component {
         }
     }
     
+    shouldComponentUpdate(nextProps, nextState){
+        if (this.props.fogStatus === nextProps.fogStatus && this.props.mapOptions === nextProps.mapOptions){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    
     handleMouseOver(){
         //event.preventDefault();
-
-        console.log('mouseOverTile');
-
         
         var fogOfWarState = getGameState().fogOfWar;
         
-        if (this.props.mapOptions.fogOfWar && fogOfWarState.foggerSelected && fogOfWarState.inAction){
-            console.log('Changing tile fog state');
+        if (fogOfWarState.inAction && fogOfWarState.foggerSelected && this.props.mapOptions.fogOfWar ){
+            
             if(fogOfWarState.foggerMode === "Remove"){
-                console.log('Tile fog set to false');
                 changeFogStatus(this.props.y, this.props.x, false);
-                console.log('Tile x: ' + this.props.x+ ", " + this.props.y +' fog set to false');
-                //this.setState({fogOfWar: false});
             } else {
                 changeFogStatus(this.props.y, this.props.x, true);
-                console.log('Tile x: ' + this.props.x+ ", " + this.props.y +' fog set to true');
-                //this.setState({fogOfWar: true});
             }
         }
     }
     
     render(){
         
+        console.log('rendering MapTile');
         var letters=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
         var fogThisTile=this.props.fogStatus && this.props.mapOptions.fogOfWar 
         var divStyle = {
