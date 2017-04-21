@@ -59,7 +59,7 @@ export default class CharacterPiece extends React.Component {
             margin: '0',
             backgroundColor: this.props.color,
             borderStyle: 'solid',
-            borderWidth: "4px",
+            borderWidth: "2px",
             borderColor: getGameState().selectedCharacter===this.props.id?'red':'black',
             padding: '0',
             backgroundImage:"url('/token_icons/"+getGameState().tokens[this.props.id].icon+"')",
@@ -72,9 +72,11 @@ export default class CharacterPiece extends React.Component {
         var lableStyle = {
             backgroundColor: "rgba(240, 240, 240, 0.85)",
             position: "absolute",
-            bottom:"0px",
+            top:"25px",
             width: "100%",
-            textAlign: "center"
+            maxHeight: "96%",
+            textAlign: "center",
+            overflow: "hidden"
         };
         
         var selectionFieldStyle = {
