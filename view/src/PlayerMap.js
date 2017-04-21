@@ -43,7 +43,12 @@ export default class PlayerMap extends React.Component {
                 width: "60px",
                 backgroundColor: "red",
                 top: tokenArray[i].position[1] * 60 + "px",
-                left: tokenArray[i].position[0] * 60 + "px"
+                left: tokenArray[i].position[0] * 60 + "px",
+                WebkitTransition: "0.2s",
+                MozTransition: "0.2s",
+                OOransition: "0.2s",
+                transition: "0.2s",
+                willChange: "left, top"
             };
             
             tokens.push (<div key={token.id} style={playerTokenStyle}>
