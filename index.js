@@ -4,6 +4,7 @@ var app = express();
 app.set('port', (process.env.PORT || 3000));
 
 app.use(express.static(__dirname + '/view/build'));
+app.use(express.static(__dirname + '/view/build/static'));
 
 app.get('/', function (req, res) {
   res.render('index');
