@@ -26,65 +26,90 @@ let gameState = {
         {
             id: 0,
             name: "Asher",
-            position: [1, 0],
+            position: [14, 9],
             color: "#5b4c42",
             icon: "4.png",
             hp:"",
-            tempHp:""
+            tempHp:"",
+            width:"60px",
+            height:"60px"
         },
         {
             id: 1,
             name: "Clive",
-            position: [1, 1],
+            position: [11, 11],
             color: "#70819e",
             icon: "2.png",
             hp:"",
-            tempHp:""
+            tempHp:"",
+            width:"60px",
+            height:"60px"
         },
         {
             id: 2,
             name: "Legolas",
-            position: [1, 2],
+            position: [8, 10],
             color: "#649180",
             icon: "10.jpg",
             hp:"",
-            tempHp:""
+            tempHp:"",
+            width:"60px",
+            height:"60px"
         },
         {
             id: 3,
             name: "Kyle",
-            position: [0, 0],
+            position: [13, 5],
             color: "#879164",
             icon: "3.png",
             hp:"",
-            tempHp:""
+            tempHp:"",
+            width:"60px",
+            height:"60px"
         },
         {
             id: 4,
             name: "Ovarky",
-            position: [0, 1],
+            position: [17, 12],
             color: "#7c5f8c",
             icon: "5.png",
             hp:"",
-            tempHp:""
+            tempHp:"",
+            width:"60px",
+            height:"60px"
         },
         {
             id: 5,
             name: "Tarinn",
-            position: [0, 2],
+            position: [10, 8],
             color: "#8c5f5f",
             icon: "9.png",
             hp:"",
-            tempHp:""
+            tempHp:"",
+            width:"60px",
+            height:"60px"
         },
         {
             id: 6,
             name: "Alimar",
-            position: [0, 3],
+            position: [12, 9],
             color: "#8a7f5c",
             icon:"1.png",
             hp:"",
-            tempHp:""
+            tempHp:"",
+            width:"60px",
+            height:"60px"
+        },
+        {
+            id: 7,
+            name: "Half-Dragon",
+            position: [23, 5],
+            color: "white",
+            icon: "monster2.png",
+            hp: "",
+            tempHp: "",
+            width:"120px",
+            height:"120px"
         }
     ],
     notes: null

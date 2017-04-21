@@ -11,7 +11,7 @@ class Map extends React.Component {
         const mapStyle = {
             width: mapScale.width + "px",
             padding: "0",
-            marginLeft: '240px',
+            marginLeft: '230px',
             float: 'left',
             WebkitUserSelect: "none",
             MozUserSelect: "none",
