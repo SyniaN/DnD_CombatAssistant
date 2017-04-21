@@ -16,11 +16,11 @@ let gameState = {
         status: []
     },
     mapOptions:{
-        fogOfWar: true,
+        fogOfWar: false,
         gridLines: true,
         gridLabels: false
     },
-    playMap : "https://lh3.googleusercontent.com/xAMcUtvPvR6Rh51ii7zZdgeV9uZP0j47CaDZlmMza7sCy-dC9Mz6UYRtrWoU9EqEiL0VvChUDhsMUEs=w1920-h1200-no",
+    playMap : "https://s-media-cache-ak0.pinimg.com/originals/40/99/94/40999419d04ec98f34f6039c5c28b261--dungeon-tiles-wilderness.jpg",
     nextId : null,
     tokens: [
         {
@@ -81,7 +81,7 @@ let gameState = {
             id: 6,
             name: "Alimar",
             position: [0, 3],
-            color: "8c5f5f",
+            color: "#8a7f5c",
             icon:"1.png",
             hp:"",
             tempHp:""

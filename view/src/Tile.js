@@ -58,7 +58,7 @@ export default class Tile extends React.Component {
             height: this.props.size+'px',
             borderStyle: this.props.mapOptions.gridLines?'inset':null,
             borderWidth: this.props.mapOptions.gridLines?'0.5px':null,
-            borderColor: "rgba(160, 160, 160, 0.4)",
+            borderColor: "rgba(160, 160, 160, 0.2)",
             float: 'left',
             backgroundColor: fogThisTile?'grey':null
         };

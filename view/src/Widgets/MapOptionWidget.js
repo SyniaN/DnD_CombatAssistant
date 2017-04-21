@@ -88,7 +88,7 @@ export default class MapOptionWidget extends React.Component {
                         <input type="text" className="form-control" placeholder="Map URL" value={this.props.mapUrl} onChange={this.handleMapUrlChange}/>
                     </div>
                     
-                    <h3>Tile Size</h3>
+                    {/*<h3>Tile Size</h3>
                     <div className="form-group">
                         <input type="number" className="form-control" placeholder="100" value={this.state.tileSize} onChange={this.handleTileSizeChange}/>
                     </div>
@@ -96,7 +96,7 @@ export default class MapOptionWidget extends React.Component {
                     <h3>Row Count</h3>
                     <div className="form-group">
                         <input type="number" className="form-control" placeholder="10" value={this.state.rowCount} onChange={this.handleRowCountChange}/>
-                    </div>
+                    </div>*/}
                     
                     <h3>Extras</h3>
                     <div className="checkbox"> 
