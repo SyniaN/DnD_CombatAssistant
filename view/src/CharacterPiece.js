@@ -41,7 +41,8 @@ export default class CharacterPiece extends React.Component {
         movePiece(posX, posY);
     }
     
-    handlePieceSelect(key){
+    handlePieceSelect(e, key){
+        e.stopPropagation();
         deselectCharacter();
         selectCharacter(key);
     }
@@ -90,7 +91,7 @@ export default class CharacterPiece extends React.Component {
         return (
             <div ref={(div) => { this.container = div }}  tabIndex={this.props.id} onKeyDown={this.handleKeyPress} style={characterStyle} >
                 <span style={clickAble}  onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </span>
-                <div style={selectionFieldStyle} onClick={()=>this.handlePieceSelect(this.props.id)}>
+                <div style={selectionFieldStyle} onClick={(e)=>this.handlePieceSelect(e, this.props.id)}>
                     <span style={lableStyle}> {this.props.label}</span>
                 </div>
             </div>

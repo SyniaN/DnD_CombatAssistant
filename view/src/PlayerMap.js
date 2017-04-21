@@ -1,15 +1,36 @@
 import React from 'react';
-import {getGameState} from './Game';
+import {deselectCharacter, getGameState, movePiece} from './Game';
 import CharacterPiece from './CharacterPiece';
 
-export default class PlayerPlacements extends React.Component {
+export default class PlayerMap extends React.Component {
+
+    constructor(){
+        super();
+        this.handleContextMenu = this.handleContextMenu.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        deselectCharacter();
+    }
+
+    handleContextMenu(e){
+        e.preventDefault();
+        var X = e.pageX-230;
+        var Y = e.pageY;
+        movePiece(Math.floor(X/60), Math.floor(Y/60));
+    }
+
+
     
     render(){
-        var playerPlacementStyle = {
+        const playerPlacementStyle = {
             position: "absolute",
+            height: "100%",
+            width: "100%"
         };
         
-        var tokenArray = getGameState().tokens;
+        const tokenArray = getGameState().tokens;
         var tokens = [];
         
         for (var i = 0; i < tokenArray.length; i++){
@@ -31,7 +52,7 @@ export default class PlayerPlacements extends React.Component {
         }
         
         return (
-        <div style={playerPlacementStyle}>
+        <div style={playerPlacementStyle} onContextMenu={this.handleContextMenu} onClick={this.handleClick}>
             {tokens}
         </div>);
     }

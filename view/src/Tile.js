@@ -1,7 +1,7 @@
 import React from 'react';
 import {getGameState, activateFogger, deactivateFogger, changeFogStatus} from './Game';
 
-export default class MapTile extends React.Component {
+export default class Tile extends React.Component {
     
     constructor(props){
         super();

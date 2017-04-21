@@ -1,5 +1,6 @@
 import { publishMessage } from './Networking.js';
 
+const db = false;
 let gameState = {
     v: 0,
     mapScale: {
@@ -17,7 +18,7 @@ let gameState = {
     mapOptions:{
         fogOfWar: true,
         gridLines: true,
-        gridLabels: true
+        gridLabels: false
     },
     playMap : "https://lh3.googleusercontent.com/xAMcUtvPvR6Rh51ii7zZdgeV9uZP0j47CaDZlmMza7sCy-dC9Mz6UYRtrWoU9EqEiL0VvChUDhsMUEs=w1920-h1200-no",
     nextId : null,
@@ -115,7 +116,7 @@ export function getGameState() {
 
 export function setGameState(newState) {
 
-    console.log('RECEIVED FROM EXTERNAL');
+    if (db) console.log('RECEIVED FROM EXTERNAL');
     if (newState.v > gameState.v){
         gameState = newState;
         emitChange(false);
@@ -143,8 +144,8 @@ function emitChange(internalChange) {
     }
     observer(gameState.playMap, gameState.mapOptions, gameState);
 
-    console.log(gameState);
-    console.log('emitting Change');
+    if (db) console.log(gameState);
+    if (db) console.log('emitting Change');
 }
 
 export function movePiece(toX, toY) {
@@ -175,13 +176,13 @@ export function changeMapOptions(newOptions) {
 
 export function selectCharacter(id) {
     gameState.selectedCharacter = id;
-    console.log(gameState.selectedCharacter);
+    if (db) console.log(gameState.selectedCharacter);
 }
 
 export function deselectCharacter() {
     gameState.selectedCharacter = null;
     emitChange(true);
-    console.log("deselected Character");
+    if (db) console.log("deselected Character");
 }
 
 export function addCharacter(character) {
@@ -204,31 +205,31 @@ export function removeCharacter(id) {
 }
 
 export function selectFogger() {
-    console.log('selectFogger()');
+    if (db) console.log('selectFogger()');
     gameState.fogOfWar.foggerSelected = true;
     emitChange(true);
 }
 
 export function deselectFogger() {
-    console.log('deselectFogger()');
+    if (db) console.log('deselectFogger()');
     gameState.fogOfWar.foggerSelected = false;
     emitChange(true);
 }
 
 export function setFoggerMode(state) {
-    console.log('setFoggerMode(' + state + ')');
+    if (db) console.log('setFoggerMode(' + state + ')');
     gameState.fogOfWar.foggerMode = state;
     emitChange(true);
 }
 
 export function activateFogger() {
-    console.log('activateFogger()');
+    if (db) console.log('activateFogger()');
     gameState.fogOfWar.inAction = true;
     emitChange(true);
 }
 
 export function deactivateFogger() {
-    console.log('deactivateFogger()');
+    if (db) console.log('deactivateFogger()');
     gameState.fogOfWar.inAction = false;
     emitChange(true);
 }
