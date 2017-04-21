@@ -28,8 +28,8 @@ export default class PlayerMap extends React.Component {
         console.log('rendering PlayerMap');
         const playerPlacementStyle = {
             position: "absolute",
-            height: "1080px",
-            width: "1920px"
+            height: getGameState().fogOfWar.foggerSelected? "0px" : "1080px",
+            width: getGameState().fogOfWar.foggerSelected? "0px" : "1920px"
         };
         
         const tokenArray = getGameState().tokens;
@@ -57,7 +57,7 @@ export default class PlayerMap extends React.Component {
 
             var highlightBlockStyle = {
                 ...block,
-                backgroundColor: "rgba(244, 244, 244, 0.3)",
+                backgroundColor: "rgba(244, 244, 244, 0.5)",
             }
 
             var posX = getGameState().tokens[token.id].position[0];
@@ -69,7 +69,7 @@ export default class PlayerMap extends React.Component {
             
             tokens.push (
             <div key={token.id} style={playerTokenStyle}>
-                <CharacterPiece key={token.id} id={token.id} color={token.color} label={token.label} size="100%" posX={posX} posY={posY}/>
+                <CharacterPiece key={token.id} id={token.id} color={token.color} label={token.name} size="100%" posX={posX} posY={posY}/>
                 
             </div>);
             
