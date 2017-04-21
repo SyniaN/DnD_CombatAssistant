@@ -60,8 +60,8 @@ export default class PlayerMap extends React.Component {
                 backgroundColor: "rgba(244, 244, 244, 0.5)",
             }
 
-            var posX = getGameState().tokens[token.id].position[0];
-            var posY = getGameState().tokens[token.id].position[1];
+            var posX = token.position[0];
+            var posY = token.position[1];
 
             tokens.push (
                 <div key={"h"+token.id} style={highlightBlockStyle}></div>
