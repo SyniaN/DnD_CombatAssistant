@@ -49,10 +49,10 @@ export default class PlayerMap extends React.Component {
 
             var playerTokenStyle = {
                 ...block,
-                WebkitTransition: "0.2s",
-                MozTransition: "0.2s",
-                OOransition: "0.2s",
-                transition: "0.2s"
+                WebkitTransition: "0.3s",
+                MozTransition: "0.3s",
+                OOransition: "0.3s",
+                transition: "0.3s"
             }
 
             var highlightBlockStyle = {

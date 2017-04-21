@@ -66,7 +66,8 @@ export default class CharacterPiece extends React.Component {
             backgroundRepeat:"round",
             height: this.props.size?this.props.size:"100%",
             position:'relative',
-            float: 'left'
+            float: 'left',
+            boxShadow: "0px 15px 30px #111222"
         };
         
         var lableStyle = {
