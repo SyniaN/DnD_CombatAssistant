@@ -11,65 +11,104 @@ let gameState = {
     fogOfWar: {
         foggerSelected: false,
         foggerMode: "Add",
-        inAction: false
+        inAction: false,
+        status: []
     },
+    mapOptions:{
+        fogOfWar: true,
+        gridLines: true,
+        gridLabels: true
+    },
+    playMap : "https://lh3.googleusercontent.com/xAMcUtvPvR6Rh51ii7zZdgeV9uZP0j47CaDZlmMza7sCy-dC9Mz6UYRtrWoU9EqEiL0VvChUDhsMUEs=w1920-h1200-no",
+    nextId : null,
     tokens: [
         {
             id: 0,
             name: "Asher",
             position: [1, 0],
             color: "#5b4c42",
-            icon: "4.png"
+            icon: "4.png",
+            hp:"",
+            tempHp:""
         },
         {
             id: 1,
             name: "Clive",
             position: [1, 1],
             color: "#70819e",
-            icon: "2.png"
+            icon: "2.png",
+            hp:"",
+            tempHp:""
         },
         {
             id: 2,
             name: "Legolas",
             position: [1, 2],
             color: "#649180",
-            icon: "10.jpg"
+            icon: "10.jpg",
+            hp:"",
+            tempHp:""
         },
         {
             id: 3,
             name: "Kyle",
             position: [0, 0],
             color: "#879164",
-            icon: "3.png"
+            icon: "3.png",
+            hp:"",
+            tempHp:""
         },
         {
             id: 4,
             name: "Ovarky",
             position: [0, 1],
             color: "#7c5f8c",
-            icon: "5.png"
+            icon: "5.png",
+            hp:"",
+            tempHp:""
         },
         {
             id: 5,
             name: "Tarinn",
             position: [0, 2],
             color: "#8c5f5f",
-            icon: "9.png"
+            icon: "9.png",
+            hp:"",
+            tempHp:""
+        },
+        {
+            id: 6,
+            name: "Alimar",
+            position: [0, 3],
+            color: "8c5f5f",
+            icon:"1.png",
+            hp:"",
+            tempHp:""
         }
-    ]
+    ],
+    notes: null
 };
 
-let nextId = gameState.tokens.length;
-let playMap = "https://lh3.googleusercontent.com/xAMcUtvPvR6Rh51ii7zZdgeV9uZP0j47CaDZlmMza7sCy-dC9Mz6UYRtrWoU9EqEiL0VvChUDhsMUEs=w1920-h1200-no";
-let mapOptions = {
-    fogOfWar: true,
-    gridLines: true,
-    gridLabels: true
-};
+//INITIALIZATION//
+gameState.nextId = gameState.tokens.length;
 
+for (var i = 0; i < Math.floor(gameState.mapScale.height/gameState.mapScale.tileSize); i++){
+    gameState.fogOfWar.status[i] = [];
+    for(var j = 0; j < Math.floor(gameState.mapScale.width/gameState.mapScale.tileSize); j++){
+        gameState.fogOfWar.status[i][j] = true;                
+    }
+}
 
 let observer = null;
 
+export function changePlayerInfo(id, name, hp, tempHp){
+    gameState.tokens[id].name = name;
+    gameState.tokens[id].hp = hp;
+    gameState.tokens[id].tempHp = tempHp;
+    emitChange(true);
+}
+
+//FUNCTIONS
 export function getGameState() {
     return gameState;
 }
@@ -92,12 +131,17 @@ export function observe(o) {
     emitChange(true);
 }
 
+export function changeFogStatus(i, j, status){
+    gameState.fogOfWar.status[i][j] = status;
+    emitChange(true);
+}
+
 function emitChange(internalChange) {
     if (internalChange){
         gameState.v ++;
         publishMessage(gameState);
     }
-    observer(playMap, mapOptions, gameState);
+    observer(gameState.playMap, gameState.mapOptions, gameState);
 
     console.log(gameState);
     console.log('emitting Change');
@@ -120,12 +164,12 @@ export function changeMapScale(newMapScale) {
 }
 
 export function changeMap(newUrl) {
-    playMap = newUrl;
+    gameState.playMap = newUrl;
     emitChange(true);
 }
 
 export function changeMapOptions(newOptions) {
-    mapOptions = newOptions;
+    gameState.mapOptions = newOptions;
     emitChange(true);
 }
 
@@ -142,13 +186,13 @@ export function deselectCharacter() {
 
 export function addCharacter(character) {
     gameState.tokens.push({
-        id: nextId,
+        id: gameState.nextId,
         name: character.name,
         position: character.position,
         color: character.color
     });
 
-    nextId++;
+    gameState.nextId++;
 
     emitChange(true);
 }

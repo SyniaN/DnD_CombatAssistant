@@ -1,5 +1,5 @@
 import React from 'react';
-import {getGameState, activateFogger, deactivateFogger } from './Game';
+import {getGameState, activateFogger, deactivateFogger, changeFogStatus} from './Game';
 
 export default class MapTile extends React.Component {
     
@@ -8,9 +8,6 @@ export default class MapTile extends React.Component {
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseOver = this.handleMouseOver.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
-        this.state={
-            fogOfWar: true
-        };        
     }
     
     handleMouseDown(event){
@@ -27,30 +24,35 @@ export default class MapTile extends React.Component {
         }
     }
     
+    shouldComponentUpdate(nextProps, nextState){
+        if (this.props.fogStatus === nextProps.fogStatus && this.props.mapOptions === nextProps.mapOptions){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    
     handleMouseOver(){
         //event.preventDefault();
-
-        console.log('mouseOverTile');
-
         
         var fogOfWarState = getGameState().fogOfWar;
         
-        if (this.props.mapOptions.fogOfWar && fogOfWarState.foggerSelected && fogOfWarState.inAction){
-            console.log('Changing tile fog state');
+        if (fogOfWarState.inAction && fogOfWarState.foggerSelected && this.props.mapOptions.fogOfWar ){
+            
             if(fogOfWarState.foggerMode === "Remove"){
-                console.log('Tile fog set to false');
-                this.setState({fogOfWar: false});
+                changeFogStatus(this.props.y, this.props.x, false);
             } else {
-                console.log('Tile fog set to true');
-                this.setState({fogOfWar: true});
+                changeFogStatus(this.props.y, this.props.x, true);
             }
         }
     }
     
     render(){
         
+        console.log('rendering MapTile');
         var letters=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        var fogThisTile=this.state.fogOfWar && this.props.mapOptions.fogOfWar 
+        var fogThisTile=this.props.fogStatus && this.props.mapOptions.fogOfWar 
         var divStyle = {
             width: this.props.size+'px',
             height: this.props.size+'px',
