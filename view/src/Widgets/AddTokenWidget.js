@@ -8,27 +8,33 @@ export default class AddTokenWidget extends React.Component {
             name: '',
             pos: '',
             color: '',
+            height: '',
+            width: ''
         };
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handlePosChange = this.handlePosChange.bind(this);
-        this.handleColorChange = this.handleColorChange.bind(this);
+        this.handleFieldChange = this.handleFieldChange.bind(this);
         this.handleAddCharacterSubmit = this.handleAddCharacterSubmit.bind(this);
     }
-    
-    //Character changes
-    handleNameChange(event){
-        this.setState({name: event.target.value});
-        console.log('name field changed to: ' + event.target.value);
-    }
-    
-    handlePosChange(event){
-        this.setState({pos: event.target.value});
-        console.log('pos field changed to: ' + event.target.value);
-    }
-    
-    handleColorChange(event){
-        this.setState({color: event.target.value});
-        console.log('color field changed to: ' + event.target.value);
+
+    handleFieldChange(event){
+        switch (event.target.id){
+            case "name":
+                this.setState({name: event.target.value});
+                break;
+            case "height":
+                this.setState({height: event.target.value});
+                break;
+            case "width":
+                this.setState({width: event.target.value});
+                break;
+            case "position":
+                this.setState({pos: event.target.value});
+                break;
+            case "color":
+                this.setState({color: event.target.value});
+                break;
+            default:
+                break;
+        }
     }
     
     handleAddCharacterSubmit(){
@@ -48,13 +54,17 @@ export default class AddTokenWidget extends React.Component {
         addCharacter({
             name: this.state.name,
             position:[Number(posX), Number(posY)],
-            color: this.state.color
+            color: this.state.color,
+            height: this.state.height,
+            width: this.state.width
         });
         
         this.state={
             name: '',
             pos: '',
             color: '',
+            height: '',
+            width: ''
         };
     }
     
@@ -66,17 +76,27 @@ export default class AddTokenWidget extends React.Component {
                 <div>
                     <div className="form-group">
                         <h3>Name</h3>
-                        <input type="text" className="form-control" placeholder="eg. Bob" value={this.state.name} onChange={this.handleNameChange}/>
+                        <input type="text" id="name" className="form-control" placeholder="eg. Bob" value={this.state.name} onChange={this.handleFieldChange}/>
+                    </div>
+
+                    <div className="form-group">
+                        <h3>Height</h3>
+                        <input type="text" id="height" className="form-control" placeholder="eg. 60px" value={this.state.height} onChange={this.handleFieldChange}/>
+                    </div>
+
+                    <div className="form-group">
+                        <h3>Width</h3>
+                        <input type="text" id="width" className="form-control" placeholder="eg. 60px" value={this.state.width} onChange={this.handleFieldChange}/>
                     </div>
                       
                     <div className="form-group">
                         <h3>Position</h3>
-                        <input type="text" className="form-control" placeholder="eg. B3" value={this.state.pos} onChange={this.handlePosChange}/>
+                        <input type="text" id="position" className="form-control" placeholder="eg. B3" value={this.state.pos} onChange={this.handleFieldChange}/>
                     </div>
                       
                     <div className="form-group">
                         <h3>Color</h3>
-                        <input type="text" className="form-control" placeholder="eg. yellow OR #4286f4" value={this.state.color} onChange={this.handleColorChange}/>
+                        <input type="text" id="color" className="form-control" placeholder="eg. yellow OR #4286f4" value={this.state.color} onChange={this.handleFieldChange}/>
                     </div>
                       
                     <button type="submit" className="btn btn-default" onClick={this.handleAddCharacterSubmit}>Submit</button>

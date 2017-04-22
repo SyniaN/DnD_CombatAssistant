@@ -212,10 +212,8 @@ export function deselectCharacter() {
 
 export function addCharacter(character) {
     gameState.tokens.push({
+        ...character,
         id: gameState.nextId,
-        name: character.name,
-        position: character.position,
-        color: character.color
     });
 
     gameState.nextId++;
