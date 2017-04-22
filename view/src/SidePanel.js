@@ -22,7 +22,7 @@ export default class SidePanel extends React.Component {
     render(){
         var panelStyle = {
             width: "230px",
-            height: window.innerHeight+'px',
+            height: "100%",
             //float: 'left',
             padding: '10px',
             position: 'fixed',

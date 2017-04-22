@@ -15,7 +15,7 @@ class Map extends React.Component {
             float: 'left',
             WebkitUserSelect: "none",
             MozUserSelect: "none",
-            UserSelect: "none",
+            UserSelect: "none"
         };
         
         const imageStyle = {
@@ -26,10 +26,12 @@ class Map extends React.Component {
         return (
             <div>
                 <div className="container content" style={mapStyle}>
-                    <img src={this.props.mapUrl} alt="" style={imageStyle} />
-                    
-                    <TileMap/>
-                    <PlayerMap/>
+                    <div>
+                        <img src={this.props.mapUrl} alt="" style={imageStyle} />
+                        
+                        <TileMap/>
+                        <PlayerMap/>
+                    </div>
                     
                 </div>
             </div>
@@ -37,9 +39,5 @@ class Map extends React.Component {
         );
     }
 }
-
-Map.propTypes = {
-    playerPieces: React.PropTypes.array.isRequired
-};
 
 export default Map;

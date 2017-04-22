@@ -42,7 +42,14 @@ export default class Tile extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        if (this.props.fogStatus === nextProps.fogStatus && this.props.mapOptions === nextProps.mapOptions) {
+
+        for (var prop in nextProps.mapOptions){
+            if (this.props.mapOptions[prop] !== nextProps.mapOptions[prop]){
+                return true;
+            }
+        }
+
+        if (this.props.fogStatus === nextProps.fogStatus) {
             return false;
         } else {
             return true;

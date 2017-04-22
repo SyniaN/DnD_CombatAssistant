@@ -6,7 +6,7 @@ import './index.css';
 
 observe((playMap, mapOptions, gameState) => {
       ReactDOM.render(
-        <App playerPieces={gameState.tokens} playMap={playMap} mapOptions={mapOptions}/>,
+        <App tokens={gameState.tokens} playMap={playMap} mapOptions={mapOptions}/>,
         document.getElementById('root')
       );
   }

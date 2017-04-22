@@ -73,7 +73,7 @@ export default class CharacterPiece extends React.Component {
         var lableStyle = {
             backgroundColor: "rgba(240, 240, 240, 0.85)",
             position: "absolute",
-            top:"25px",
+            bottom:"0px",
             width: "100%",
             maxHeight: "96%",
             textAlign: "center",
@@ -83,7 +83,7 @@ export default class CharacterPiece extends React.Component {
         var selectionFieldStyle = {
             position: "absolute",
             bottom:"0px",
-            height: "80%",
+            height: "100%",
             width: "100%",
             cursor: 'pointer'
         };
@@ -94,10 +94,11 @@ export default class CharacterPiece extends React.Component {
         
         return (
             <div ref={(div) => { this.container = div }}  tabIndex={this.props.id} onKeyDown={this.handleKeyPress} style={characterStyle} >
-                <span style={clickAble}  onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </span>
+                
                 <div style={selectionFieldStyle} onClick={(e)=>this.handlePieceSelect(e, this.props.id)}>
                     <span style={lableStyle}> {this.props.label}</span>
                 </div>
+                <span style={clickAble}  onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </span>
             </div>
         );
     

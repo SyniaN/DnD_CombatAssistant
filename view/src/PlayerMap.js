@@ -32,19 +32,19 @@ export default class PlayerMap extends React.Component {
             width: getGameState().fogOfWar.foggerSelected? "0px" : "1920px"
         };
         
-        const tokenArray = getGameState().tokens;
+        const tokensObj = getGameState().tokens;
         var tokens = [];
         
-        for (var i = 0; i < tokenArray.length; i++){
-            
-            var token = tokenArray[i];
+        for (var tokenID in tokensObj){
+
+            var token = tokensObj[tokenID];
 
             var block = {
                 position: "absolute",
                 height: token.height === undefined ? "60px" : token.height,
                 width: token.width === undefined ? "60px" : token.width,
-                top: tokenArray[i].position[1] * 60 + "px",
-                left: tokenArray[i].position[0] * 60 + "px",
+                top: token.position[1] * 60 + "px",
+                left:token.position[0] * 60 + "px",
             }
 
             var playerTokenStyle = {
