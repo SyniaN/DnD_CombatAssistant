@@ -235,10 +235,11 @@ export function deselectCharacter() {
 }
 
 export function addToken(token) {
-    gameState.tokens.push({
+
+    gameState.tokens[gameState.nextId] = {
         ...token,
         id: gameState.nextId,
-    });
+    };
 
     gameState.nextId++;
 

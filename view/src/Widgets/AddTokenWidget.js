@@ -1,5 +1,5 @@
 import React from 'react';
-import { addCharacter} from '../Game';
+import { addToken} from '../Game';
 
 export default class AddTokenWidget extends React.Component {
     constructor(){
@@ -51,7 +51,7 @@ export default class AddTokenWidget extends React.Component {
             }
         }
         
-        addCharacter({
+        addToken({
             name: this.state.name,
             position:[Number(posX), Number(posY)],
             color: this.state.color,
