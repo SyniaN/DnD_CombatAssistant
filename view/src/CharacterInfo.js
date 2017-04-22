@@ -26,6 +26,15 @@ export default class CharacterInfo extends React.Component{
     }
 
     findBackgroundColor(id){
+        if (id === "notes"){
+            return {
+                height: "100%",
+                width:"100%",
+                float: "left",
+                backgroundColor: this.props.char.notes === this.state.notes ? "white" : "red"
+            }
+        }
+
         if (this.state[id] === this.props.char[id]){
             return {backgroundColor: "white"}
         } else {
@@ -66,13 +75,6 @@ export default class CharacterInfo extends React.Component{
             height: "100%"
         }
 
-        const textAreaStyle = {
-            height: "100%",
-            width:"100%",
-            float: "left",
-            backgroundColor: this.props.char.notes === this.state.notes ? "none" : "red"
-        }
-
         return(
             <div style={charInfoStyle} onBlur={this.handleBlur}>
                 <h4 style={{margin:"0"}}>{this.state.name}</h4>
@@ -92,7 +94,7 @@ export default class CharacterInfo extends React.Component{
                 
                 <div id="bottomHalf" style={bottomHalfStyle}>
                     
-                    <textarea id="notes" style={textAreaStyle} value={this.state.notes} onChange={this.handleFieldChange}/>
+                    <textarea id="notes" style={this.findBackgroundColor("notes")} value={this.state.notes} onChange={this.handleFieldChange}/>
                 </div>
 
             </div>

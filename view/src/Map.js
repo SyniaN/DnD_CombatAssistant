@@ -9,9 +9,10 @@ class Map extends React.Component {
 
         const mapScale = getGameState().mapScale;
         const mapStyle = {
-            width: mapScale.width + "px",
-            padding: "0",
-            marginLeft: '230px',
+            width: "3000px",
+            height: "2000px",
+            padding: "300px",
+            backgroundColor: "grey",
             float: 'left',
             WebkitUserSelect: "none",
             MozUserSelect: "none",
