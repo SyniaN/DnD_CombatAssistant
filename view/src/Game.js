@@ -125,7 +125,7 @@ let gameState = {
             id: 7,
             tokenType: "npc",
             name: "Half-Dragon",
-            position: [23, 5],
+            position: [27, 11],
             color: "white",
             icon: "monster2.png",
             hp:"",
@@ -134,6 +134,20 @@ let gameState = {
             notes:"",
             width:"120px",
             height:"120px"
+        },
+        8: {
+            id: 8,
+            tokenType: "npc",
+            name: "Ancient Dragon",
+            position: [21, 5],
+            color: "white",
+            icon: "dragon.png",
+            hp:"",
+            maxHp:"",
+            ac:"",
+            notes:"",
+            width:"360px",
+            height:"360px"
         }
     },
     notes: null
