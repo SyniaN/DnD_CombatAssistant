@@ -3,10 +3,10 @@ var app = express();
 
 app.set('port', (process.env.PORT || 3000));
 
-app.use(express.static(__dirname + '/view/build'));
+app.use('/', express.static(__dirname + '/view/build'));
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.sendfile(__dirname + '/view/build/index.html');
 })
 
 app.listen(app.get('port'), function () {
