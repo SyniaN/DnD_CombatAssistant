@@ -36,7 +36,7 @@ export default class CharacterInfo extends React.Component{
     render(){
 
         const charInfoStyle = {
-            height: "100%",
+            height: "150px",
             width: "200px",
             backgroundColor: 'white',
             padding: '5px',

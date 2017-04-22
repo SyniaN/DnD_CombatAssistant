@@ -15,7 +15,7 @@ export default class BottomPanel extends React.Component{
         }
 
         return(
-            <div style={{height: "150px", width: "1920px", position: "fixed", marginLeft: '250px', bottom: "20px"}}>
+            <div style={{ position: "fixed", marginLeft: '240px', top: "10px"}}>
                 {infoBoxes}
             </div>
         )
