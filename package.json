@@ -1,6 +1,9 @@
 {
   "name": "dnd-combat-assistant",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.10.2"
+  },
   "description": "��#\u0000 \u0000D\u0000n\u0000D\u0000_\u0000C\u0000o\u0000m\u0000b\u0000a\u0000t\u0000A\u0000s\u0000s\u0000i\u0000s\u0000t\u0000a\u0000n\u0000t\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
