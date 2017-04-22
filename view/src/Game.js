@@ -139,7 +139,7 @@ let gameState = {
             id: 8,
             tokenType: "npc",
             name: "Ancient Dragon",
-            position: [21, 5],
+            position: [18, 2],
             color: "white",
             icon: "dragon.png",
             hp:"",
