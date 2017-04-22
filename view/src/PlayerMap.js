@@ -16,8 +16,8 @@ export default class PlayerMap extends React.Component {
 
     handleContextMenu(e){
         e.preventDefault();
-        var X = e.pageX-230;
-        var Y = e.pageY;
+        var X = e.pageX-300;
+        var Y = e.pageY-300;
         movePiece(Math.floor(X/60), Math.floor(Y/60));
 
     }
