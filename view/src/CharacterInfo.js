@@ -31,14 +31,15 @@ export default class CharacterInfo extends React.Component{
                 height: "100%",
                 width:"100%",
                 float: "left",
+                width: "30%",
                 backgroundColor: this.props.char.notes === this.state.notes ? "white" : "red"
             }
         }
 
         if (this.state[id] === this.props.char[id]){
-            return {backgroundColor: "white"}
+            return {backgroundColor: "white", width: "30%"}
         } else {
-            return {backgroundColor: "red"}
+            return {backgroundColor: "red", width: "30%"}
         }
     }
 
