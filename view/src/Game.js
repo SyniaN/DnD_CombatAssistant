@@ -1,6 +1,6 @@
 import { publishMessage } from './Networking.js';
 
-const db = true;
+const db = false;
 let gameState = {
     v: 0,
     mapScale: {

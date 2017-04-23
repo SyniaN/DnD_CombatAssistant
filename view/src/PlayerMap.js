@@ -45,14 +45,15 @@ export default class PlayerMap extends React.Component {
                 width: token.width === undefined ? "60px" : token.width,
                 top: token.position[1] * 60 + "px",
                 left:token.position[0] * 60 + "px",
+                willChange: "top, left"
             }
 
             var playerTokenStyle = {
                 ...block,
-                WebkitTransition: "0.3s",
-                MozTransition: "0.3s",
-                OOransition: "0.3s",
-                transition: "0.3s"
+                WebkitTransition: "0.2s",
+                MozTransition: "0.2s",
+                OOransition: "0.2s",
+                transition: "0.2s"
             }
 
             var highlightBlockStyle = {
