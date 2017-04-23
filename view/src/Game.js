@@ -1,6 +1,6 @@
 import { publishMessage } from './Networking.js';
 
-const db = false;
+const db = true;
 let gameState = {
     v: 0,
     mapScale: {
@@ -154,7 +154,7 @@ let gameState = {
 };
 
 //INITIALIZATION//
-gameState.nextId = gameState.tokens.length;
+gameState.nextId = Object.keys(gameState.tokens).length;
 
 for (var i = 0; i < Math.floor(gameState.mapScale.height/gameState.mapScale.tileSize); i++){
     gameState.fogOfWar.status[i] = [];

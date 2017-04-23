@@ -1,5 +1,5 @@
 import React from 'react';
-import { selectCharacter, removeCharacter, movePiece, deselectCharacter, getGameState, deselectFogger} from './Game';
+import { selectCharacter, removeToken, movePiece, deselectCharacter, getGameState, deselectFogger} from './Game';
 
 export default class CharacterPiece extends React.Component {
 
@@ -50,7 +50,7 @@ export default class CharacterPiece extends React.Component {
     
     handlePieceRemove(key){
         deselectCharacter();
-        removeCharacter(key);
+        removeToken(key);
     }
     
     render(){
