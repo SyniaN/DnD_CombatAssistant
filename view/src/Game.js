@@ -55,7 +55,7 @@ let gameState = {
             id: 2,
             tokenType: "player",
             name: "Legolas",
-            position: [12, 9],
+            position: [12, 8],
             color: "#649180",
             icon: "10.jpg",
             hp:"10",
