@@ -63,6 +63,7 @@ export default class CharacterPiece extends React.Component {
             borderColor: getGameState().selectedCharacter===this.props.id?'red':'black',
             padding: '0',
             backgroundImage:"url('/token_icons/"+getGameState().tokens[this.props.id].icon+"')",
+            backgroundSize:"cover",
             backgroundRepeat:"round",
             height: this.props.size?this.props.size:"100%",
             position:'relative',
