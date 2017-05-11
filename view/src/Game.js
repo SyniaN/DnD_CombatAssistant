@@ -79,7 +79,7 @@ let gameState = {
             width:"60px",
             height:"60px"
         },
-        4: {
+ /*       4: {
             id: 4,
             tokenType: "player",
             name: "Ovarky",
@@ -120,9 +120,9 @@ let gameState = {
             notes:"Magical Shield: 20",
             width:"60px",
             height:"60px"
-        },
-        7: {
-            id: 7,
+        },*/
+        4: {
+            id: 4,
             tokenType: "npc",
             name: "Half-Dragon",
             position: [23, 9],
@@ -135,8 +135,8 @@ let gameState = {
             width:"120px",
             height:"120px"
         },
-        8: {
-            id: 8,
+        5: {
+            id: 5,
             tokenType: "npc",
             name: "Ancient Dragon",
             position: [18, 2],
