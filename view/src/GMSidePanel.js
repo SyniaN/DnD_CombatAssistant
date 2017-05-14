@@ -4,8 +4,9 @@ import AddTokenWidget from './Widgets/AddTokenWidget';
 import MapOptionWidget from './Widgets/MapOptionWidget';
 import FreeTextWidget from './Widgets/FreeTextWidget';
 import FogOfWarWidget from './Widgets/FogOfWarWidget';
+import FullStateInfo from './Widgets/FullStateInfo';
 
-export default class SidePanel extends React.Component {
+export default class GMSidePanel extends React.Component {
     
     constructor(props){
         super();
@@ -20,8 +21,11 @@ export default class SidePanel extends React.Component {
     }
     
     render(){
+
+        
+
         var panelStyle = {
-            width: "230px",
+            width: "350px",
             height: "100%",
             //float: 'left',
             padding: '10px',
@@ -35,10 +39,11 @@ export default class SidePanel extends React.Component {
         return(
             <div style={panelStyle} onClick={this.handleClick}>
                     <div>
+                        <FullStateInfo></FullStateInfo>
                         <FreeTextWidget></FreeTextWidget>
                         <AddTokenWidget></AddTokenWidget>
                         <MapOptionWidget mapOptions={this.props.mapOptions} mapUrl={this.props.mapUrl}></MapOptionWidget>
-                        <FogOfWarWidget></FogOfWarWidget>
+                        <FogOfWarWidget></FogOfWarWidget>                        
                     </div>
             </div>
                 

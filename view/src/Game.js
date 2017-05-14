@@ -23,50 +23,111 @@ let gameState = {
     playMap : "https://s-media-cache-ak0.pinimg.com/originals/40/99/94/40999419d04ec98f34f6039c5c28b261--dungeon-tiles-wilderness.jpg",
     nextId : null,
     tokens: {
-        0:{
-            id: 0,
-            tokenType: "player",
-            name: "Asher",
-            position: [14, 9],
-            color: "#5b4c42",
-            icon: "4.png",
-            hp:"25",
-            maxHp:"30",
-            ac:"19",
-            notes:"Remaining lay-on-hands: 7",
-            width:"60px",
-            height:"60px"
-        },
-        1: {
-            id: 1,
-            tokenType: "player",
-            name: "Clive",
-            position: [11, 11],
-            color: "#70819e",
-            icon: "2.png",
-            hp:"10",
-            maxHp:"12",
-            ac:"14",
-            notes:"Hiding under a rock",
-            width:"60px",
-            height:"60px"
-        },
-        2: {
-            id: 2,
-            tokenType: "player",
-            name: "Legolas",
-            position: [12, 8],
-            color: "#649180",
-            icon: "10.jpg",
-            hp:"10",
-            maxHp:"12",
-            ac:"14",
-            notes:"Eating cake",
-            width:"60px",
-            height:"60px"
-        },
-        3: {
-            id: 3,
+        "0": {
+			"id": 0,
+			"tokenType": "player",
+			"name": "Asher",
+			"position": [
+				13,
+				11
+			],
+			"color": "#5b4c42",
+			"icon": "4.png",
+			"hp": "25",
+			"maxHp": "30",
+			"ac": "19",
+			"notes": "Remaining lay-on-hands: 7",
+			"width": "60px",
+			"height": "60px"
+		},
+		"1": {
+			"id": 1,
+			"tokenType": "player",
+			"name": "Clive",
+			"position": [
+				8,
+				11
+			],
+			"color": "#70819e",
+			"icon": "2.png",
+			"hp": "10",
+			"maxHp": "12",
+			"ac": "14",
+			"notes": "Hiding under a rock",
+			"width": "60px",
+			"height": "60px"
+		},
+		"2": {
+			"id": 2,
+			"tokenType": "player",
+			"name": "Legolas",
+			"position": [
+				8,
+				6
+			],
+			"color": "#649180",
+			"icon": "10.jpg",
+			"hp": "10",
+			"maxHp": "12",
+			"ac": "14",
+			"notes": "Eating cake",
+			"width": "60px",
+			"height": "60px"
+		},
+		"3": {
+			"id": 3,
+			"tokenType": "player",
+			"name": "Alimar",
+			"position": [
+				11,
+				8
+			],
+			"color": "#8a7f5c",
+			"icon": "1.png",
+			"hp": "16",
+			"maxHp": "24",
+			"ac": "10",
+			"notes": "Magical Shield: 20",
+			"width": "60px",
+			"height": "60px"
+		},
+		"4": {
+			"id": 4,
+			"tokenType": "npc",
+			"name": "Half-Dragon",
+			"position": [
+				24,
+				11
+			],
+			"color": "white",
+			"icon": "monster2.png",
+			"hp": "50",
+			"maxHp": "100",
+			"ac": "",
+			"notes": "",
+			"width": "120px",
+			"height": "120px"
+		},
+		"5": {
+			"id": 5,
+			"tokenType": "npc",
+			"name": "Ancient Dragon",
+			"position": [
+				18,
+				4
+			],
+			"color": "white",
+			"icon": "dragon.png",
+			"hp": "100",
+			"maxHp": "300",
+			"ac": "",
+			"notes": "",
+			"width": "360px",
+			"height": "360px"
+		}
+        /*
+        6: {
+            id: 6,
             tokenType: "player",
             name: "Kyle",
             position: [13, 5],
@@ -79,8 +140,8 @@ let gameState = {
             width:"60px",
             height:"60px"
         },
- /*       4: {
-            id: 4,
+        7: {
+            id: 7,
             tokenType: "player",
             name: "Ovarky",
             position: [17, 12],
@@ -93,8 +154,8 @@ let gameState = {
             width:"60px",
             height:"60px"
         },
-        5: {
-            id: 5,
+        8: {
+            id: 8,
             tokenType: "player",
             name: "Tarinn",
             position: [10, 8],
@@ -106,49 +167,7 @@ let gameState = {
             notes:"Slowed - Carrying way too much money",
             width:"60px",
             height:"60px"
-        },
-        6: {
-            id: 6,
-            tokenType: "player",
-            name: "Alimar",
-            position: [12, 9],
-            color: "#8a7f5c",
-            icon:"1.png",
-            hp:"16",
-            maxHp:"24",
-            ac:"10",
-            notes:"Magical Shield: 20",
-            width:"60px",
-            height:"60px"
-        },*/
-        4: {
-            id: 4,
-            tokenType: "npc",
-            name: "Half-Dragon",
-            position: [23, 9],
-            color: "white",
-            icon: "monster2.png",
-            hp:"",
-            maxHp:"",
-            ac:"",
-            notes:"",
-            width:"120px",
-            height:"120px"
-        },
-        5: {
-            id: 5,
-            tokenType: "npc",
-            name: "Ancient Dragon",
-            position: [18, 2],
-            color: "white",
-            icon: "dragon.png",
-            hp:"",
-            maxHp:"",
-            ac:"",
-            notes:"",
-            width:"360px",
-            height:"360px"
-        }
+        }*/
     },
     notes: null
 };
@@ -173,8 +192,15 @@ export function changePlayerInfo(id, name, hp, tempHp){
 }
 
 //FUNCTIONS
+
 export function getGameState() {
     return gameState;
+}
+
+
+export function setMyGameState(newState){
+    gameState = newState;
+    emitChange(true);
 }
 
 export function setGameState(newState) {
@@ -205,7 +231,7 @@ function emitChange(internalChange) {
         gameState.v ++;
         publishMessage(gameState);
     }
-    observer(gameState.playMap, gameState.mapOptions, gameState);
+    observer();
 
     if (db) console.log(gameState);
     if (db) console.log('emitting Change');

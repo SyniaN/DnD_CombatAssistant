@@ -1,14 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import {render} from 'react-dom';
+import PCPortal from './PCPortal';
+import GMPortal from './GMPortal';
 import { observe } from './Game';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
 import './index.css';
 
-observe((playMap, mapOptions, gameState) => {
-      ReactDOM.render(
-        <App tokens={gameState.tokens} playMap={playMap} mapOptions={mapOptions}/>,
+observe(() => {
+
+      render(
+        <Router>
+          <div>
+            <Route exact path="/" component={PCPortal}/>
+            <Route exact path="/GameMaster" component={GMPortal}/>
+          </div>
+        </Router>,
         document.getElementById('root')
-      );
+      )
   }
 );
+
+        
 

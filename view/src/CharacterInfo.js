@@ -30,7 +30,7 @@ export default class CharacterInfo extends React.Component{
             return {
                 height: "100%",
                 width:"100%",
-                float: "left",
+                float: "right",
                 backgroundColor: this.props.char.notes === this.state.notes ? "white" : "red"
             }
         }

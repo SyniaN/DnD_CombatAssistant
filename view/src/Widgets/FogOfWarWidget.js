@@ -47,6 +47,7 @@ export default class ForOfWarWidget extends React.Component {
                 <div className="form-group">
                     <button className={removeButtonClasses} onClick={this.handleRemoveFogClick}>Remove Fog</button>
                 </div>
+                <hr/>
             </div>
         );
     }

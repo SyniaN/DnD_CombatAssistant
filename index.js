@@ -5,7 +5,7 @@ app.set('port', (process.env.PORT || 3000));
 
 app.use('/', express.static(__dirname + '/view/build'));
 
-app.get('/', function (req, res) {
+app.get('/*', function (req, res) {
   res.sendfile(__dirname + '/view/build/index.html');
 })
 
