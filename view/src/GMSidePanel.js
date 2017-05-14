@@ -5,6 +5,7 @@ import MapOptionWidget from './Widgets/MapOptionWidget';
 import FreeTextWidget from './Widgets/FreeTextWidget';
 import FogOfWarWidget from './Widgets/FogOfWarWidget';
 import FullStateInfo from './Widgets/FullStateInfo';
+import { Link } from 'react-router-dom';
 
 export default class GMSidePanel extends React.Component {
     
@@ -22,8 +23,6 @@ export default class GMSidePanel extends React.Component {
     
     render(){
 
-        
-
         var panelStyle = {
             width: "350px",
             height: "100%",
@@ -39,11 +38,13 @@ export default class GMSidePanel extends React.Component {
         return(
             <div style={panelStyle} onClick={this.handleClick}>
                     <div>
-                        <FullStateInfo></FullStateInfo>
+                        <Link to="/"><button className="btn btn-default">Login as Player</button></Link>
+                        <hr/>
                         <FreeTextWidget></FreeTextWidget>
-                        <AddTokenWidget></AddTokenWidget>
+                        <FullStateInfo></FullStateInfo>
                         <MapOptionWidget mapOptions={this.props.mapOptions} mapUrl={this.props.mapUrl}></MapOptionWidget>
-                        <FogOfWarWidget></FogOfWarWidget>                        
+                        <FogOfWarWidget></FogOfWarWidget>  
+                        <AddTokenWidget></AddTokenWidget>                                              
                     </div>
             </div>
                 
