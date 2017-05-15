@@ -12,12 +12,16 @@ class GMPortal extends React.Component{
         var tokens = getGameState().tokens;
         var playMap = getGameState().playMap;
         var mapOptions = getGameState().mapOptions;
+        
+        var mapMargin = {
+            marginLeft: "300px"
+        }
 
         return(
             <div>
                 <GMSidePanel mapUrl={playMap} mapOptions={mapOptions} />
                 
-                <Map playerPieces={tokens} mapUrl={playMap} mapOptions={mapOptions} />
+                <Map style={mapMargin}  playerPieces={tokens} mapUrl={playMap} mapOptions={mapOptions} />
                 <BottomPanel tokens={tokens} />
             </div>
         )

@@ -27,6 +27,8 @@ class PCPortal extends React.Component {
             marginTop: "10px",
             marginLeft: "10px"
         }
+        
+
 
 
         return (

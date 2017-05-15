@@ -6,13 +6,15 @@ import { getGameState } from './Game';
 class Map extends React.Component {
  
     render(){
+        
+        const overallStyle = this.props.style;
 
         const mapScale = getGameState().mapScale;
         const mapStyle = {
             width: "2300px",
             height: "1400px",
-            paddingLeft: "150px",
-            paddingTop: "60px",
+            paddingLeft: "0px",
+            paddingTop: "0px",
             backgroundColor: "grey",
             float: 'left',
             WebkitUserSelect: "none",
@@ -26,7 +28,7 @@ class Map extends React.Component {
         };
         
         return (
-            <div>
+            <div style={overallStyle}>
                 <div className="container content" style={mapStyle}>
                     <div>
                         <img src={this.props.mapUrl} alt="" style={imageStyle} />
