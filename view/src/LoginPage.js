@@ -115,7 +115,7 @@ export default class LoginPage extends React.Component{
 
                 <div style={loginBoxStyle}>
                 
-                    <div style={avatarBoxStyle} className="row">
+                    <div style={avatarBoxStyle}  className="row">
                         <div style={arrows} className="col-xs-2" >
                         
                             <button type="button" className="btn btn-default btn-sm" onClick={this.decrementAvatar}>
