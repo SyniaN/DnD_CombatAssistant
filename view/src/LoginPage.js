@@ -111,7 +111,7 @@ export default class LoginPage extends React.Component{
 
         return(
             <div style={{textAlign: "center",}} >
-                <h2> Dungeons and Dragongs Combat Map</h2>
+                <h2> Dungeons and Dragongs Combat Map </h2>
 
                 <div style={loginBoxStyle}>
                 
