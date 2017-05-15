@@ -1,16 +1,23 @@
 import React from 'react';
-import { deselectCharacter, deselectFogger } from './Game';
+import { deselectCharacter, deselectFogger, removeToken } from './Game';
+import { getLocalState } from './Game_Local';
 import AddTokenWidget from './Widgets/AddTokenWidget';
 import MapOptionWidget from './Widgets/MapOptionWidget';
 import FreeTextWidget from './Widgets/FreeTextWidget';
 import FogOfWarWidget from './Widgets/FogOfWarWidget';
 import FullStateInfo from './Widgets/FullStateInfo';
+import { Link } from 'react-router-dom';
 
 export default class GMSidePanel extends React.Component {
     
     constructor(props){
         super();
         this.handleClick = this.handleClick.bind(this);
+        this.removeLocalChar = this.removeLocalChar.bind(this);
+    }
+
+    removeLocalChar(){
+        removeToken(getLocalState().charId);
     }
     
     //Click event
@@ -22,10 +29,8 @@ export default class GMSidePanel extends React.Component {
     
     render(){
 
-        
-
         var panelStyle = {
-            width: "350px",
+            width: "300px",
             height: "100%",
             //float: 'left',
             padding: '10px',
@@ -34,16 +39,26 @@ export default class GMSidePanel extends React.Component {
             backgroundColor: "white",
             overflow: "scroll"
         };
+
+        var buttonStyle = {
+            marginTop: "10px",
+            marginLeft: "10px"
+        }
         
         
         return(
             <div style={panelStyle} onClick={this.handleClick}>
                     <div>
-                        <FullStateInfo></FullStateInfo>
+
+                        <Link to="/Player"><button style={buttonStyle} className="btn btn-default">Player View</button></Link>
+                        <Link to="/"><button style={buttonStyle} className="btn btn-default" onClick={this.removeLocalChar}>Log out</button></Link>
+                        
+                        <hr/>
                         <FreeTextWidget></FreeTextWidget>
-                        <AddTokenWidget></AddTokenWidget>
+                        <FullStateInfo></FullStateInfo>
                         <MapOptionWidget mapOptions={this.props.mapOptions} mapUrl={this.props.mapUrl}></MapOptionWidget>
-                        <FogOfWarWidget></FogOfWarWidget>                        
+                        <FogOfWarWidget></FogOfWarWidget>  
+                        <AddTokenWidget></AddTokenWidget>                                              
                     </div>
             </div>
                 

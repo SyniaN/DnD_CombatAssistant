@@ -5,7 +5,7 @@ export default class FreeTextWidget extends React.Component {
         return (
             <div>
                 <h2>Notes</h2>
-                <textarea>
+                <textarea style={{width:"100%", height:"150px"}}>
                 </textarea>
                 <hr/>
             </div>
