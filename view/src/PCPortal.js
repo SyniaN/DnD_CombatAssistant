@@ -34,7 +34,7 @@ class PCPortal extends React.Component {
         return (
             <div>
                     <div style={buttonSetStyle}>                        
-                        <Link to="/GameMaster"><button style={buttonStyle} className="btn btn-default">Open Game Master Controls</button></Link>
+                        <Link to="/GameMaster"><button style={buttonStyle} className="btn btn-default">Game Master Controls</button></Link>
                         <Link to="/"><button style={buttonStyle} className="btn btn-default" onClick={this.removeLocalChar}>Log out</button></Link>
                     </div>
                    

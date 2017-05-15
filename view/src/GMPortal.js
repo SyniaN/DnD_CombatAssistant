@@ -14,7 +14,6 @@ class GMPortal extends React.Component{
         var mapOptions = getGameState().mapOptions;
         
         var mapMargin = {
-            marginLeft: "300px"
         }
 
         return(

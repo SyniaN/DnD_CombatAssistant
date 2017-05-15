@@ -7,10 +7,31 @@ export default class LoginPage extends React.Component{
     constructor(props){
         super();
         this.state = {
-            name: ""
+            name: "",
+            avatar: 1
         }
         this.joinGame = this.joinGame.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.incrementAvatar = this.incrementAvatar.bind(this);
+        this.decrementAvatar = this.decrementAvatar.bind(this);
+    }
+    
+    incrementAvatar(){
+        if(this.state.avatar < 8){
+            var newAv = this.state.avatar + 1;
+            this.setState({avatar: newAv});
+        } else {
+            this.setState({avatar: 1});
+        }
+    }
+    
+    decrementAvatar(){
+        if(this.state.avatar > 2){
+            var newAv = this.state.avatar - 1;
+            this.setState({avatar: newAv});
+        } else {
+            this.setState({avatar: 9});
+        }
     }
 
     handleChange(event){
@@ -25,6 +46,7 @@ export default class LoginPage extends React.Component{
             tokenType: "player",
             color: 'yellow',
             position:[5+Math.floor(Math.random()*5), 5+Math.floor(Math.random()*5)],
+            "icon": this.state.avatar + ".png",
             "hp": "10",
 			"maxHp": "10",
 			"ac": "10",
@@ -64,21 +86,51 @@ export default class LoginPage extends React.Component{
             padding:"10px 20px"
         }
 
-        // var avatarStyle = {
-        //     width: "100px",
-        //     height: "100px",
-        //     margin: "10px auto 30px",
-        //     borderRadius: "50%",
-        //     border: "2px solid #aaa",
-        //     backgroundSize: "cover",
-        //     backgroundImage: "url('/token_icons/7.png')"
-        // }
+        var avatarStyle = {
+             height: "100px",
+             width: "100px",
+             margin: "auto",
+             borderRadius: "50%",
+             backgroundSize: "cover",
+             backgroundImage: "url('/token_icons/"+this.state.avatar+".png')"
+         }
+         
+         var avatarBoxStyle= {
+             
+             width: "100%",
+             height: "100px",
+             margin: "10px auto 10px"
+         }
+         
+         var arrows = {
+            height: "100%",
+            margins: "auto",
+            padding: "0px",
+            lineHeight: "90px"
+         }
 
         return(
             <div style={{textAlign: "center",}} >
-                <h2> Dungeons and Dragons Combat Map </h2>
+                <h2> Dungeons and Dragongs Combat Map</h2>
 
                 <div style={loginBoxStyle}>
+                
+                    <div style={avatarBoxStyle} className="row">
+                        <div style={arrows} className="col-xs-2" >
+                        
+                            <button type="button" className="btn btn-default btn-sm" onClick={this.decrementAvatar}>
+                              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
+                            </button>
+                        </div>
+                        <div className="col-xs-8">
+                            <div style={avatarStyle}></div>
+                        </div>
+                        <div style={arrows} className="col-xs-2">
+                            <button type="button" className="btn btn-default btn-sm" onClick={this.incrementAvatar}>
+                              <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
+                            </button>
+                        </div>
+                    </div>
  
                     <div className="form-box">
                         <form action="" method="">
