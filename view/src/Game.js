@@ -1,6 +1,7 @@
 import { publishMessage } from './Networking.js';
 
 const db = false;
+
 let gameState = {
     v: 0,
     mapScale: {
@@ -281,9 +282,13 @@ export function addToken(token) {
         id: gameState.nextId,
     };
 
+    var returnId = gameState.nextId;
+
     gameState.nextId++;
 
     emitChange(true);
+
+    return returnId;
 }
 
 export function removeToken(id) {
