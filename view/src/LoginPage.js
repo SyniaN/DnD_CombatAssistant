@@ -84,7 +84,7 @@ export default class LoginPage extends React.Component{
             marginTop: "10px",
             marginBottom: "10px",
             padding:"10px 20px"
-        }
+        };
 
         var avatarStyle = {
              height: "100px",
@@ -93,24 +93,37 @@ export default class LoginPage extends React.Component{
              borderRadius: "50%",
              backgroundSize: "cover",
              backgroundImage: "url('/token_icons/"+this.state.avatar+".png')"
-         }
+         };
          
          var avatarBoxStyle= {
              
              width: "100%",
              height: "100px",
              margin: "10px auto 10px"
-         }
+         };
          
-         var arrows = {
+         var arrows = {  
             height: "100%",
             margins: "auto",
             padding: "0px",
             lineHeight: "90px"
+         };
+         
+         var overallStyle ={
+            
+         };
+         
+         var imgStyle = {
+             height:"100%",
+             margin: "auto "
          }
 
         return(
-            <div style={{textAlign: "center",}} >
+            <div style={overallStyle} >
+                <div>
+                    <img style={imgStyle} src="/BG/loginBG.jpg" alt=""/>
+                </div>
+                
                 <h2> Dungeons and Dragongs Combat Map </h2>
 
                 <div style={loginBoxStyle}>
