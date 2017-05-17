@@ -72,9 +72,9 @@ export default class LoginPage extends React.Component{
 
         var loginBoxStyle = {
             position: "relative",
-            width: "300px",
+            width: "320px",
             margin: "20px auto",
-            padding: "20px 40px 40px",
+            padding: "10px 40px 40px",
             textAlign: "center",
             background: "#fff",
             border: "1px solid #ccc"
@@ -102,31 +102,28 @@ export default class LoginPage extends React.Component{
              margin: "10px auto 10px"
          };
          
-         var arrows = {  
+         var arrows = { 
             height: "100%",
             margins: "auto",
             padding: "0px",
-            lineHeight: "90px"
+            lineHeight: "95px"
          };
          
          var overallStyle ={
-            
+            height:"100vh",
+            width: "100%",
+            backgroundImage: "url('/BG/loginBG2.jpg')",
+            backgroundSize: "cover",
+            paddingTop:"100px"
          };
-         
-         var imgStyle = {
-             height:"100%",
-             margin: "auto "
-         }
-
+        
         return(
             <div style={overallStyle} >
-                <div>
-                    <img style={imgStyle} src="/BG/loginBG.jpg" alt=""/>
-                </div>
                 
-                <h2> Dungeons and Dragongs Combat Map </h2>
 
                 <div style={loginBoxStyle}>
+                
+                    <h2>Combat Assistant</h2>
                 
                     <div style={avatarBoxStyle}    className="row">
                         <div style={arrows} className="col-xs-2" >
