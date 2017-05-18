@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { addToken } from './Game';
-import { setLocalcharId } from './Game_Local';
+import { setLocalcharId, getLocalState } from './Game_Local';
 
 export default class LoginPage extends React.Component{
     constructor(props){
@@ -40,10 +40,10 @@ export default class LoginPage extends React.Component{
 
     joinGame(){
         
-
-        var newId = addToken({
+        var newToken = {
             name: this.state.name,
             tokenType: "player",
+            uuid: getLocalState().uuid,
             color: 'yellow',
             position:[5+Math.floor(Math.random()*5), 5+Math.floor(Math.random()*5)],
             "icon": this.state.avatar + ".png",
@@ -51,7 +51,9 @@ export default class LoginPage extends React.Component{
 			"maxHp": "10",
 			"ac": "10",
 			"notes": "New Player",
-        });
+        };
+
+        var newId = addToken(newToken);
 
         setLocalcharId(newId);
         

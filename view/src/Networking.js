@@ -1,5 +1,6 @@
 import PubNub from 'pubnub';
-import { setGameState, getGameState } from './Game';
+import { setGameState, getGameState, removeToken } from './Game';
+import { setLocalUuid } from './Game_Local';
 
 const db = false;
 
@@ -10,27 +11,49 @@ const pubnub = new PubNub({
     uuid: PubNub.generateUUID()
 });
 
-if (db) console.log( "UUID: " + pubnub.getUUID());
+pubnub.subscribe({
+    channels: ['ReactChat'],
+    withPresence: true
+});
 
 pubnub.addListener({
     message: function (message) {
-        if (db) console.log('RECEIVING');
-        if (db) console.log(message);
+        
+        // if the incoming message does not belong to this client
+        // then set the state to the state in the incoming message
         if (message.publisher !== pubnub.getUUID()){
-            var myState =getGameState();
-            if (message.message === "requestNewState"){
-                publishMessage(myState);
-            } else if (message.message.v > myState.v ) {
-                setGameState(message.message);   
+                setGameState(message.message);
+        }
+    },
+    presence: function(p){
+        console.log('presence event came in: ', p);
+        var action = p.action;
+        var uuid = p.uuid;
+        var myState = getGameState();
+        console.log("action: " + action);
+        console.log("uuid: " + uuid);
+        
+        // if a new client joins the chat, then send the current state
+        // to everyone on the channel
+        if (action === "join"){
+            
+            publishMessage(myState);
+        }
+        
+        if (action === "leave"){
+            for (var tokenId in myState.tokens){
+                var token = myState.tokens[tokenId];
+                console.log('token to check for deletion', token);
+                if (token.uuid === uuid){
+                    console.log('token to delete', token);
+                    removeToken(tokenId);
+                }
             }
         }
     }
 });
 
-if (db) console.log("Subscribing..");
-pubnub.subscribe({
-    channels: ['ReactChat']
-});
+
 
 export function publishMessage(outMessage) {
     if (db) console.log('PUBLISHING');
@@ -41,4 +64,11 @@ export function publishMessage(outMessage) {
     });
 }
 
-publishMessage("requestNewState");
+setLocalUuid (pubnub.getUUID());
+
+window.addEventListener("beforeunload", (ev) => 
+{  
+    pubnub.unsubscribe({
+        channels: ['ReactChat']
+    })
+});

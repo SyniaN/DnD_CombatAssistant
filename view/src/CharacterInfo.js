@@ -53,15 +53,15 @@ export default class CharacterInfo extends React.Component{
             marginRight: "5px",
             marginBottom: "5px",
             boxShadow: "0px 15px 10px rgba(20, 20, 20, 0.6)"
-        }
+        };
 
         const topHalfStyle = {
             height: "45%"
-        }
+        };
         const bottomHalfStyle = {
             height: "40%",
             paddingTop: "5px"
-        }
+        };
 
         const photoStyle = {
             height: "95%",
@@ -69,12 +69,12 @@ export default class CharacterInfo extends React.Component{
             backgroundImage: "url('/token_icons/"+this.props.char.icon+"')",
             backgroundSize: "cover",
             float: "left"
-        }
+        };
 
         const statsStyle = {
             float: "left",
             height: "100%"
-        }
+        };
 
         return(
             <div style={charInfoStyle} onBlur={this.handleBlur}>

@@ -1,6 +1,6 @@
 import { publishMessage } from './Networking.js';
 
-const db = false;
+const db = true;
 
 let gameState = {
     v: 0,
@@ -276,7 +276,7 @@ export function deselectCharacter() {
 }
 
 export function addToken(token) {
-
+    if (db) console.log("adding token: ", token);
     gameState.tokens[gameState.nextId] = {
         ...token,
         id: gameState.nextId,
