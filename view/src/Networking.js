@@ -1,5 +1,5 @@
 import PubNub from 'pubnub';
-import { setGameState } from './Game';
+import { setGameState, getGameState } from './Game';
 
 const db = false;
 
@@ -17,16 +17,20 @@ pubnub.addListener({
         if (db) console.log('RECEIVING');
         if (db) console.log(message);
         if (message.publisher !== pubnub.getUUID()){
-            setGameState(message.message);
+            var myState =getGameState();
+            if (message.message === "requestNewState"){
+                publishMessage(myState);
+            } else if (message.message.v !== myState.v ) {
+                setGameState(message.message);   
+            }
         }
     }
-})
+});
 
 if (db) console.log("Subscribing..");
 pubnub.subscribe({
     channels: ['ReactChat']
 });
-
 
 export function publishMessage(outMessage) {
     if (db) console.log('PUBLISHING');
@@ -36,3 +40,5 @@ export function publishMessage(outMessage) {
         message: outMessage
     });
 }
+
+publishMessage("requestNewState");
