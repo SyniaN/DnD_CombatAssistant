@@ -20,7 +20,7 @@ pubnub.addListener({
             var myState =getGameState();
             if (message.message === "requestNewState"){
                 publishMessage(myState);
-            } else if (message.message.v !== myState.v ) {
+            } else if (message.message.v > myState.v ) {
                 setGameState(message.message);   
             }
         }
