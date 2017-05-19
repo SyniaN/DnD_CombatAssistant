@@ -41,14 +41,14 @@ export default class LoginPage extends React.Component{
     joinGame(){
         
         var hue = Math.floor(Math.random()*360);
-        var saturation = Math.floor(Math.random()*10+30);
-        var lightness = "35%";
+        var saturation = Math.floor(Math.random()*10) + 40 + "%";
+        var lightness = Math.floor(Math.random()*10) + 40 + "%";
         
         var newToken = {
             name: this.state.name,
             tokenType: "player",
             uuid: getLocalState().uuid,
-            color: "hsl(" + hue +"," + saturation +"%," + lightness+")",
+            color: "hsl(" + hue +"," + saturation +"," + lightness+")",
             position:[5+Math.floor(Math.random()*5), 5+Math.floor(Math.random()*5)],
             "icon": this.state.avatar + ".png",
             "hp": "10",

@@ -47,12 +47,13 @@ export default class CharacterInfo extends React.Component{
         const charInfoStyle = {
             height: "150px",
             width: "200px",
-            backgroundColor: 'white',
+            backgroundColor: this.state.color,
             padding: '5px',
             float: "right",
             marginRight: "5px",
             marginBottom: "5px",
-            boxShadow: "0px 15px 10px rgba(20, 20, 20, 0.6)"
+            boxShadow: "0px 15px 10px rgba(20, 20, 20, 0.6)",
+            border: "solid rgb(200,200,200) 3px"
         };
 
         const topHalfStyle = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { selectCharacter, removeToken, movePiece, deselectCharacter, getGameState, deselectFogger} from './Game';
+import { getLocalState } from './Game_Local'; 
 
 export default class CharacterPiece extends React.Component {
 
@@ -60,7 +61,7 @@ export default class CharacterPiece extends React.Component {
             backgroundColor: this.props.color,
             borderStyle: 'solid',
             borderWidth: "2px",
-            borderColor: getGameState().selectedCharacter===this.props.id?'red':'black',
+            borderColor: getLocalState().selectedCharacter===this.props.id?'red':'black',
             padding: '0',
             backgroundImage:"url('/token_icons/"+getGameState().tokens[this.props.id].icon+"')",
             backgroundSize:"cover",

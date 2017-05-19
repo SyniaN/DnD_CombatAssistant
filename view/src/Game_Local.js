@@ -1,8 +1,16 @@
 let localState = {
     charId : "",
-    uuid : ""
+    uuid : "",
+    selectedCharacter: null
 };
 
+export function deselectLocalCharacter(){
+    localState.selectedCharacter = null;    
+}
+
+export function selectLocalCharacter(id){
+    localState.selectedCharacter = id;
+}
 
 export function setLocalcharId(newId){
     localState.charId = newId;

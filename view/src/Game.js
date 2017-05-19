@@ -1,4 +1,5 @@
 import { publishMessage } from './Networking.js';
+import { getLocalState, selectLocalCharacter, deselectLocalCharacter} from './Game_Local';
 
 const db = true;
 
@@ -9,7 +10,6 @@ let gameState = {
         height: 1080,
         tileSize: 60
     },
-    selectedCharacter: null,
     fogOfWar: {
         foggerSelected: false,
         foggerMode: "Add",
@@ -239,8 +239,8 @@ function emitChange(internalChange) {
 }
 
 export function movePiece(toX, toY) {
-    if (gameState.selectedCharacter !== null) {
-        gameState.tokens[gameState.selectedCharacter].position = [toX, toY];
+    if (getLocalState().selectedCharacter !== null) {
+        gameState.tokens[getLocalState().selectedCharacter].position = [toX, toY];
         emitChange(true);
     }
 }
@@ -265,12 +265,11 @@ export function changeMapOptions(newOptions) {
 }
 
 export function selectCharacter(id) {
-    gameState.selectedCharacter = id;
-    if (db) console.log(gameState.selectedCharacter);
+    selectLocalCharacter(id);
 }
 
 export function deselectCharacter() {
-    gameState.selectedCharacter = null;
+    deselectLocalCharacter();
     emitChange(true);
     if (db) console.log("deselected Character");
 }
