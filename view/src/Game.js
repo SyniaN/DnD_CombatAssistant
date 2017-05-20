@@ -24,76 +24,8 @@ let gameState = {
     playMap : "https://s-media-cache-ak0.pinimg.com/originals/40/99/94/40999419d04ec98f34f6039c5c28b261--dungeon-tiles-wilderness.jpg",
     nextId : null,
     tokens: {
-        "0": {
+        0 : {
 			"id": 0,
-			"tokenType": "player",
-			"name": "Asher",
-			"position": [
-				13,
-				11
-			],
-			"color": "#5b4c42",
-			"icon": "4.png",
-			"hp": "25",
-			"maxHp": "30",
-			"ac": "19",
-			"notes": "Remaining lay-on-hands: 7",
-			"width": "60px",
-			"height": "60px"
-		},
-		"1": {
-			"id": 1,
-			"tokenType": "player",
-			"name": "Clive",
-			"position": [
-				8,
-				11
-			],
-			"color": "#70819e",
-			"icon": "2.png",
-			"hp": "10",
-			"maxHp": "12",
-			"ac": "14",
-			"notes": "Hiding under a rock",
-			"width": "60px",
-			"height": "60px"
-		},
-		"2": {
-			"id": 2,
-			"tokenType": "player",
-			"name": "Legolas",
-			"position": [
-				8,
-				6
-			],
-			"color": "#649180",
-			"icon": "10.jpg",
-			"hp": "10",
-			"maxHp": "12",
-			"ac": "14",
-			"notes": "Eating cake",
-			"width": "60px",
-			"height": "60px"
-		},
-		"3": {
-			"id": 3,
-			"tokenType": "player",
-			"name": "Alimar",
-			"position": [
-				11,
-				8
-			],
-			"color": "#8a7f5c",
-			"icon": "1.png",
-			"hp": "16",
-			"maxHp": "24",
-			"ac": "10",
-			"notes": "Magical Shield: 20",
-			"width": "60px",
-			"height": "60px"
-		},
-		"4": {
-			"id": 4,
 			"tokenType": "npc",
 			"name": "Half-Dragon",
 			"position": [
@@ -109,8 +41,8 @@ let gameState = {
 			"width": "120px",
 			"height": "120px"
 		},
-		"5": {
-			"id": 5,
+		1 : {
+			"id": 1,
 			"tokenType": "npc",
 			"name": "Ancient Dragon",
 			"position": [
@@ -126,49 +58,6 @@ let gameState = {
 			"width": "360px",
 			"height": "360px"
 		}
-        /*
-        6: {
-            id: 6,
-            tokenType: "player",
-            name: "Kyle",
-            position: [13, 5],
-            color: "#879164",
-            icon: "3.png",
-            hp:"8",
-            maxHp:"12",
-            ac:"14",
-            notes:"MIA",
-            width:"60px",
-            height:"60px"
-        },
-        7: {
-            id: 7,
-            tokenType: "player",
-            name: "Ovarky",
-            position: [17, 12],
-            color: "#7c5f8c",
-            icon: "5.png",
-            hp:"15",
-            maxHp:"25",
-            ac:"18",
-            notes:"Channel Divinity: 1",
-            width:"60px",
-            height:"60px"
-        },
-        8: {
-            id: 8,
-            tokenType: "player",
-            name: "Tarinn",
-            position: [10, 8],
-            color: "#8c5f5f",
-            icon: "9.png",
-            hp:"14",
-            maxHp:"20",
-            ac:"12",
-            notes:"Slowed - Carrying way too much money",
-            width:"60px",
-            height:"60px"
-        }*/
     },
     notes: null
 };
