@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { addToken } from '../System/Game';
 import { setLocalcharId, getLocalState } from '../System/Game_Local';
+import AvatarSelection from './AvatarSelection_LoginPage';
 
-export default class LoginPage extends React.Component{
-    constructor(props){
+export default class LoginPage extends React.Component {
+    constructor(props) {
         super();
         this.state = {
             name: "",
@@ -15,64 +16,65 @@ export default class LoginPage extends React.Component{
         this.incrementAvatar = this.incrementAvatar.bind(this);
         this.decrementAvatar = this.decrementAvatar.bind(this);
     }
-    
-    incrementAvatar(){
-        if(this.state.avatar < 8){
+
+    incrementAvatar() {
+        console.log('incrementing Avatar');
+        if (this.state.avatar < 8) {
             var newAv = this.state.avatar + 1;
-            this.setState({avatar: newAv});
+            this.setState({ avatar: newAv });
         } else {
-            this.setState({avatar: 1});
+            this.setState({ avatar: 1 });
         }
     }
-    
-    decrementAvatar(){
-        if(this.state.avatar > 2){
+
+    decrementAvatar() {
+        if (this.state.avatar > 2) {
             var newAv = this.state.avatar - 1;
-            this.setState({avatar: newAv});
+            this.setState({ avatar: newAv });
         } else {
-            this.setState({avatar: 9});
+            this.setState({ avatar: 9 });
         }
     }
 
-    handleChange(event){
-        this.setState({name: event.target.value});
+    handleChange(event) {
+        this.setState({ name: event.target.value });
     }
 
-    joinGame(){
-        
-        var hue = Math.floor(Math.random()*360);
-        var saturation = Math.floor(Math.random()*10) + 40 + "%";
-        var lightness = Math.floor(Math.random()*10) + 40 + "%";
-        
+    joinGame() {
+
+        var hue = Math.floor(Math.random() * 360);
+        var saturation = Math.floor(Math.random() * 10) + 40 + "%";
+        var lightness = Math.floor(Math.random() * 10) + 40 + "%";
+
         var newToken = {
             name: this.state.name,
             tokenType: "player",
             uuid: getLocalState().uuid,
-            color: "hsl(" + hue +"," + saturation +"," + lightness+")",
-            position:[5+Math.floor(Math.random()*5), 5+Math.floor(Math.random()*5)],
+            color: "hsl(" + hue + "," + saturation + "," + lightness + ")",
+            position: [5 + Math.floor(Math.random() * 5), 5 + Math.floor(Math.random() * 5)],
             "icon": this.state.avatar + ".png",
             "hp": "10",
-			"maxHp": "10",
-			"ac": "10",
-			"notes": "New Player",
+            "maxHp": "10",
+            "ac": "10",
+            "notes": "New Player",
         };
 
         var newId = addToken(newToken);
 
         setLocalcharId(newId);
-        
+
     }
 
-    render(){
+    render() {
 
-        var inputStyle ={
+        var inputStyle = {
             width: "100%",
             padding: "10px",
             textAlign: "center",
-            height:"40px",
+            height: "40px",
             border: "1px solid #ccc",
             background: "#fafafa",
-            transition:"0.2s ease-in-out",
+            transition: "0.2s ease-in-out",
             borderRadius: "5px"
         }
 
@@ -89,65 +91,27 @@ export default class LoginPage extends React.Component{
         var loginButtonStyle = {
             marginTop: "10px",
             marginBottom: "10px",
-            padding:"10px 20px"
+            padding: "10px 20px"
         };
 
-        var avatarStyle = {
-             height: "100px",
-             width: "100px",
-             margin: "auto",
-             borderRadius: "50%",
-             backgroundSize: "cover",
-             backgroundImage: "url('/token_icons/"+this.state.avatar+".png')"
-         };
-         
-         var avatarBoxStyle= {
-             
-             width: "100%",
-             height: "100px",
-             margin: "10px auto 10px"
-         };
-         
-         var arrows = { 
-            height: "100%",
-            margins: "auto",
-            padding: "0px",
-            lineHeight: "95px"
-         };
-         
-         var overallStyle ={
-            height:"100vh",
+        var overallStyle = {
+            height: "100vh",
             width: "100%",
             backgroundImage: "url('/BG/loginBG2.jpg')",
             backgroundSize: "cover",
-            paddingTop:"100px"
-         };
-        
-        return(
+            paddingTop: "100px"
+        };
+
+        return (
             <div style={overallStyle} >
-                
+
 
                 <div style={loginBoxStyle}>
-                
+
                     <h2>Combat Assistant</h2>
-                
-                    <div style={avatarBoxStyle}    className="row">
-                        <div style={arrows} className="col-xs-2" >
-                        
-                            <button type="button" className="btn btn-default btn-sm" onClick={this.decrementAvatar}>
-                              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
-                            </button>
-                        </div>
-                        <div className="col-xs-8">
-                            <div style={avatarStyle}></div>
-                        </div>
-                        <div style={arrows} className="col-xs-2">
-                            <button type="button" className="btn btn-default btn-sm" onClick={this.incrementAvatar}>
-                              <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
-                            </button>
-                        </div>
-                    </div>
- 
+
+                    <AvatarSelection incrementAvatar={this.incrementAvatar} decrementAvatar={this.decrementAvatar} avatar={this.state.avatar}/>
+
                     <div className="form-box">
                         <form action="" method="">
                             <label> Character Name: </label>

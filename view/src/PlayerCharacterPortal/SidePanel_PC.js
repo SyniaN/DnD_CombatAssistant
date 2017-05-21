@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { deselectCharacter, deselectFogger, removeToken } from '../System/Game'
 import { getLocalState } from '../System/Game_Local';
 
-import { Link } from 'react-router-dom';
+import FreeTextWidget from './Widgets/FreeTextWidget';
+import TokenInfo from './Widgets/TokenInfoWidget';
 
 export default class SidePanel extends React.Component {
     
@@ -46,15 +49,11 @@ export default class SidePanel extends React.Component {
             <div style={panelStyle} onClick={this.handleClick}>
                     <div>
 
-                        <Link to="/Player"><button style={buttonStyle} className="btn btn-default">Player View</button></Link>
+                        <TokenInfo tokenId={getLocalState().charId}></TokenInfo>
+                        <FreeTextWidget></FreeTextWidget> 
+                       
                         <Link to="/"><button style={buttonStyle} className="btn btn-default" onClick={this.removeLocalChar}>Log out</button></Link>
-                        
-                        <hr/>
-                        <FreeTextWidget></FreeTextWidget>
-                        <FullStateInfo></FullStateInfo>
-                        <MapOptionWidget mapOptions={this.props.mapOptions} mapUrl={this.props.mapUrl}></MapOptionWidget>
-                        <FogOfWarWidget></FogOfWarWidget>  
-                        <AddTokenWidget></AddTokenWidget>                                              
+                                                                
                     </div>
             </div>
                 
