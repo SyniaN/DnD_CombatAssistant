@@ -1,7 +1,7 @@
 import React from 'react';
-import PlayerMap from './PlayerMap';
-import TileMap from './TileMap';
-import { getGameState } from './Game';
+import PlayerMap from './PlayerMap_PC';
+import TileMap from './TileMap_PC';
+import { getGameState } from '../System/Game'
 
 class Map extends React.Component {
  

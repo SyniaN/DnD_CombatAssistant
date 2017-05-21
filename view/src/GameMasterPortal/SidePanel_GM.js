@@ -1,6 +1,6 @@
 import React from 'react';
-import { deselectCharacter, deselectFogger, removeToken } from './Game';
-import { getLocalState } from './Game_Local';
+import { deselectCharacter, deselectFogger, removeToken } from '../System/Game';
+import { getLocalState } from '../System/Game_Local';
 import AddTokenWidget from './Widgets/AddTokenWidget';
 import MapOptionWidget from './Widgets/MapOptionWidget';
 import FreeTextWidget from './Widgets/FreeTextWidget';
@@ -8,7 +8,7 @@ import FogOfWarWidget from './Widgets/FogOfWarWidget';
 import FullStateInfo from './Widgets/FullStateInfo';
 import { Link } from 'react-router-dom';
 
-export default class GMSidePanel extends React.Component {
+export default class SidePanel extends React.Component {
     
     constructor(props){
         super();

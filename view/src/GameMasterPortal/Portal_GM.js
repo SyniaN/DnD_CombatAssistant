@@ -1,11 +1,11 @@
 import React from 'react';
-import Map from './Map';
-import GMSidePanel from './GMSidePanel';
-import BottomPanel from './BottomPanel';
-import {getGameState} from './Game';
+import Map from './Map_GM';
+import SidePanel from './SidePanel_GM';
+import CharInfoPanel from './CharInfoPanel_GM';
+import {getGameState} from '../System/Game';
 
 
-class GMPortal extends React.Component{
+export default class Portal_GM extends React.Component{
 
     render(){
 
@@ -18,13 +18,10 @@ class GMPortal extends React.Component{
 
         return(
             <div>
-                <GMSidePanel mapUrl={playMap} mapOptions={mapOptions} />
-                
+                <SidePanel mapUrl={playMap} mapOptions={mapOptions} />                
                 <Map style={mapMargin}  playerPieces={tokens} mapUrl={playMap} mapOptions={mapOptions} />
-                <BottomPanel tokens={tokens} />
+                <CharInfoPanel tokens={tokens} />
             </div>
         )
     }
 }
-
-export default GMPortal;

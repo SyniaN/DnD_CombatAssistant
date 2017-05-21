@@ -1,5 +1,5 @@
 import React from 'react';
-import {editToken} from './Game';
+import {editToken} from '../System/Game';
 
 export default class CharacterInfo extends React.Component{
     constructor(props){

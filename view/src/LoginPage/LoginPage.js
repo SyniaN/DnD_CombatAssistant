@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { addToken } from './Game';
-import { setLocalcharId, getLocalState } from './Game_Local';
+import { addToken } from '../System/Game';
+import { setLocalcharId, getLocalState } from '../System/Game_Local';
 
 export default class LoginPage extends React.Component{
     constructor(props){

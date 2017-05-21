@@ -1,13 +1,15 @@
 import React from 'react';
-import Map from './Map';
-import BottomPanel from './BottomPanel';
-import { getGameState, removeToken } from './Game';
-import { getLocalState } from './Game_Local';
 import { Link } from 'react-router-dom';
+
+import Map from './Map_PC';
+import CharInfoPanel from './CharInfoPanel_PC';
+import { getGameState, removeToken } from '../System/Game'
+import { getLocalState } from '../System/Game_Local';
+
 
 //import CombatCalculator from './CombatCalculator';
 
-class PCPortal extends React.Component {
+export default class Portal_PC extends React.Component {
 
     removeLocalChar(){
         removeToken(getLocalState().charId);
@@ -39,7 +41,7 @@ class PCPortal extends React.Component {
                     </div>
                    
                     <Map playerPieces={tokens} mapUrl={playMap} mapOptions={mapOptions} />
-                    <BottomPanel tokens={tokens} />
+                    <CharInfoPanel tokens={tokens} />
 
 
             </div>
@@ -49,4 +51,3 @@ class PCPortal extends React.Component {
 
 
 
-export default PCPortal;

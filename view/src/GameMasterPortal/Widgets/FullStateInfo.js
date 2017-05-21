@@ -1,5 +1,5 @@
 import React from 'react';
-import {getGameState, setMyGameState} from '../Game';
+import {getGameState, setMyGameState} from '../../System/Game';
 
 export default class FullStateInfo extends React.Component{
 

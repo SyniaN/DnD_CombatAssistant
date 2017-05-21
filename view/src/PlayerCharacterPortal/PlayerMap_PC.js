@@ -1,6 +1,6 @@
 import React from 'react';
-import {deselectCharacter, getGameState, movePiece} from './Game';
-import CharacterPiece from './CharacterPiece';
+import {deselectCharacter, getGameState, movePiece} from '../System/Game'
+import CharacterPiece from './CharacterPiece_PC';
 
 export default class PlayerMap extends React.Component {
 

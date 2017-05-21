@@ -1,5 +1,5 @@
 import React from 'react';
-import { addToken} from '../Game';
+import { addToken} from '../../System/Game';
 
 export default class AddTokenWidget extends React.Component {
     constructor(){

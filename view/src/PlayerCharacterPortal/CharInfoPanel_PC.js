@@ -1,7 +1,7 @@
 import React from 'react';
-import CharacterInfo from './CharacterInfo';
+import CharacterInfo from './CharacterInfo_PC';
 
-export default class BottomPanel extends React.Component{
+export default class CharInfoPanel extends React.Component{
     render(){
 
         var infoBoxes = [];

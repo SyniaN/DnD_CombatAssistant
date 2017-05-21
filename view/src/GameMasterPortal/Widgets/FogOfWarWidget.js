@@ -1,5 +1,5 @@
 import React from 'react';
-import {setFoggerMode, selectFogger, getGameState, deselectCharacter} from '../Game';
+import {setFoggerMode, selectFogger, getGameState, deselectCharacter} from '../../System/Game';
 
 export default class ForOfWarWidget extends React.Component {
     constructor(){

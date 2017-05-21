@@ -1,5 +1,5 @@
 import React from 'react';
-import {changeMap, changeMapOptions, changeMapScale, getGameState} from "../Game";
+import {changeMap, changeMapOptions, changeMapScale, getGameState} from '../../System/Game';
 
 
 

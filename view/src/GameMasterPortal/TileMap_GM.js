@@ -1,6 +1,6 @@
 import React from 'react';
-import Tile from './Tile';
-import {getGameState} from './Game';
+import Tile from './Tile_GM';
+import {getGameState} from '../System/Game'
 
 export default class TileMap extends React.Component{
 

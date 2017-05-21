@@ -1,6 +1,6 @@
 import React from 'react';
-import { selectCharacter, removeToken, movePiece, deselectCharacter, getGameState, deselectFogger} from './Game';
-import { getLocalState } from './Game_Local'; 
+import { selectCharacter, removeToken, movePiece, deselectCharacter, getGameState, deselectFogger} from '../System/Game'
+import { getLocalState } from '../System/Game_Local'; 
 
 export default class CharacterPiece extends React.Component {
 
@@ -93,14 +93,19 @@ export default class CharacterPiece extends React.Component {
         var clickAble = {
             cursor: 'pointer'
         };
-        
+
+        //no remove button if the token is a player
+        var removeButton = getGameState().tokens[this.props.id].tokenType === "player" ? <span/> : <span style={clickAble}  onClick={()=>this.handlePieceRemove(this.props.id)}> <span className='glyphicon glyphicon-remove pull-right'/> </span>;
+
         return (
             <div ref={(div) => { this.container = div }}  tabIndex={this.props.id} onKeyDown={this.handleKeyPress} style={characterStyle} >
                 
                 <div style={selectionFieldStyle} onClick={(e)=>this.handlePieceSelect(e, this.props.id)}>
                     <span style={lableStyle}> {this.props.label}</span>
                 </div>
-                <span style={clickAble}  onClick={()=>this.handlePieceRemove(this.props.id)}> <span className="glyphicon glyphicon-remove pull-right"/> </span>
+
+                {removeButton}
+
             </div>
         );
     
