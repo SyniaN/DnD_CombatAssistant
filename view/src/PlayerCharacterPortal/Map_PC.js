@@ -11,10 +11,10 @@ class Map extends React.Component {
 
         const mapScale = getGameState().mapScale;
         const mapStyle = {
-            width: "2400px",
-            height: "1400px",
-            paddingLeft: "200px",
-            paddingTop: "50px",
+            width: "2220px",
+            height: "1250px",
+            paddingLeft: "300px",
+            paddingTop: "0px",
             backgroundColor: "grey",
             float: 'left',
             WebkitUserSelect: "none",

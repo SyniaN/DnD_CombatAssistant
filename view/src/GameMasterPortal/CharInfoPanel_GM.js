@@ -9,9 +9,7 @@ export default class CharInfoPanel extends React.Component{
         for (var tokenId in this.props.tokens){
             
             var token = this.props.tokens[tokenId];
-            if(token.tokenType === "player"){
-                infoBoxes.push(<CharacterInfo char={token} key={token.id}/>);
-            }
+            infoBoxes.push(<CharacterInfo char={token} key={token.id}/>);
         }
 
         return(
