@@ -57,7 +57,8 @@ let gameState = {
 			"notes": "",
 			"width": "360px",
 			"height": "360px"
-		}
+		},
+
     },
     notes: null
 };

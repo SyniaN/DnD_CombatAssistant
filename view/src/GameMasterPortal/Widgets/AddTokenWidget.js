@@ -26,7 +26,7 @@ export default class AddTokenWidget extends React.Component {
             case "width":
                 this.setState({width: event.target.value});
                 break;
-            case "position":
+            case "pos":
                 this.setState({pos: event.target.value});
                 break;
             case "color":
@@ -91,7 +91,7 @@ export default class AddTokenWidget extends React.Component {
                       
                     <div className="form-group">
                         <h3>Position</h3>
-                        <input type="text" id="position" className="form-control" placeholder="eg. B3" value={this.state.pos} onChange={this.handleFieldChange}/>
+                        <input type="text" id="pos" className="form-control" placeholder="eg. B3" value={this.state.pos} onChange={this.handleFieldChange}/>
                     </div>
                       
                     <div className="form-group">
