@@ -2,7 +2,7 @@ import React from 'react';
 import { selectCharacter, removeToken, movePiece, deselectCharacter, getGameState, deselectFogger} from '../System/Game'
 import { getLocalState } from '../System/Game_Local'; 
 
-export default class CharacterPiece extends React.Component {
+export default class Token extends React.Component {
 
     constructor(){
         super();

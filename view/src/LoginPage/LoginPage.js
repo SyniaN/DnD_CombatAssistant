@@ -9,31 +9,45 @@ export default class LoginPage extends React.Component {
         super();
         this.state = {
             name: "",
-            avatar: 1
-        }
+            icon: "1.png"
+        };
+        
         this.joinGame = this.joinGame.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.incrementAvatar = this.incrementAvatar.bind(this);
         this.decrementAvatar = this.decrementAvatar.bind(this);
     }
 
-    incrementAvatar() {
-        console.log('incrementing Avatar');
-        if (this.state.avatar < 8) {
-            var newAv = this.state.avatar + 1;
-            this.setState({ avatar: newAv });
+	incrementAvatar() {
+		var iconArray = getLocalState().icons;
+		var index = iconArray.indexOf(this.state.icon);
+		var iconCount = iconArray.length;
+		
+        if (index < iconCount-1) {
+            index++;
         } else {
-            this.setState({ avatar: 1 });
+            index = 0;
         }
+        
+        var newIcon = iconArray[index];
+        
+        this.setState({ icon: newIcon });
     }
-
+    
     decrementAvatar() {
-        if (this.state.avatar > 2) {
-            var newAv = this.state.avatar - 1;
-            this.setState({ avatar: newAv });
+		var iconArray = getLocalState().icons;
+		var index = iconArray.indexOf(this.state.icon);
+		var iconCount = iconArray.length;
+		
+        if (index > 0) {
+            index--;
         } else {
-            this.setState({ avatar: 9 });
+            index = iconCount - 1;
         }
+        
+        var newIcon = iconArray[index];
+        
+        this.setState({ icon: newIcon });
     }
 
     handleChange(event) {
@@ -52,7 +66,7 @@ export default class LoginPage extends React.Component {
             uuid: getLocalState().uuid,
             color: "hsl(" + hue + "," + saturation + "," + lightness + ")",
             position: [5 + Math.floor(Math.random() * 5), 5 + Math.floor(Math.random() * 5)],
-            "icon": this.state.avatar + ".png",
+            "icon": this.state.icon,
             "hp": "10",
             "maxHp": "10",
             "ac": "10",
@@ -76,7 +90,7 @@ export default class LoginPage extends React.Component {
             background: "#fafafa",
             transition: "0.2s ease-in-out",
             borderRadius: "5px"
-        }
+        };
 
         var loginBoxStyle = {
             position: "relative",
@@ -86,7 +100,7 @@ export default class LoginPage extends React.Component {
             textAlign: "center",
             background: "#fff",
             border: "1px solid #ccc"
-        }
+        };
 
         var loginButtonStyle = {
             marginTop: "10px",
@@ -110,7 +124,7 @@ export default class LoginPage extends React.Component {
 
                     <h2>Combat Assistant</h2>
 
-                    <AvatarSelection incrementAvatar={this.incrementAvatar} decrementAvatar={this.decrementAvatar} avatar={this.state.avatar}/>
+                    <AvatarSelection incrementAvatar={this.incrementAvatar} decrementAvatar={this.decrementAvatar} icon={this.state.icon}/>
 
                     <div className="form-box">
                         <form action="" method="">
@@ -125,6 +139,6 @@ export default class LoginPage extends React.Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }

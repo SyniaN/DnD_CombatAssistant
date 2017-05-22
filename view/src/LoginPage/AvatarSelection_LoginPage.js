@@ -15,7 +15,7 @@ export default class AvatarSelection extends React.Component {
             margin: "auto",
             borderRadius: "50%",
             backgroundSize: "cover",
-            backgroundImage: "url('/token_icons/" + this.props.avatar + ".png')"
+            backgroundImage: "url('/token_icons/" + this.props.icon + "')"
         };
 
         var avatarBoxStyle = {

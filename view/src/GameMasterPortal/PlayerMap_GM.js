@@ -1,6 +1,6 @@
 import React from 'react';
 import {deselectCharacter, getGameState, movePiece} from '../System/Game'
-import CharacterPiece from './CharacterPiece_GM';
+import Token from './Token_GM';
 
 export default class PlayerMap extends React.Component {
 
@@ -70,7 +70,7 @@ export default class PlayerMap extends React.Component {
             
             tokens.push (
             <div key={token.id} style={playerTokenStyle}>
-                <CharacterPiece key={token.id} id={token.id} color={token.color} label={token.name} size="100%" posX={posX} posY={posY}/> 
+                <Token key={token.id} id={token.id} color={token.color} label={token.name} size="100%" posX={posX} posY={posY}/> 
             </div>);
             
             

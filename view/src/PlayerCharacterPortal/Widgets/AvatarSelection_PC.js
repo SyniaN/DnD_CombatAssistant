@@ -10,18 +10,18 @@ export default class AvatarSelection extends React.Component {
         };
 
         var avatarStyle = {
-            height: "100px",
-            width: "100px",
+            height: "120px",
+            width: "100%",
             margin: "auto",
             borderRadius: "50%",
             backgroundSize: "cover",
-            backgroundImage: "url('/token_icons/" + this.props.avatar + ".png')"
+            backgroundImage: "url('/token_icons/" + this.props.icon + "')"
         };
 
         var avatarBoxStyle = {
 
             width: "100%",
-            height: "100px",
+            height: "120px",
             margin: "10px auto 10px"
         };
         return (

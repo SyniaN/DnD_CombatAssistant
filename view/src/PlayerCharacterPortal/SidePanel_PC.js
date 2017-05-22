@@ -42,7 +42,7 @@ export default class SidePanel extends React.Component {
         var buttonStyle = {
             marginTop: "10px",
             marginLeft: "10px"
-        }
+        };
         
         
         return(
@@ -51,10 +51,8 @@ export default class SidePanel extends React.Component {
                         
                         <Link to="/"><button style={buttonStyle} className="btn btn-default" onClick={this.removeLocalChar}>Log out</button></Link>
                         <hr/>
-
                         <TokenInfo tokenId={getLocalState().charId}></TokenInfo>
-                        <FreeTextWidget></FreeTextWidget> 
-                       
+                        <FreeTextWidget></FreeTextWidget>
                                                                 
                     </div>
             </div>
