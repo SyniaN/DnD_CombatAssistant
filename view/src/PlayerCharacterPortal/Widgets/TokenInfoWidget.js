@@ -11,43 +11,55 @@ export default class TokenInfo extends React.Component{
 		
 		
 		this.state = {
-			"name": token.name,
+			"gameplayData" : {
+				"name": token.name,
+				"hp": token.hp,
+				"maxHp": token.maxHp,
+				"ac": token.ac
+			},
+			
 			"color": token.color,
 			"icon": token.icon,
-			"hp": token.hp,
-			"maxHp": token.maxHp,
-			"ac": token.ac
+			
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	handleInputChange(e){
+	handleInputChange(event) {
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const name = target.name;
 		
+		this.setState({
+			[name]: value
+		});
 	}
     
     render(){
     	
     	var configBoxes = [];
     
-	    for (var propName in this.state){
-			if (propName === "color"){
-				continue;
-			}
-	    	var prop = this.state[propName];
+	    for (var propName in this.state.gameplayData){
+	    	var prop = this.state.gameplayData[propName];
 	    	configBoxes.push(
-	    		<div key={propName}>
-		    		<label>{propName}</label>
-		    		<input id={propName} type="text" value={prop} onChange={handleInputChange}/>
+	    		<div className="form-group col-sm-12" key={propName}>
+	    		
+		    		<label className="col-sm-4">{propName}</label>
+		    		<div className="col-sm-8">
+		    			<input name={propName} type="text" value={prop} onChange={this.handleInputChange}/>
+	    			</div>
 	    		</div>
 	    	);
 	    }
 	    
         return(
         	<div>
-	            <h2>{this.state.name}</h2>
+	            <h2>{this.state.gameplayData.name}</h2>
+	            <form className="form-horizontal">
+	            	{configBoxes}
+	            </form>
 	            
-	            {configBoxes}
             </div>
         );
     }
