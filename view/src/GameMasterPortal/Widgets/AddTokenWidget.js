@@ -16,6 +16,8 @@ export default class AddTokenWidget extends React.Component {
     }
 
     handleFieldChange(event){
+
+        this.setState({ event.target.id : event.target.value});
         switch (event.target.id){
             case "name":
                 this.setState({name: event.target.value});

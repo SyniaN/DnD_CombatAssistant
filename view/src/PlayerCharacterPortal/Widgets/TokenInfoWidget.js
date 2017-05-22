@@ -18,6 +18,12 @@ export default class TokenInfo extends React.Component{
 			"maxHp": token.maxHp,
 			"ac": token.ac
 		};
+
+		this.handleInputChange = this.handleInputChange.bind(this);
+	}
+
+	handleInputChange(e){
+		
 	}
     
     render(){
@@ -32,7 +38,7 @@ export default class TokenInfo extends React.Component{
 	    	configBoxes.push(
 	    		<div key={propName}>
 		    		<label>{propName}</label>
-		    		<input id={propName} type="text" value={prop}/>
+		    		<input id={propName} type="text" value={prop} onChange={handleInputChange}/>
 	    		</div>
 	    	);
 	    }
