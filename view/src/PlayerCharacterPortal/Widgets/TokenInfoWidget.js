@@ -31,7 +31,10 @@ export default class TokenInfo extends React.Component{
 		const name = target.name;
 		
 		this.setState({
-			[name]: value
+			gameplayData:{				
+				...this.state.gameplayData,
+				[name]: value,
+			}
 		});
 	}
     
@@ -40,13 +43,12 @@ export default class TokenInfo extends React.Component{
     	var configBoxes = [];
     
 	    for (var propName in this.state.gameplayData){
-	    	var prop = this.state.gameplayData[propName];
 	    	configBoxes.push(
 	    		<div className="form-group col-sm-12" key={propName}>
 	    		
 		    		<label className="col-sm-3">{propName}</label>
 		    		<div className="col-sm-9">
-		    			<input name={propName} type="text" value={prop} onChange={this.handleInputChange}/>
+		    			<input name={propName} type="text" value={this.state.gameplayData[propName]} onChange={this.handleInputChange}/>
 	    			</div>
 	    		</div>
 	    	);
