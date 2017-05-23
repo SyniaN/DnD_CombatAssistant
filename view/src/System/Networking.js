@@ -12,7 +12,7 @@ const pubnub = new PubNub({
 });
 
 pubnub.subscribe({
-    channels: ['ReactChat'],
+    channels: ['ReactChat2'],
     withPresence: true
 });
 

@@ -7,8 +7,7 @@ export default class TokenInfo extends React.Component{
 		
 		var tokens = getGameState().tokens;
 		var token = tokens[props.tokenId];
-		console.log('in TokenInfo, token: ' , token);
-		
+		console.log('in TokenInfo, token: ' , token);		
 		
 		this.state = {
 			"gameplayData" : {
@@ -52,10 +51,30 @@ export default class TokenInfo extends React.Component{
 	    		</div>
 	    	);
 	    }
+
+		var imageStyle = {
+			backgroundImage: "url('/token_icons/" + this.state.icon + "')",
+			backgroundSize : "cover",
+			height: "100%",
+			width:"100%",
+			margin: "auto"
+		}
+
+		var imageHolderStyle = {
+			height: "200px",
+			width: "200px",
+			margin: "15px auto",
+			backgroundColor: this.state.color,
+			padding: "10px",
+			border: "solid rgb(200,200,200) 6px"
+		}
 	    
         return(
         	<div>
 	            <h2>{this.state.gameplayData.name}</h2>
+				<div style={imageHolderStyle}>
+					<div style={imageStyle}></div>
+				</div>
 	            <form className="form-horizontal">
 	            	{configBoxes}
 	            </form>
