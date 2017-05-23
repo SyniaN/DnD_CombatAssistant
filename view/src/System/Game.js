@@ -21,8 +21,8 @@ let gameState = {
         gridLines: true,
         gridLabels: false
     },
-    //playMap : "https://s-media-cache-ak0.pinimg.com/originals/40/99/94/40999419d04ec98f34f6039c5c28b261--dungeon-tiles-wilderness.jpg",
-    playMap : "",
+    playMap : "https://s-media-cache-ak0.pinimg.com/originals/40/99/94/40999419d04ec98f34f6039c5c28b261--dungeon-tiles-wilderness.jpg",
+    //playMap : "",
     nextId : null,
     tokens: {
         0 : {
@@ -34,7 +34,7 @@ let gameState = {
 				11
 			],
 			"color": "white",
-			"icon": "",
+			"icon": "monster2.png",
 			"hp": "50",
 			"maxHp": "100",
 			"ac": "",
@@ -51,7 +51,7 @@ let gameState = {
 				4
 			],
 			"color": "white",
-			"icon": "",
+			"icon": "dragon.png",
 			"hp": "100",
 			"maxHp": "300",
 			"ac": "",

@@ -61,7 +61,7 @@ export default class Token extends React.Component {
             backgroundColor: this.props.color,
             borderStyle: 'solid',
             borderWidth: "2px",
-            borderColor: getLocalState().selectedCharacter===this.props.id?'red':'black',
+            borderColor: getLocalState().selectedCharacter===this.props.id?'red': 'rgb(200,200,200)',
             padding: '0',
             backgroundImage:"url('/token_icons/"+getGameState().tokens[this.props.id].icon+"')",
             backgroundSize:"cover",
