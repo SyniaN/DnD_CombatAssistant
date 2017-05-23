@@ -45,8 +45,8 @@ export default class TokenInfo extends React.Component{
 	    	configBoxes.push(
 	    		<div className="form-group col-sm-12" key={propName}>
 	    		
-		    		<label className="col-sm-4">{propName}</label>
-		    		<div className="col-sm-8">
+		    		<label className="col-sm-3">{propName}</label>
+		    		<div className="col-sm-9">
 		    			<input name={propName} type="text" value={prop} onChange={this.handleInputChange}/>
 	    			</div>
 	    		</div>
