@@ -12,6 +12,13 @@ import {
 } from 'react-router-dom'
 import './index.css';
 
+var images = [];
+for (var imgIndex in getLocalState().icons){
+  var image = new Image();
+  image.src = "/token_icons/" + getLocalState().icons[imgIndex];
+  images.push(image);
+}
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     getLocalState().charId === "" ? (

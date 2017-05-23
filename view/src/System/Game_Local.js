@@ -12,7 +12,7 @@ let localState = {
         "7.png",
         "8.png",
         "9.png",
-        "10.jpg"
+        "10.png"
         ]
 };
 
