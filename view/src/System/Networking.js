@@ -59,7 +59,7 @@ export function publishMessage(outMessage) {
     if (db) console.log('PUBLISHING');
     if (db) console.log(outMessage);
     pubnub.publish({
-        channel: ['ReactChat'],
+        channel: ['ReactChat2'],
         message: outMessage
     });
 }
@@ -69,6 +69,6 @@ setLocalUuid (pubnub.getUUID());
 window.addEventListener("beforeunload", (ev) => 
 {  
     pubnub.unsubscribe({
-        channels: ['ReactChat']
+        channels: ['ReactChat2']
     })
 });

@@ -1,5 +1,5 @@
 let localState = {
-    charId : "0",
+    charId : "",
     uuid : "",
     selectedCharacter: null,
     icons: [

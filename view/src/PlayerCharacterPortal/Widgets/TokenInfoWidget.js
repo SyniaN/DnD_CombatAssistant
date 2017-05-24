@@ -1,13 +1,11 @@
 import React from 'react';
-import {getGameState} from '../../System/Game';
+import {editToken} from '../../System/Game';
 
 export default class TokenInfo extends React.Component{
 	constructor(props){
 		super();
 		
-		var tokens = getGameState().tokens;
-		var token = tokens[props.tokenId];
-		console.log('in TokenInfo, token: ' , token);		
+		var token = props.token;	
 		
 		this.state = {
 			"gameplayData" : {
@@ -22,6 +20,32 @@ export default class TokenInfo extends React.Component{
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.sendChangeToGameState = this.sendChangeToGameState.bind(this);
+		this.turnRedIfDirty = this.turnRedIfDirty.bind(this);
+	}
+	
+	componentWillReceiveProps(nextProps){
+		var token = nextProps.token;
+        this.setState({
+			"gameplayData" : {
+				"name": token.name,
+				"hp": token.hp,
+				"maxHp": token.maxHp,
+				"ac": token.ac
+			},
+			"color": token.color,
+			"icon": token.icon
+			
+		});
+    }
+	
+	sendChangeToGameState(){
+		var sendObj = {
+			...this.props.token,
+			...this.state.gameplayData
+		};
+		
+		editToken(sendObj);
 	}
 
 	handleInputChange(event) {
@@ -36,25 +60,21 @@ export default class TokenInfo extends React.Component{
 			}
 		});
 	}
+	
+	turnRedIfDirty(id){
+        if (this.state.gameplayData[id] === this.props.token[id]){
+            return {backgroundColor: "white"};
+        } else {
+            return {backgroundColor: "red"};
+        }
+    }
     
     render(){
+    	console.log('rendering TokenInfo Widget');
     	
-    	var configBoxes = [];
-    
-    
-	    for (var propName in this.state.gameplayData){
-	    	configBoxes.push(
-	    		<div className="form-group col-sm-12" key={propName}>
-
-		    		<label className="col-sm-3">{propName}</label>
-		    		<div className="col-sm-9">
-		    			<input name={propName} type="text" value={this.state.gameplayData[propName]} onChange={this.handleInputChange}/>
-	    			</div>
-	    		</div>
-	    	);
-	    }
-
-		var imageStyle = {
+    	
+    	
+    	var imageStyle = {
 			backgroundImage: "url('/token_icons/" + this.state.icon + "')",
 			backgroundSize : "cover",
 			height: "100%",
@@ -63,18 +83,30 @@ export default class TokenInfo extends React.Component{
 		}
 
 		var imageHolderStyle = {
-			height: "200px",
-			width: "200px",
+			height: "150px",
+			width: "150px",
 			margin: "15px auto",
 			backgroundColor: this.state.color,
 			padding: "10px",
 			border: "solid rgb(200,200,200) 6px"
 		}
+    
+    	var configBoxes = [];
+    
+	    for (var propName in this.state.gameplayData){
+	    	configBoxes.push(
+	    		<div key={propName}>
+
+		    		<label>{propName}</label>
+		    		<div>
+		    			<input name={propName} type="text" value={this.state.gameplayData[propName]} onChange={this.handleInputChange}/>
+	    			</div>
+	    		</div>
+	    	);
+	    }
 	    
         return(
-        	<div>
-	            <h2>{this.state.gameplayData.name}</h2>
-
+        	<div onBlur={this.sendChangeToGameState}>
 				<div style={imageHolderStyle}>
 					<div style={imageStyle}></div>
 				</div>

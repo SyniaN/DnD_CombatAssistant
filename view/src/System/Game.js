@@ -37,8 +37,8 @@ let gameState = {
 			"icon": "monster2.png",
 			"hp": "50",
 			"maxHp": "100",
-			"ac": "",
-			"notes": "",
+			"ac": "12",
+			"notes": "Stunned",
 			"width": "120px",
 			"height": "120px"
 		},
@@ -58,6 +58,40 @@ let gameState = {
 			"notes": "",
 			"width": "360px",
 			"height": "360px"
+		},
+		2: {
+			"id": 2,
+			"tokenType": "player",
+			"name": "John 1",
+			"position": [
+				9,
+				10
+			],
+			"color": "#ce3131",
+			"icon": "3.png",
+			"hp": "100",
+			"maxHp": "300",
+			"ac": "",
+			"notes": "Stunned",
+			"width": "60px",
+			"height": "60px"
+		},
+		3: {
+			"id": 3,
+			"tokenType": "player",
+			"name": "Shepard",
+			"position": [
+				13,
+				8
+			],
+			"color": "#8ad372",
+			"icon": "1.png",
+			"hp": "100",
+			"maxHp": "300",
+			"ac": "",
+			"notes": "Frightened",
+			"width": "60px",
+			"height": "60px"
 		},
 
     },
@@ -190,6 +224,7 @@ export function removeToken(id) {
 
 export function editToken(token) {
     if(db) console.log("editing " + token.id);
+    console.log('editing token');
     gameState.tokens[token.id] = token;
     emitChange(true);
 }

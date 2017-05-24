@@ -15,7 +15,7 @@ export default class CharInfoPanel extends React.Component{
         }
 
         return(
-            <div style={{ position: "fixed", bottom: "10px",  right:"10px"}}>
+            <div style={{ position: "fixed", top: "30px",  right:"20px", width:"300px"}}>
                 {infoBoxes}
             </div>
         )

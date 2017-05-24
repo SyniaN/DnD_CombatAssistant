@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { deselectCharacter, deselectFogger, removeToken } from '../System/Game'
+
+import { getGameState, deselectCharacter, deselectFogger, removeToken } from '../System/Game';
 import { getLocalState } from '../System/Game_Local';
 
 import FreeTextWidget from './Widgets/FreeTextWidget';
@@ -29,7 +30,7 @@ export default class SidePanel extends React.Component {
     render(){
 
         var panelStyle = {
-            width: "300px",
+            width: "200px",
             height: "100%",
             //float: 'left',
             padding: '10px',
@@ -44,6 +45,7 @@ export default class SidePanel extends React.Component {
             marginLeft: "10px"
         };
         
+        var token = getGameState().tokens[getLocalState().charId];
         
         return(
             <div style={panelStyle} onClick={this.handleClick}>
@@ -51,8 +53,8 @@ export default class SidePanel extends React.Component {
                         
                         <Link to="/"><button style={buttonStyle} className="btn btn-default" onClick={this.removeLocalChar}>Log out</button></Link>
                         <hr/>
-                        <TokenInfo tokenId={getLocalState().charId}></TokenInfo>
-                        <FreeTextWidget></FreeTextWidget>
+                        <TokenInfo token={token}></TokenInfo>
+                        
                                                                 
                     </div>
             </div>

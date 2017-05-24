@@ -18,7 +18,10 @@ export default class CharacterInfo extends React.Component{
     handleFieldChange(e){
         var nextState = this.state;
         nextState[e.target.id] = e.target.value;
-        this.setState(nextState);     
+        this.setState({
+            ...this.state,
+            [e.target.id] : e.target.value
+        });     
     }
 
     handleBlur(){
