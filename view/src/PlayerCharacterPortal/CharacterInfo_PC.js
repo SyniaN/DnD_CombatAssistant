@@ -5,32 +5,33 @@ export default class CharacterInfo extends React.Component{
     render(){
 
         const overallStyle = {
-            height: "100px",
-            width: "250px",
+            height: "125px",
+            width: "300px",
             float: "right",
-            marginBottom: "20px"
+            marginBottom: "5px"
         };
         
         const photoHalf= {
             width:"100px",
-            height:"100px",
+            height:"100%",
             backgroundColor: this.props.char.color,
             float:"left",
-            marginLeft: "10px",
-            border: "3px solid rgb(200, 200, 200)"
+            border: "3px solid rgb(200, 200, 200)",
+            textShadow: "0px 0px 3px rgb(200, 200, 200)"
         }
         
         const textHalf = {
-            width: "140px",
-            height: "100px",
+            width: "200px",
+            height: "100%",
             float:"left",
             color: 'rgb(230, 230, 230)',
-            textShadow: "2px 2px 5px #000000",
+            paddingRight: "10px",
+            textShadow: "0px 0px 5px #000000"
         };
 
         const photoStyle = {
-            height: "100%",
             width: "100%",
+            height: "85%",
             backgroundImage: "url('/token_icons/"+this.props.char.icon+"')",
             backgroundSize: "cover",
             float: "left"
@@ -48,7 +49,10 @@ export default class CharacterInfo extends React.Component{
                 <div id="text" style={textHalf} >
                     <div style={statsStyle}>
                         <div>
-                            <p>{this.props.char.notes}</p>
+                            <p>{this.props.char.stats.alerts1.value}</p>
+                            <p>{this.props.char.stats.alerts2.value}</p>
+                            <p>{this.props.char.stats.alerts3.value}</p>
+                            <p>{this.props.char.stats.alerts4.value}</p>
                         </div>
                         
                     </div>
@@ -56,8 +60,9 @@ export default class CharacterInfo extends React.Component{
             
                 <div id="icon" style={photoHalf} >
                     <div style={photoStyle}>
-                        {this.props.char.hp}/{this.props.char.maxHp}
+                        
                     </div>
+                    <p><label>HP: </label> {this.props.char.stats.hp.value}/{this.props.char.stats.maxHp.value}</p>
                 </div>
                 
             </div>

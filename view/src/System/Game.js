@@ -38,33 +38,46 @@ let gameState = {
 			"icon": "monster2.png",
 			stats: {
 			    "name": {
-			        "type": "text",
 			        "displayName": "Name",
 			        "value" : "Half-Dragon"
-			        },
+			    },
     			"hp": {
-    			    "type": "number capped",
     			    "displayName": "HP",
-    			    "value" : "50",
-    			    "maxValue" : "100"
-    			    },
+    			    "value" : "10"
+    			},
+                "maxHp":{
+                    "displayName": "Max HP",
+                    "value" : "30"
+                },
     			"mp": {
-    			    "type": "number capped",
     			    "displayName": "Spell Count",
-    			    "value" : "2",
-    			    "maxValue": "4"
-    			    },
+    			    "value" : "1"
+    			},
+                "maxMp":{
+                    "displayName": "Max Spell Count",
+    			    "value": "3"
+                },
     			"ac": {
-    			    "type": "number",
     			    "displayName": "Armor",
-    			    "value" : "12"
-    			    },
-    			"alerts": {
-    			    "type": "text list",
+    			    "value" : "6"
+    			},
+    			"alerts1": {
     			    "displayName": "Alerts",
-    			    "value" : ["Stunned", "Very bored", "Dancing in the rain"]
-    			}
-		    }
+    			    "value" : ""
+                },
+                "alerts2": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                },
+                "alerts3": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                },
+                "alerts4": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                }  
+            }
 		},
 		1 : {
 			"id": 1,
@@ -79,33 +92,46 @@ let gameState = {
 			"icon": "dragon.png",
 			stats: {
 			    "name": {
-			        "type": "text",
 			        "displayName": "Name",
 			        "value" : "Ancient Dragon"
-			        },
+			    },
     			"hp": {
-    			    "type": "number capped",
     			    "displayName": "HP",
-    			    "value" : "100",
-    			    "maxValue" : "300"
-    			    },
+    			    "value" : "10"
+    			},
+                "maxHp":{
+                    "displayName": "Max HP",
+                    "value" : "30"
+                },
     			"mp": {
-    			    "type": "number capped",
     			    "displayName": "Spell Count",
-    			    "value" : "5",
-    			    "maxValue": "10"
-    			    },
+    			    "value" : "1"
+    			},
+                "maxMp":{
+                    "displayName": "Max Spell Count",
+    			    "value": "3"
+                },
     			"ac": {
-    			    "type": "number",
     			    "displayName": "Armor",
-    			    "value" : "50"
-    			    },
-    			"alerts": {
-    			    "type": "text list",
+    			    "value" : "6"
+    			},
+    			"alerts1": {
     			    "displayName": "Alerts",
-    			    "value" : ["Angry", "", "", ""]
-    			}
-		    }
+    			    "value" : ""
+                },
+                "alerts2": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                },
+                "alerts3": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                },
+                "alerts4": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                }  
+            }
 		},
 		2: {
 			"id": 2,
@@ -115,38 +141,51 @@ let gameState = {
 				10
 			],
 			"color": "#ce3131",
-			"icon": "3.png",
+			"icon": "3.jpg",
 			"width": "60px",
 			"height": "60px",
 			stats: {
 			    "name": {
-			        "type": "text",
 			        "displayName": "Name",
-			        "value" : "John 1"
-			        },
+			        "value" : "Shepard"
+			    },
     			"hp": {
-    			    "type": "number capped",
     			    "displayName": "HP",
-    			    "value" : "10",
-    			    "maxValue" : "30"
-    			    },
+    			    "value" : "10"
+    			},
+                "maxHp":{
+                    "displayName": "Max HP",
+                    "value" : "30"
+                },
     			"mp": {
-    			    "type": "number capped",
     			    "displayName": "Spell Count",
-    			    "value" : "1",
-    			    "maxValue": "3"
-    			    },
+    			    "value" : "1"
+    			},
+                "maxMp":{
+                    "displayName": "Max Spell Count",
+    			    "value": "3"
+                },
     			"ac": {
-    			    "type": "number",
     			    "displayName": "Armor",
     			    "value" : "6"
-    			    },
-    			"alerts": {
-    			    "type": "text list",
+    			},
+    			"alerts1": {
     			    "displayName": "Alerts",
-    			    "value" : ["Hungry", "", "", ""]
-    			}
-		    }
+    			    "value" : "Cold"
+                },
+                "alerts2": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                },
+                "alerts3": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                },
+                "alerts4": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                }  
+            }
 		},
 		3: {
 			"id": 3,
@@ -156,43 +195,55 @@ let gameState = {
 				8
 			],
 			"color": "#8ad372",
-			"icon": "1.png",
+			"icon": "1.jpg",
 			"width": "60px",
 			"height": "60px",
 			stats: {
 			    "name": {
-			        "type": "text",
 			        "displayName": "Name",
 			        "value" : "Shepard"
-			        },
+			    },
     			"hp": {
-    			    "type": "number capped",
     			    "displayName": "HP",
-    			    "value" : "10",
-    			    "maxValue" : "30"
-    			    },
+    			    "value" : "10"
+    			},
+                "maxHp":{
+                    "displayName": "Max HP",
+                    "value" : "30"
+                },
     			"mp": {
-    			    "type": "number capped",
     			    "displayName": "Spell Count",
-    			    "value" : "1",
-    			    "maxValue": "3"
-    			    },
+    			    "value" : "1"
+    			},
+                "maxMp":{
+                    "displayName": "Max Spell Count",
+    			    "value": "3"
+                },
     			"ac": {
-    			    "type": "number",
     			    "displayName": "Armor",
     			    "value" : "6"
-    			    },
-    			"alerts": {
-    			    "type": "text list",
+    			},
+    			"alerts1": {
     			    "displayName": "Alerts",
-    			    "value" : ["Frightened", "", "", ""]
-    			}
-		    }
-		},
-
+    			    "value" : "frightened"
+                },
+                "alerts2": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                },
+                "alerts3": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                },
+                "alerts4": {
+    			    "displayName": "Alerts",
+    			    "value" : ""
+                }  
+            }
+        }
     },
-    notes: null
 };
+
 
 //INITIALIZATION//
 gameState.nextId = Object.keys(gameState.tokens).length;
@@ -309,34 +360,47 @@ export function addToken(token) {
 		"width": token.width,
 		"height": token.height,
 		stats: {
-		    "name": {
-		        "type": "text",
-		        "displayName": "Name",
-		        "value" : token.name
-		        },
-			"hp": {
-			    "type": "number capped",
-			    "displayName": "HP",
-			    "value" : token.hp,
-			    "maxValue" : token.hpMax
-			    },
-			"mp": {
-			    "type": "number capped",
-			    "displayName": "Spell Count",
-			    "value" : token.mp,
-			    "maxValue": token.mpMax
-			    },
-			"ac": {
-			    "type": "number",
-			    "displayName": "Armor",
-			    "value" : token.ac
-			    },
-			"alerts": {
-			    "type": "text list",
-			    "displayName": "Alerts",
-			    "value" : ["", "", "", ""]
-			}
-	    }
+            "name": {
+                "displayName": "Name",
+                "value" : token.name
+            },
+            "hp": {
+                "displayName": "HP",
+                "value" : token.hp
+            },
+            "maxHp":{
+                "displayName": "Max HP",
+                "value" : token.hpMax
+            },
+            "mp": {
+                "displayName": "Spell Count",
+                "value" : token.mp
+            },
+            "maxMp":{
+                "displayName": "Max Spell Count",
+                "value": token.mpMax
+            },
+            "ac": {
+                "displayName": "Armor",
+                "value" : token.ac
+            },
+            "alerts1": {
+                "displayName": "Alerts",
+                "value" : ""
+            },
+            "alerts2": {
+                "displayName": "Alerts",
+                "value" : ""
+            },
+            "alerts3": {
+                "displayName": "Alerts",
+                "value" : ""
+            },
+            "alerts4": {
+                "displayName": "Alerts",
+                "value" : ""
+            }  
+        }
     };
     
     gameState.tokens[gameState.nextId] = newToken;

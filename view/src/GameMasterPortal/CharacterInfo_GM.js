@@ -1,75 +1,37 @@
 import React from 'react';
-import {editToken} from '../System/Game';
 
 export default class CharacterInfo extends React.Component{
-    constructor(props){
-        super(props);
-        this.handleFieldChange = this.handleFieldChange.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
-        this.findBackgroundColor = this.findBackgroundColor.bind(this);
-        this.state = props.char;
-    }
-    
-    componentWillReceiveProps(nextProps){
-        this.setState(nextProps.char);
-    }
-
-
-    handleFieldChange(e){
-        var nextState = this.state;
-        nextState[e.target.id] = e.target.value;
-        this.setState({
-            ...this.state,
-            [e.target.id] : e.target.value
-        });     
-    }
-
-    handleBlur(){
-        editToken(this.state);
-    }
-
-    findBackgroundColor(id){
-        if (id === "notes"){
-            return {
-                height: "100%",
-                width:"100%",
-                float: "right",
-                backgroundColor: this.props.char.notes === this.state.notes ? "white" : "red"
-            }
-        }
-
-        if (this.state[id] === this.props.char[id]){
-            return {backgroundColor: "white", width: "30%"}
-        } else {
-            return {backgroundColor: "red", width: "30%"}
-        }
-    }
 
     render(){
 
-        const charInfoStyle = {
-            height: "150px",
-            width: "200px",
-            backgroundColor: this.state.color,
-            padding: '5px',
+        const overallStyle = {
+            height: "125px",
+            width: "300px",
             float: "right",
-            marginRight: "5px",
-            marginBottom: "5px",
-            boxShadow: "0px 15px 10px rgba(20, 20, 20, 0.6)",
-            border: "solid rgb(200,200,200) 3px"
+            marginBottom: "5px"
         };
-
-        const topHalfStyle = {
-            height: "45%"
-        };
-        const bottomHalfStyle = {
-            height: "40%",
-            paddingTop: "5px"
+        
+        const photoHalf= {
+            width:"100px",
+            height:"100%",
+            backgroundColor: this.props.char.color,
+            float:"left",
+            border: "3px solid rgb(200, 200, 200)",
+            textShadow: "0px 0px 3px rgb(200, 200, 200)"
+        }
+        
+        const textHalf = {
+            width: "200px",
+            height: "100%",
+            float:"left",
+            color: 'rgb(230, 230, 230)',
+            paddingRight: "10px",
+            textShadow: "0px 0px 5px #000000"
         };
 
         const photoStyle = {
-            height: "95%",
-            width: "32%",
+            width: "100%",
+            height: "85%",
             backgroundImage: "url('/token_icons/"+this.props.char.icon+"')",
             backgroundSize: "cover",
             float: "left"
@@ -77,31 +39,32 @@ export default class CharacterInfo extends React.Component{
 
         const statsStyle = {
             float: "left",
-            height: "100%"
+            width: "100%",
+            textAlign: "right"
         };
 
         return(
-            <div style={charInfoStyle} onBlur={this.handleBlur}>
-                <h4 style={{margin:"0"}}>{this.state.name}</h4>
-                <div id="topHalf" style={topHalfStyle}>
-                    <div style={photoStyle}></div>
+            <div style={overallStyle}>
+            
+                <div id="text" style={textHalf} >
                     <div style={statsStyle}>
                         <div>
-                            <label>HP</label> 
-                            <input size="1" style={this.findBackgroundColor("hp")} id="hp" type="text" value={this.state.hp} onChange={this.handleFieldChange}/> / <input size="1" style={this.findBackgroundColor("maxHp")} id="maxHp" type="text" value={this.state.maxHp} onChange={this.handleFieldChange}/>
+                            <p>{this.props.char.stats.alerts1.value}</p>
+                            <p>{this.props.char.stats.alerts2.value}</p>
+                            <p>{this.props.char.stats.alerts3.value}</p>
+                            <p>{this.props.char.stats.alerts4.value}</p>
                         </div>
-                        <div>
-                            <label>Armor</label> 
-                            <input size="4" style={this.findBackgroundColor("ac")} id="ac" type="text" value={this.state.ac} onChange={this.handleFieldChange}/>
-                        </div>
+                        
                     </div>
                 </div>
-                
-                <div id="bottomHalf" style={bottomHalfStyle}>
-                    
-                    <textarea id="notes" style={this.findBackgroundColor("notes")} value={this.state.notes} onChange={this.handleFieldChange}/>
+            
+                <div id="icon" style={photoHalf} >
+                    <div style={photoStyle}>
+                        
+                    </div>
+                    <p><label>HP: </label> {this.props.char.stats.hp.value}/{this.props.char.stats.maxHp.value}</p>
                 </div>
-
+                
             </div>
         )
     }

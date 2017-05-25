@@ -8,15 +8,9 @@ export default class TokenInfo extends React.Component{
 		var token = props.token;	
 		
 		this.state = {
-			"gameplayData" : {
-				"name": token.name,
-				"hp": token.hp,
-				"maxHp": token.maxHp,
-				"ac": token.ac
-			},
+			"stats" : token.stats,
 			"color": token.color,
-			"icon": token.icon
-			
+			"icon": token.icon			
 		};
 
 		this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,36 +21,33 @@ export default class TokenInfo extends React.Component{
 	componentWillReceiveProps(nextProps){
 		var token = nextProps.token;
         this.setState({
-			"gameplayData" : {
-				"name": token.name,
-				"hp": token.hp,
-				"maxHp": token.maxHp,
-				"ac": token.ac
-			},
+			"stats" : token.stats,
 			"color": token.color,
-			"icon": token.icon
-			
+			"icon": token.icon			
 		});
     }
 	
 	sendChangeToGameState(){
 		var sendObj = {
 			...this.props.token,
-			...this.state.gameplayData
+			...this.state
 		};
 		
 		editToken(sendObj);
 	}
 
 	handleInputChange(event) {
-		const target = event.target;
+		const target = event.target;		
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
 		
 		this.setState({
-			gameplayData:{				
-				...this.state.gameplayData,
-				[name]: value,
+			stats:{				
+				...this.state.stats,
+				[name]: {
+					...this.state.stats[name],
+					value : value
+				} 
 			}
 		});
 	}
@@ -70,9 +61,7 @@ export default class TokenInfo extends React.Component{
     }
     
     render(){
-    	console.log('rendering TokenInfo Widget');
-    	
-    	
+    	console.log('rendering TokenInfo Widget');   	
     	
     	var imageStyle = {
 			backgroundImage: "url('/token_icons/" + this.state.icon + "')",
@@ -93,13 +82,12 @@ export default class TokenInfo extends React.Component{
     
     	var configBoxes = [];
     
-	    for (var propName in this.state.gameplayData){
+	    for (var propName in this.state.stats){
 	    	configBoxes.push(
 	    		<div key={propName}>
-
 		    		<label>{propName}</label>
 		    		<div>
-		    			<input name={propName} type="text" value={this.state.gameplayData[propName]} onChange={this.handleInputChange}/>
+		    			<input name={propName} type="text" value={this.state.stats[propName].value} onChange={this.handleInputChange}/>
 	    			</div>
 	    		</div>
 	    	);

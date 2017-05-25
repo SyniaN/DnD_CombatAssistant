@@ -61,11 +61,11 @@ export default class Token extends React.Component {
             backgroundColor: this.props.color,
             borderStyle: 'solid',
             borderWidth: "2px",
-            borderColor: getLocalState().selectedCharacter===this.props.id?'red': 'rgb(200,200,200)',
+            borderColor: getLocalState().selectedCharacter===this.props.id?'red':'black',
             padding: '0',
             backgroundImage:"url('/token_icons/"+getGameState().tokens[this.props.id].icon+"')",
             backgroundSize:"cover",
-            backgroundRepeat:"round",
+            backgroundPosition:"0px -5px",
             height: this.props.size?this.props.size:"100%",
             position:'relative',
             float: 'left',
@@ -79,7 +79,8 @@ export default class Token extends React.Component {
             width: "100%",
             maxHeight: "96%",
             textAlign: "center",
-            overflow: "hidden"
+            overflow: "hidden",
+            fontSize: "75%"
         };
         
         var selectionFieldStyle = {
@@ -94,8 +95,9 @@ export default class Token extends React.Component {
             cursor: 'pointer'
         };
 
+        //no remove button if the token is a player
         var removeButton = getGameState().tokens[this.props.id].tokenType === "player" ? <span/> : <span style={clickAble}  onClick={()=>this.handlePieceRemove(this.props.id)}> <span className='glyphicon glyphicon-remove pull-right'/> </span>;
-        
+
         return (
             <div ref={(div) => { this.container = div }}  tabIndex={this.props.id} onKeyDown={this.handleKeyPress} style={characterStyle} >
                 
@@ -104,7 +106,7 @@ export default class Token extends React.Component {
                 </div>
 
                 {removeButton}
-                
+
             </div>
         );
     

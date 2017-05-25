@@ -65,7 +65,7 @@ export default class Token extends React.Component {
             padding: '0',
             backgroundImage:"url('/token_icons/"+getGameState().tokens[this.props.id].icon+"')",
             backgroundSize:"cover",
-            backgroundRepeat:"round",
+            backgroundPosition:"0px -5px",
             height: this.props.size?this.props.size:"100%",
             position:'relative',
             float: 'left',
@@ -79,7 +79,8 @@ export default class Token extends React.Component {
             width: "100%",
             maxHeight: "96%",
             textAlign: "center",
-            overflow: "hidden"
+            overflow: "hidden",
+            fontSize: "75%"
         };
         
         var selectionFieldStyle = {

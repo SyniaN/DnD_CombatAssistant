@@ -9,7 +9,7 @@ export default class LoginPage extends React.Component {
         super();
         this.state = {
             name: "",
-            icon: "1.png"
+            icon: "1.jpg"
         };
         
         this.joinGame = this.joinGame.bind(this);
@@ -65,12 +65,14 @@ export default class LoginPage extends React.Component {
             tokenType: "player",
             uuid: getLocalState().uuid,
             color: "hsl(" + hue + "," + saturation + "," + lightness + ")",
-            position: [5 + Math.floor(Math.random() * 5), 5 + Math.floor(Math.random() * 5)],
-            "icon": this.state.icon,
+            positionX: 5 + Math.floor(Math.random() * 5),
+		    positionY: 5 + Math.floor(Math.random() * 5),
+            icon: this.state.icon,
+            width: "60px",
+            height: "60px",
             "hp": "10",
-            "maxHp": "10",
-            "ac": "10",
-            "notes": "New Player",
+            "hpMax": "10",
+            "ac": "10"
         };
 
         var newId = addToken(newToken);
