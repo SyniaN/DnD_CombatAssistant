@@ -54,7 +54,7 @@ export default class SidePanel extends React.Component {
                         <Link to="/"><button style={buttonStyle} className="btn btn-default" onClick={this.removeLocalChar}>Log out</button></Link>
                         <hr/>
                         <TokenInfo token={token}></TokenInfo>
-                        
+                        <FreeTextWidget></FreeTextWidget>
                                                                 
                     </div>
             </div>

@@ -28,70 +28,166 @@ let gameState = {
         0 : {
 			"id": 0,
 			"tokenType": "npc",
-			"name": "Half-Dragon",
 			"position": [
 				24,
 				11
 			],
+			"width": "120px",
+			"height": "120px",
 			"color": "white",
 			"icon": "monster2.png",
-			"hp": "50",
-			"maxHp": "100",
-			"ac": "12",
-			"notes": "Stunned",
-			"width": "120px",
-			"height": "120px"
+			stats: {
+			    "name": {
+			        "type": "text",
+			        "displayName": "Name",
+			        "value" : "Half-Dragon"
+			        },
+    			"hp": {
+    			    "type": "number capped",
+    			    "displayName": "HP",
+    			    "value" : "50",
+    			    "maxValue" : "100"
+    			    },
+    			"mp": {
+    			    "type": "number capped",
+    			    "displayName": "Spell Count",
+    			    "value" : "2",
+    			    "maxValue": "4"
+    			    },
+    			"ac": {
+    			    "type": "number",
+    			    "displayName": "Armor",
+    			    "value" : "12"
+    			    },
+    			"alerts": {
+    			    "type": "text list",
+    			    "displayName": "Alerts",
+    			    "value" : ["Stunned", "Very bored", "Dancing in the rain"]
+    			}
+		    }
 		},
 		1 : {
 			"id": 1,
 			"tokenType": "npc",
-			"name": "Ancient Dragon",
 			"position": [
 				18,
 				4
 			],
+			"width": "360px",
+			"height": "360px",
 			"color": "white",
 			"icon": "dragon.png",
-			"hp": "100",
-			"maxHp": "300",
-			"ac": "",
-			"notes": "",
-			"width": "360px",
-			"height": "360px"
+			stats: {
+			    "name": {
+			        "type": "text",
+			        "displayName": "Name",
+			        "value" : "Ancient Dragon"
+			        },
+    			"hp": {
+    			    "type": "number capped",
+    			    "displayName": "HP",
+    			    "value" : "100",
+    			    "maxValue" : "300"
+    			    },
+    			"mp": {
+    			    "type": "number capped",
+    			    "displayName": "Spell Count",
+    			    "value" : "5",
+    			    "maxValue": "10"
+    			    },
+    			"ac": {
+    			    "type": "number",
+    			    "displayName": "Armor",
+    			    "value" : "50"
+    			    },
+    			"alerts": {
+    			    "type": "text list",
+    			    "displayName": "Alerts",
+    			    "value" : ["Angry", "", "", ""]
+    			}
+		    }
 		},
 		2: {
 			"id": 2,
 			"tokenType": "player",
-			"name": "John 1",
 			"position": [
 				9,
 				10
 			],
 			"color": "#ce3131",
 			"icon": "3.png",
-			"hp": "100",
-			"maxHp": "300",
-			"ac": "",
-			"notes": "Stunned",
 			"width": "60px",
-			"height": "60px"
+			"height": "60px",
+			stats: {
+			    "name": {
+			        "type": "text",
+			        "displayName": "Name",
+			        "value" : "John 1"
+			        },
+    			"hp": {
+    			    "type": "number capped",
+    			    "displayName": "HP",
+    			    "value" : "10",
+    			    "maxValue" : "30"
+    			    },
+    			"mp": {
+    			    "type": "number capped",
+    			    "displayName": "Spell Count",
+    			    "value" : "1",
+    			    "maxValue": "3"
+    			    },
+    			"ac": {
+    			    "type": "number",
+    			    "displayName": "Armor",
+    			    "value" : "6"
+    			    },
+    			"alerts": {
+    			    "type": "text list",
+    			    "displayName": "Alerts",
+    			    "value" : ["Hungry", "", "", ""]
+    			}
+		    }
 		},
 		3: {
 			"id": 3,
 			"tokenType": "player",
-			"name": "Shepard",
 			"position": [
 				13,
 				8
 			],
 			"color": "#8ad372",
 			"icon": "1.png",
-			"hp": "100",
-			"maxHp": "300",
-			"ac": "",
-			"notes": "Frightened",
 			"width": "60px",
-			"height": "60px"
+			"height": "60px",
+			stats: {
+			    "name": {
+			        "type": "text",
+			        "displayName": "Name",
+			        "value" : "Shepard"
+			        },
+    			"hp": {
+    			    "type": "number capped",
+    			    "displayName": "HP",
+    			    "value" : "10",
+    			    "maxValue" : "30"
+    			    },
+    			"mp": {
+    			    "type": "number capped",
+    			    "displayName": "Spell Count",
+    			    "value" : "1",
+    			    "maxValue": "3"
+    			    },
+    			"ac": {
+    			    "type": "number",
+    			    "displayName": "Armor",
+    			    "value" : "6"
+    			    },
+    			"alerts": {
+    			    "type": "text list",
+    			    "displayName": "Alerts",
+    			    "value" : ["Frightened", "", "", ""]
+    			}
+		    }
 		},
 
     },
@@ -110,10 +206,9 @@ for (var i = 0; i < Math.floor(gameState.mapScale.height/gameState.mapScale.tile
 
 let observer = null;
 
-export function changePlayerInfo(id, name, hp, tempHp){
-    gameState.tokens[id].name = name;
-    gameState.tokens[id].hp = hp;
-    gameState.tokens[id].tempHp = tempHp;
+export function changePlayerInfo(id, name, hp){
+    gameState.tokens[id].stats.name.value = name;
+    gameState.tokens[id].stats.hp.value = hp;
     emitChange(true);
 }
 
@@ -201,15 +296,53 @@ export function deselectCharacter() {
 
 export function addToken(token) {
     if (db) console.log("adding token: ", token);
-    gameState.tokens[gameState.nextId] = {
-        ...token,
-        id: gameState.nextId,
+    
+    var newToken = {
+        "id": gameState.nextId,
+		"tokenType": token.tokenType,
+		"position": [
+			token.positionX,
+			token.positionY
+		],
+		"color": token.color,
+		"icon": token.icon,
+		"width": token.width,
+		"height": token.height,
+		stats: {
+		    "name": {
+		        "type": "text",
+		        "displayName": "Name",
+		        "value" : token.name
+		        },
+			"hp": {
+			    "type": "number capped",
+			    "displayName": "HP",
+			    "value" : token.hp,
+			    "maxValue" : token.hpMax
+			    },
+			"mp": {
+			    "type": "number capped",
+			    "displayName": "Spell Count",
+			    "value" : token.mp,
+			    "maxValue": token.mpMax
+			    },
+			"ac": {
+			    "type": "number",
+			    "displayName": "Armor",
+			    "value" : token.ac
+			    },
+			"alerts": {
+			    "type": "text list",
+			    "displayName": "Alerts",
+			    "value" : ["", "", "", ""]
+			}
+	    }
     };
-
+    
+    gameState.tokens[gameState.nextId] = newToken;
+    
     var returnId = gameState.nextId;
-
     gameState.nextId++;
-
     emitChange(true);
 
     return returnId;
