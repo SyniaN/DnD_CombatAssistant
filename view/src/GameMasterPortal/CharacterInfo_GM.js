@@ -1,6 +1,47 @@
 import React from 'react';
+import {editToken} from '../System/Game';
 
 export default class CharacterInfo extends React.Component{
+    
+    constructor(props){
+        super();
+        this.sendChangesToGameState = this.sendChangesToGameState.bind(this);
+        this.updateLocalState = this.updateLocalState.bind(this);
+        this.state = {
+            alert1 : props.char.stats.alerts1.value,
+            alert2 : props.char.stats.alerts2.value,
+            alert3 : props.char.stats.alerts3.value,
+            alert4 : props.char.stats.alerts4.value
+        };
+    }
+    
+    componentWillReceiveProps(nextProps){
+        console.log('nextProps', nextProps);
+        this.setState({
+            alert1 : nextProps.char.stats.alerts1.value,
+            alert2 : nextProps.char.stats.alerts2.value,
+            alert3 : nextProps.char.stats.alerts3.value,
+            alert4 : nextProps.char.stats.alerts4.value
+        });
+    }
+    
+    sendChangesToGameState(){
+        var newToken = this.props.char;
+        console.log("sending state", newToken);
+        newToken.stats.alerts1.value = this.state.alert1;
+        newToken.stats.alerts2.value = this.state.alert2;
+        newToken.stats.alerts3.value = this.state.alert3;
+        newToken.stats.alerts4.value = this.state.alert4;
+        console.log("sending state", newToken);
+
+        editToken(newToken);
+    }
+    
+    updateLocalState(event){
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
 
     render(){
 
@@ -24,7 +65,7 @@ export default class CharacterInfo extends React.Component{
             width: "200px",
             height: "100%",
             float:"left",
-            color: 'rgb(230, 230, 230)',
+            color: 'rgb(20, 20, 20)',
             paddingRight: "10px",
             textShadow: "0px 0px 5px #000000"
         };
@@ -48,11 +89,11 @@ export default class CharacterInfo extends React.Component{
             
                 <div id="text" style={textHalf} >
                     <div style={statsStyle}>
-                        <div>
-                            <p>{this.props.char.stats.alerts1.value}</p>
-                            <p>{this.props.char.stats.alerts2.value}</p>
-                            <p>{this.props.char.stats.alerts3.value}</p>
-                            <p>{this.props.char.stats.alerts4.value}</p>
+                        <div onBlur={this.sendChangesToGameState}>
+                            <input type="text" name="alert1" value={this.state.alert1} onChange={this.updateLocalState}/>
+                            <input type="text" name="alert2" value={this.state.alert2} onChange={this.updateLocalState}/>
+                            <input type="text" name="alert3" value={this.state.alert3} onChange={this.updateLocalState}/>
+                            <input type="text" name="alert4" value={this.state.alert4} onChange={this.updateLocalState}/>
                         </div>
                         
                     </div>
