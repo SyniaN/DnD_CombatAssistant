@@ -71,16 +71,26 @@ export default class CharacterInfo extends React.Component{
             textAlign: "right"
         };
 
+        
+
+        var alerts = [];
+
+        for (var propName in this.props.char.alerts){
+            const inputBoxStyle = {
+                backgroundColor: this.props.char.alerts[propName] === this.state[propName] ? "" : "red"
+            }
+
+            alerts.push( <input type="text" style={inputBoxStyle} name={propName} value={this.state[propName]} onChange={this.updateLocalState}/> )
+
+        }
+
         return(
             <div style={overallStyle}>
             
                 <div id="text" style={textHalf} >
                     <div style={statsStyle}>
                         <div onBlur={this.sendChangesToGameState}>
-                            <input type="text" name="alert1" value={this.state.alert1} onChange={this.updateLocalState}/>
-                            <input type="text" name="alert2" value={this.state.alert2} onChange={this.updateLocalState}/>
-                            <input type="text" name="alert3" value={this.state.alert3} onChange={this.updateLocalState}/>
-                            <input type="text" name="alert4" value={this.state.alert4} onChange={this.updateLocalState}/>
+                            {alerts}
                         </div>
                         
                     </div>
