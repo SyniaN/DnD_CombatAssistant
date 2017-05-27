@@ -12,7 +12,7 @@ const pubnub = new PubNub({
 });
 
 pubnub.subscribe({
-    channels: ['ReactChat2'],
+    channels: ['ReactChat'],
     withPresence: true
 });
 
@@ -59,7 +59,7 @@ export function publishMessage(outMessage) {
     if (db) console.log('PUBLISHING');
     if (db) console.log(outMessage);
     pubnub.publish({
-        channel: ['ReactChat2'],
+        channel: ['ReactChat'],
         message: outMessage
     });
 }
@@ -69,6 +69,6 @@ setLocalUuid (pubnub.getUUID());
 window.addEventListener("beforeunload", (ev) => 
 {  
     pubnub.unsubscribe({
-        channels: ['ReactChat2']
+        channels: ['ReactChat']
     })
 });

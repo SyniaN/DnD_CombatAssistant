@@ -61,22 +61,12 @@ let gameState = {
     			    "displayName": "Armor",
     			    "value" : "6"
     			},
-    			"alerts1": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts2": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts3": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts4": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                }  
+            },
+            alerts:{
+                "alert1": "",
+                "alert2": "",
+                "alert3": "",
+                "alert4": ""
             }
 		},
 		1 : {
@@ -114,23 +104,13 @@ let gameState = {
     			"ac": {
     			    "displayName": "Armor",
     			    "value" : "6"
-    			},
-    			"alerts1": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts2": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts3": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts4": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                }  
+    			}    			
+            },
+            alerts:{
+                "alert1": "",
+                "alert2": "",
+                "alert3": "",
+                "alert4": ""
             }
 		},
 		2: {
@@ -168,23 +148,13 @@ let gameState = {
     			"ac": {
     			    "displayName": "Armor",
     			    "value" : "6"
-    			},
-    			"alerts1": {
-    			    "displayName": "Alerts",
-    			    "value" : "Cold"
-                },
-                "alerts2": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts3": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts4": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                }  
+    			}
+            },
+            alerts:{
+                "alert1": "",
+                "alert2": "",
+                "alert3": "",
+                "alert4": ""
             }
 		},
 		3: {
@@ -222,23 +192,13 @@ let gameState = {
     			"ac": {
     			    "displayName": "Armor",
     			    "value" : "6"
-    			},
-    			"alerts1": {
-    			    "displayName": "Alerts",
-    			    "value" : "frightened"
-                },
-                "alerts2": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts3": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts4": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                }  
+    			} 
+            },
+            alerts:{
+                "alert1": "",
+                "alert2": "",
+                "alert3": "",
+                "alert4": ""
             }
         }
     },
@@ -383,24 +343,14 @@ export function addToken(token) {
             "ac": {
                 "displayName": "Armor",
                 "value" : token.ac
-            },
-            "alerts1": {
-                "displayName": "Alerts",
-                "value" : ""
-            },
-            "alerts2": {
-                "displayName": "Alerts",
-                "value" : ""
-            },
-            "alerts3": {
-                "displayName": "Alerts",
-                "value" : ""
-            },
-            "alerts4": {
-                "displayName": "Alerts",
-                "value" : ""
-            }  
-        }
+            }
+        },
+        alerts:{
+                "alert1": "New Player",
+                "alert2": "",
+                "alert3": "",
+                "alert4": ""
+            }
     };
     
     gameState.tokens[gameState.nextId] = newToken;
@@ -421,7 +371,6 @@ export function removeToken(id) {
 
 export function editToken(token) {
     if(db) console.log("editing " + token.id);
-    console.log('editing token');
     gameState.tokens[token.id] = token;
     emitChange(true);
 }

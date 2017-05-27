@@ -49,10 +49,10 @@ export default class CharacterInfo extends React.Component{
                 <div id="text" style={textHalf} >
                     <div style={statsStyle}>
                         <div>
-                            <p>{this.props.char.stats.alerts1.value}</p>
-                            <p>{this.props.char.stats.alerts2.value}</p>
-                            <p>{this.props.char.stats.alerts3.value}</p>
-                            <p>{this.props.char.stats.alerts4.value}</p>
+                            <p>{this.props.char.alerts.alert1}</p>
+                            <p>{this.props.char.alerts.alert2}</p>
+                            <p>{this.props.char.alerts.alert3}</p>
+                            <p>{this.props.char.alerts.alert4}</p>
                         </div>
                         
                     </div>
