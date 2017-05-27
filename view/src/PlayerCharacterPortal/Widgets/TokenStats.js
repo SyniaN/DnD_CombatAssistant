@@ -1,9 +1,9 @@
 import React from 'react';
 import {editToken} from '../../System/Game';
 
-export default class TokenInfo extends React.Component{
+export default class TokenStats extends React.Component{
 	constructor(props){
-		super();
+		super(props);
 		
 		var token = props.token;	
 		

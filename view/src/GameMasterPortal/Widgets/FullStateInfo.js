@@ -4,7 +4,7 @@ import {getGameState, setMyGameState} from '../../System/Game';
 export default class FullStateInfo extends React.Component{
 
     constructor(props){
-        super();
+        super(props);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleInfoChange = this.handleInfoChange.bind(this);
 

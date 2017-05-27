@@ -4,8 +4,8 @@ import Token from './Token_PC';
 
 export default class PlayerMap extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.handleContextMenu = this.handleContextMenu.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }

@@ -4,8 +4,8 @@ import { getLocalState } from '../System/Game_Local';
 
 export default class Token extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.handleKeyPress= this.handleKeyPress.bind(this);
     }

@@ -2,8 +2,8 @@ import React from 'react';
 import { addToken} from '../../System/Game';
 
 export default class AddTokenWidget extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             tokenType: "",
 		    positionX: "",

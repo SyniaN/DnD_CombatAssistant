@@ -6,7 +6,7 @@ import AvatarSelection from './AvatarSelection_LoginPage';
 
 export default class LoginPage extends React.Component {
     constructor(props) {
-        super();
+        super(props);
 
         var myState = getGameState();
         var localUUID = getLocalState().uuid;

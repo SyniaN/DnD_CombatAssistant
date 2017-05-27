@@ -4,7 +4,7 @@ import {editToken} from '../System/Game';
 export default class CharacterInfo extends React.Component{
     
     constructor(props){
-        super();
+        super(props);
         this.sendChangesToGameState = this.sendChangesToGameState.bind(this);
         this.updateLocalState = this.updateLocalState.bind(this);
         this.state = props.char.alerts;

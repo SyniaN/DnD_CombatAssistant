@@ -13,7 +13,7 @@ import FullStateInfo from './Widgets/FullStateInfo';
 export default class SidePanel extends React.Component {
     
     constructor(props){
-        super();
+        super(props);
         this.handleClick = this.handleClick.bind(this);
         this.removeLocalChar = this.removeLocalChar.bind(this);
     }

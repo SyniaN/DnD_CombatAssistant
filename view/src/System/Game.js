@@ -318,12 +318,37 @@ export function addToken(token) {
         },
         inventory:{
             "Weapons":{
+                "Long Bow" : {
+                    "icon":"",
+                    "count": 1
+                },
+                "Dagger" : {
+                    "icon":"",
+                    "count": 2
+                }
             },
             "Armor":{
+                "Leather Armor": {
+                    "icon":"",
+                    "count": 1
+                }
             },
             "Consumables":{
+                "Small Health Potion": {
+                    "icon":"",
+                    "count": 4
+                },
+                "Large Mana Potion":{
+                    "icon":"",
+                    "count":2
+                }
             },
             "Other":{
+                "Lucky Pendant":{
+                    "icon":"",
+                    "count":1
+                }
+
             }
         }
     };
@@ -377,6 +402,21 @@ export function activateFogger() {
 export function deactivateFogger() {
     if (db) console.log('deactivateFogger()');
     gameState.fogOfWar.inAction = false;
+    emitChange(true);
+}
+
+export function incrementTokenInventoryItem(tokenId, section, item){
+    gameState.tokens[tokenId].inventory[section][item].count++;
+    emitChange(true);
+}
+
+export function decrementItemCount(tokenId, section, item){
+    gameState.tokens[tokenId].inventory[section][item].count--;
+    emitChange(true);
+}
+
+export function updateInventory(tokenId, newInventory){
+    gameState.tokens[tokenId].inventory = newInventory;
     emitChange(true);
 }
 
