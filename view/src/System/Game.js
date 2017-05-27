@@ -330,6 +330,11 @@ export function addToken(token) {
                     "displayName": "Leather Armor",
                     "icon":"",
                     "count": 1
+                },
+                {
+                    "displayName": "",
+                    "icon":"",
+                    "count": 0
                 }
             ],
             "Consumables":[
@@ -349,6 +354,11 @@ export function addToken(token) {
                     "displayName": "Lucky Pendant",
                     "icon":"",
                     "count": 1
+                },
+                {
+                    "displayName": "",
+                    "icon":"",
+                    "count": 0
                 }
             ]
         }
