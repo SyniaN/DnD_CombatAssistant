@@ -8,6 +8,7 @@ export default class TokenInventory extends React.Component{
         this.incrementItemCount = this.incrementItemCount.bind(this);
         this.decrementItemCount = this.decrementItemCount.bind(this);
         this.changeItem = this.changeItem.bind(this);
+        this.sendChangeToGameState = this.sendChangeToGameState.bind(this);
     }
 
     incrementItemCount(event){
@@ -24,9 +25,23 @@ export default class TokenInventory extends React.Component{
         decrementItemCount(tokenId, section, item);
     }
 
-    changeItem(){
-        updateInventory();
+    changeItem(event){
+        var section = event.target.name;
+        var item = event.target.id;
+        var newDisplayName = event.target.value;
+        var newState = this.state;
+        newState[section][item] = {
+            ...this.state[section][item],
+            "displayName": newDisplayName
+        }
+        this.setState(newState);
     }
+
+    sendChangeToGameState(){
+        updateInventory(this.props.token.id, this.state);
+    }
+
+
     
     render(){
         var numberStyle = {
@@ -59,8 +74,7 @@ export default class TokenInventory extends React.Component{
                             <a name={sectionName} id={itemName} onClick={this.decrementItemCount} style={arrowStyle} className="glyphicon glyphicon-triangle-left" aria-hidden="true"></a>
                             <label style={numberStyle}>{section[itemName].count}</label>
                             <a name={sectionName} id={itemName} onClick={this.incrementItemCount} style={arrowStyle} className="glyphicon glyphicon-triangle-right" aria-hidden="true"></a>
-
-                            <input  style={textStyle} type="text" value={itemName} />
+                            <input name={sectionName} id={itemName} onChange={this.changeItem} style={textStyle} type="text" value={section[itemName].displayName} />
                         </div>
                     )
                 }
@@ -75,7 +89,7 @@ export default class TokenInventory extends React.Component{
         }
 
         return (
-            <div>
+            <div onBlur={this.sendChangeToGameState}>
                 <h2> Inventory </h2>
                 {inventoryList}
             </div>

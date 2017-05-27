@@ -69,25 +69,10 @@ let gameState = {
                 "alert4": ""
             },
             inventory:{
-                "Weapons":{
-                    "Long Sword" : {
-                        "icon":"",
-                        "count": 1
-                    },
-                    "Dagger" : {
-                        "icon":"",
-                        "count": 1
-                    }
-                },
-                "Armor":{
-
-                },
-                "Consumables":{
-
-                },
-                "Other":{
-
-                }
+                "Weapons":[],
+                "Armor":[],
+                "Consumables":[],
+                "Other":[]
             }
 		},
 		1: {
@@ -134,35 +119,45 @@ let gameState = {
                 "alert4": ""
             },
             inventory:{
-                "Weapons":{
-                    "Long Bow" : {
+                "Weapons":[
+                    {
+                        "displayName": "Long Bow",
                         "icon":"",
                         "count": 1
                     },
-                    "Knife" : {
+                    {
+                        "displayName":"Dagger",
+                        "icon":"",
+                        "count": 2
+                    }
+                    
+                ],
+                "Armor":[
+                    {
+                        "displayName": "Leather Armor",
                         "icon":"",
                         "count": 1
                     }
-                },
-                "Armor":{
-                    "Leather Armor": {
-                        "icon":"",
-                        "count": 1
-                    }
-                },
-                "Consumables":{
-                    "Small Health Potion": {
+                ],
+                "Consumables":[
+                    {
+                        "displayName": "Small Health Potion",
                         "icon":"",
                         "count": 4
                     },
-                    "Large Mana Potion":{
+                    {
+                        "displayName": "Large Mana Potion",
                         "icon":"",
                         "count":2
                     }
-                },
-                "Other":{
-
-                }
+                ],
+                "Other":[
+                    {
+                        "displayName": "Lucky Pendant",
+                        "icon":"",
+                        "count": 1
+                    }
+                ]
             }
 		}
     }
@@ -317,39 +312,45 @@ export function addToken(token) {
             "alert4": ""
         },
         inventory:{
-            "Weapons":{
-                "Long Bow" : {
+            "Weapons":[
+                {
+                    "displayName": "Long Bow",
                     "icon":"",
                     "count": 1
                 },
-                "Dagger" : {
+                {
+                    "displayName":"Dagger",
                     "icon":"",
                     "count": 2
                 }
-            },
-            "Armor":{
-                "Leather Armor": {
+                
+            ],
+            "Armor":[
+                {
+                    "displayName": "Leather Armor",
                     "icon":"",
                     "count": 1
                 }
-            },
-            "Consumables":{
-                "Small Health Potion": {
+            ],
+            "Consumables":[
+                {
+                    "displayName": "Small Health Potion",
                     "icon":"",
                     "count": 4
                 },
-                "Large Mana Potion":{
+                {
+                    "displayName": "Large Mana Potion",
                     "icon":"",
                     "count":2
                 }
-            },
-            "Other":{
-                "Lucky Pendant":{
+            ],
+            "Other":[
+                {
+                    "displayName": "Lucky Pendant",
                     "icon":"",
-                    "count":1
+                    "count": 1
                 }
-
-            }
+            ]
         }
     };
     
