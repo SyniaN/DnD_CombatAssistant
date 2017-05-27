@@ -30,8 +30,6 @@ pubnub.addListener({
         var action = p.action;
         var uuid = p.uuid;
         var myState = getGameState();
-        console.log("action: " + action);
-        console.log("uuid: " + uuid);
         
         // if a new client joins the chat, then send the current state
         // to everyone on the channel

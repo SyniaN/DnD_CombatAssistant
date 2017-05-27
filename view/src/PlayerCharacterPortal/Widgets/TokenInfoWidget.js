@@ -85,7 +85,7 @@ export default class TokenInfo extends React.Component{
 	    for (var propName in this.state.stats){
 	    	configBoxes.push(
 	    		<div key={propName}>
-		    		<label>{propName}</label>
+		    		<label>{this.state.stats[propName].displayName}</label>
 		    		<div>
 		    			<input name={propName} type="text" value={this.state.stats[propName].value} onChange={this.handleInputChange}/>
 	    			</div>

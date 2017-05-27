@@ -156,52 +156,8 @@ let gameState = {
                 "alert3": "",
                 "alert4": ""
             }
-		},
-		3: {
-			"id": 3,
-			"tokenType": "player",
-			"position": [
-				13,
-				8
-			],
-			"color": "#8ad372",
-			"icon": "1.jpg",
-			"width": "60px",
-			"height": "60px",
-			stats: {
-			    "name": {
-			        "displayName": "Name",
-			        "value" : "Shepard"
-			    },
-    			"hp": {
-    			    "displayName": "HP",
-    			    "value" : "10"
-    			},
-                "maxHp":{
-                    "displayName": "Max HP",
-                    "value" : "30"
-                },
-    			"mp": {
-    			    "displayName": "Spell Count",
-    			    "value" : "1"
-    			},
-                "maxMp":{
-                    "displayName": "Max Spell Count",
-    			    "value": "3"
-                },
-    			"ac": {
-    			    "displayName": "Armor",
-    			    "value" : "6"
-    			} 
-            },
-            alerts:{
-                "alert1": "",
-                "alert2": "",
-                "alert3": "",
-                "alert4": ""
-            }
-        }
-    },
+		}
+    }
 };
 
 
@@ -310,6 +266,7 @@ export function addToken(token) {
     
     var newToken = {
         "id": gameState.nextId,
+        "uuid": token.uuid,
 		"tokenType": token.tokenType,
 		"position": [
 			token.positionX,
