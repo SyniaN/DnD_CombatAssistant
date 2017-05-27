@@ -113,8 +113,8 @@ let gameState = {
     			}
             },
             alerts:{
-                "alert1": "",
-                "alert2": "",
+                "alert1": "Frightened",
+                "alert2": "Poisoned",
                 "alert3": "",
                 "alert4": ""
             },
@@ -306,7 +306,7 @@ export function addToken(token) {
             }
         },
         alerts:{
-            "alert1": "",
+            "alert1": "New Player",
             "alert2": "",
             "alert3": "",
             "alert4": ""
