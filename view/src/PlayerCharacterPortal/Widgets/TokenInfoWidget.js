@@ -15,7 +15,6 @@ export default class TokenInfo extends React.Component{
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.sendChangeToGameState = this.sendChangeToGameState.bind(this);
-		this.turnRedIfDirty = this.turnRedIfDirty.bind(this);
 	}
 	
 	componentWillReceiveProps(nextProps){
@@ -51,14 +50,6 @@ export default class TokenInfo extends React.Component{
 			}
 		});
 	}
-	
-	turnRedIfDirty(id){
-        if (this.state.gameplayData[id] === this.props.token[id]){
-            return {backgroundColor: "white"};
-        } else {
-            return {backgroundColor: "red"};
-        }
-    }
     
     render(){
     	console.log('rendering TokenInfo Widget');   	
@@ -83,11 +74,16 @@ export default class TokenInfo extends React.Component{
     	var configBoxes = [];
     
 	    for (var propName in this.state.stats){
+
+			const inputStyle = {
+				backgroundColor: this.state.stats[propName] === this.props.token.stats[propName] ? "" : "red"
+			}
+
 	    	configBoxes.push(
 	    		<div key={propName}>
 		    		<label>{this.state.stats[propName].displayName}</label>
 		    		<div>
-		    			<input name={propName} type="text" value={this.state.stats[propName].value} onChange={this.handleInputChange}/>
+		    			<input name={propName} type="text" style={inputStyle} value={this.state.stats[propName].value} onChange={this.handleInputChange}/>
 	    			</div>
 	    		</div>
 	    	);
