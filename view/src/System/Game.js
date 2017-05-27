@@ -67,54 +67,31 @@ let gameState = {
                 "alert2": "",
                 "alert3": "",
                 "alert4": ""
-            }
-		},
-		1 : {
-			"id": 1,
-			"tokenType": "npc",
-			"position": [
-				18,
-				4
-			],
-			"width": "360px",
-			"height": "360px",
-			"color": "white",
-			"icon": "dragon.png",
-			stats: {
-			    "name": {
-			        "displayName": "Name",
-			        "value" : "Ancient Dragon"
-			    },
-    			"hp": {
-    			    "displayName": "HP",
-    			    "value" : "10"
-    			},
-                "maxHp":{
-                    "displayName": "Max HP",
-                    "value" : "30"
-                },
-    			"mp": {
-    			    "displayName": "Spell Count",
-    			    "value" : "1"
-    			},
-                "maxMp":{
-                    "displayName": "Max Spell Count",
-    			    "value": "3"
-                },
-    			"ac": {
-    			    "displayName": "Armor",
-    			    "value" : "6"
-    			}    			
             },
-            alerts:{
-                "alert1": "",
-                "alert2": "",
-                "alert3": "",
-                "alert4": ""
+            inventory:{
+                "Weapons":{
+                    "Long Sword" : {
+                        "icon":"",
+                        "count": 1
+                    },
+                    "Dagger" : {
+                        "icon":"",
+                        "count": 1
+                    }
+                },
+                "Armor":{
+
+                },
+                "Consumables":{
+
+                },
+                "Other":{
+
+                }
             }
 		},
-		2: {
-			"id": 2,
+		1: {
+			"id": 1,
 			"tokenType": "player",
 			"position": [
 				9,
@@ -155,6 +132,37 @@ let gameState = {
                 "alert2": "",
                 "alert3": "",
                 "alert4": ""
+            },
+            inventory:{
+                "Weapons":{
+                    "Long Bow" : {
+                        "icon":"",
+                        "count": 1
+                    },
+                    "Knife" : {
+                        "icon":"",
+                        "count": 1
+                    }
+                },
+                "Armor":{
+                    "Leather Armor": {
+                        "icon":"",
+                        "count": 1
+                    }
+                },
+                "Consumables":{
+                    "Small Health Potion": {
+                        "icon":"",
+                        "count": 4
+                    },
+                    "Large Mana Potion":{
+                        "icon":"",
+                        "count":2
+                    }
+                },
+                "Other":{
+
+                }
             }
 		}
     }
@@ -303,11 +311,21 @@ export function addToken(token) {
             }
         },
         alerts:{
-                "alert1": "New Player",
-                "alert2": "",
-                "alert3": "",
-                "alert4": ""
+            "alert1": "",
+            "alert2": "",
+            "alert3": "",
+            "alert4": ""
+        },
+        inventory:{
+            "Weapons":{
+            },
+            "Armor":{
+            },
+            "Consumables":{
+            },
+            "Other":{
             }
+        }
     };
     
     gameState.tokens[gameState.nextId] = newToken;

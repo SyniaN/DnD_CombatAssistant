@@ -6,7 +6,7 @@ import { getGameState, deselectCharacter, deselectFogger, removeToken } from '..
 import { getLocalState } from '../System/Game_Local';
 
 import FreeTextWidget from './Widgets/FreeTextWidget';
-import TokenInfo from './Widgets/TokenInfoWidget';
+import PlayerStats from './Widgets/PlayerStats';
 
 export default class SidePanel extends React.Component {
     
@@ -53,7 +53,8 @@ export default class SidePanel extends React.Component {
                         
                         <Link to="/"><button style={buttonStyle} className="btn btn-default" onClick={this.removeLocalChar}>Log out</button></Link>
                         <hr/>
-                        <TokenInfo token={token}></TokenInfo>
+                        <PlayerStats token={token}></PlayerStats>
+
                         <FreeTextWidget></FreeTextWidget>
                                                                 
                     </div>
