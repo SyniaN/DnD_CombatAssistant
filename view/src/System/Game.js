@@ -82,7 +82,7 @@ let gameState = {
 				9,
 				10
 			],
-			"color": "#ce3131",
+			"color": "#57b6f2",
 			"icon": "3.jpg",
 			"width": "60px",
 			"height": "60px",

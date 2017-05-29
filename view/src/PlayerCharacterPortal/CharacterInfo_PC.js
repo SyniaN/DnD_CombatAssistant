@@ -5,7 +5,7 @@ export default class CharacterInfo extends React.Component{
     render(){
 
         const overallStyle = {
-            height: "125px",
+            height: "110px",
             width: "300px",
             float: "right",
             marginBottom: "5px"
@@ -14,9 +14,8 @@ export default class CharacterInfo extends React.Component{
         const photoHalf= {
             width:"100px",
             height:"100%",
-            backgroundColor: this.props.char.color,
             float:"left",
-            border: "3px solid rgb(200, 200, 200)",
+            border: "5px solid " + this.props.char.color,
             textShadow: "0px 0px 3px rgb(200, 200, 200)"
         }
         
@@ -31,10 +30,11 @@ export default class CharacterInfo extends React.Component{
 
         const photoStyle = {
             width: "100%",
-            height: "85%",
+            height: "100%",
             backgroundImage: "url('/token_icons/"+this.props.char.icon+"')",
             backgroundSize: "cover",
-            float: "left"
+            float: "left",
+            padding: "3px"
         };
 
         const statsStyle = {
@@ -49,8 +49,8 @@ export default class CharacterInfo extends React.Component{
                 <div id="text" style={textHalf} >
                     <div style={statsStyle}>
                         <div>
-                            <p>{this.props.char.alerts.alert1}</p>
-                            <p>{this.props.char.alerts.alert2}</p>
+                            <p>Health: {this.props.char.stats.hp.value}/{this.props.char.stats.maxHp.value}</p>
+                            <p>Mana: {this.props.char.stats.mp.value}/{this.props.char.stats.maxMp.value}</p>
                             <p>{this.props.char.alerts.alert3}</p>
                             <p>{this.props.char.alerts.alert4}</p>
                         </div>
@@ -59,10 +59,7 @@ export default class CharacterInfo extends React.Component{
                 </div>
             
                 <div id="icon" style={photoHalf} >
-                    <div style={photoStyle}>
-                        
-                    </div>
-                    <p><label>HP: </label> {this.props.char.stats.hp.value}/{this.props.char.stats.maxHp.value}</p>
+                    <div style={photoStyle}></div>
                 </div>
                 
             </div>
