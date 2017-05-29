@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Portal_PC from './PlayerCharacterPortal/Portal_PC';
+import TestGround from './PlayerCharacterPortal/TestGround_PC';
 import Portal_GM from './GameMasterPortal/Portal_GM';
 import LoginPage from './LoginPage/LoginPage';
 import { observe } from './System/Game';
@@ -39,6 +40,7 @@ observe(() => {
           <div>
             <Route exact path="/" component={LoginPage}/>
             <Route exact path="/GameMaster" component={Portal_GM}/>
+            <Route exact path="/PC_TestGround" component={TestGround}/>
             <PrivateRoute path="/Player" component={Portal_PC}/>
           </div>
         </Router>,
