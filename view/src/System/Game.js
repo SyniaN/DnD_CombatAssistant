@@ -57,6 +57,14 @@ let gameState = {
                     "displayName": "Max Spell Count",
     			    "value": "3"
                 },
+                "stamina": {
+    			    "displayName": "Stamina",
+    			    "value": "30"
+    			},
+    			"maxStamina": {
+    			    "displayName": "Max Stamina",
+    			    "value": "60"
+    			},
     			"ac": {
     			    "displayName": "Armor",
     			    "value" : "6"
@@ -100,13 +108,21 @@ let gameState = {
                     "value" : "30"
                 },
     			"mp": {
-    			    "displayName": "Spell Count",
+    			    "displayName": "MP",
     			    "value" : "8"
     			},
                 "maxMp":{
-                    "displayName": "Max Spell Count",
+                    "displayName": "Max MP",
     			    "value": "10"
                 },
+                "stamina": {
+    			    "displayName": "Stamina",
+    			    "value": "30"
+    			},
+    			"maxStamina": {
+    			    "displayName": "Max Stamina",
+    			    "value": "60"
+    			},
     			"ac": {
     			    "displayName": "Armor",
     			    "value" : "6"
@@ -300,6 +316,14 @@ export function addToken(token) {
                 "displayName": "Max Spell Count",
                 "value": token.mpMax
             },
+            "stamina": {
+			    "displayName": "Stamina",
+			    "value": token.stamina
+			},
+			"maxStamina": {
+			    "displayName": "Max Stamina",
+			    "value": token.maxStamina
+			},
             "ac": {
                 "displayName": "Armor",
                 "value" : token.ac
