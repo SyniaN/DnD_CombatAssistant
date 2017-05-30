@@ -5,15 +5,14 @@ export default class CharacterInfo extends React.Component{
     render(){
 
         const overallStyle = {
-            height: "0px",
-            width: "235px",
+            width: "220px",
             float: "right",
             marginBottom: "5px"
         };
         
         const photoHalf= {
-            width:"90px",
-            height:"120px",
+            width:"80px",
+            height:"100px",
             float:"left",
             //border: "5px solid " + this.props.char.color,
             textShadow: "0px 0px 3px rgb(200, 200, 200)"
@@ -44,9 +43,9 @@ export default class CharacterInfo extends React.Component{
         
         const barStyle = {
             transformOrigin:"0% 100%",
-            transform: "rotate(-90deg) translate(-105px, 100px)",
+            transform: "rotate(-90deg) translate(-85px, 90px)",
             height: "10px",
-            width: "110px"
+            width: "100px"
         }
         
         const barMarginPadding = {
