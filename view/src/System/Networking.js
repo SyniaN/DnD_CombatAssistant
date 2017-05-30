@@ -12,7 +12,7 @@ const pubnub = new PubNub({
 });
 
 pubnub.subscribe({
-    channels: ['ReactChat2'],
+    channels: ['ReactChat'],
     withPresence: true
 });
 
@@ -30,8 +30,6 @@ pubnub.addListener({
         var action = p.action;
         var uuid = p.uuid;
         var myState = getGameState();
-        console.log("action: " + action);
-        console.log("uuid: " + uuid);
         
         // if a new client joins the chat, then send the current state
         // to everyone on the channel
@@ -59,7 +57,7 @@ export function publishMessage(outMessage) {
     if (db) console.log('PUBLISHING');
     if (db) console.log(outMessage);
     pubnub.publish({
-        channel: ['ReactChat2'],
+        channel: ['ReactChat'],
         message: outMessage
     });
 }
@@ -69,6 +67,6 @@ setLocalUuid (pubnub.getUUID());
 window.addEventListener("beforeunload", (ev) => 
 {  
     pubnub.unsubscribe({
-        channels: ['ReactChat2']
+        channels: ['ReactChat']
     })
 });

@@ -1,12 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { addToken } from '../System/Game';
+import { addToken, removeToken, getGameState } from '../System/Game';
 import { setLocalcharId, getLocalState } from '../System/Game_Local';
 import AvatarSelection from './AvatarSelection_LoginPage';
 
 export default class LoginPage extends React.Component {
     constructor(props) {
-        super();
+        super(props);
+
+        var myState = getGameState();
+        var localUUID = getLocalState().uuid;
+        for (var tokenId in myState.tokens){
+            var token = myState.tokens[tokenId];
+            if (token.uuid === localUUID){
+                removeToken(tokenId);
+            }
+        }
+
         this.state = {
             name: "",
             icon: "1.jpg"
@@ -82,6 +92,9 @@ export default class LoginPage extends React.Component {
     }
 
     render() {
+
+
+
 
         var inputStyle = {
             width: "100%",

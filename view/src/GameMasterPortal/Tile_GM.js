@@ -4,7 +4,7 @@ import { getGameState, activateFogger, deactivateFogger, changeFogStatus } from 
 export default class Tile extends React.Component {
 
     constructor(props) {
-        super();
+        super(props);
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseOver = this.handleMouseOver.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);

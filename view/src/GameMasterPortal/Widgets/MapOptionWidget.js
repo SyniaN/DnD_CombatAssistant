@@ -5,7 +5,7 @@ import {changeMap, changeMapOptions, changeMapScale, getGameState} from '../../S
 
 export default class MapOptionWidget extends React.Component {
     constructor(props){
-        super();
+        super(props);
 
         this.handleTileSizeChange = this.handleTileSizeChange.bind(this);
         this.handleRowCountChange = this.handleRowCountChange.bind(this);

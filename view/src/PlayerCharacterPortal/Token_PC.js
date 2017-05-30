@@ -4,8 +4,8 @@ import { getLocalState } from '../System/Game_Local';
 
 export default class Token extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.handleKeyPress= this.handleKeyPress.bind(this);
     }
@@ -60,8 +60,8 @@ export default class Token extends React.Component {
             margin: '0',
             backgroundColor: this.props.color,
             borderStyle: 'solid',
-            borderWidth: "2px",
-            borderColor: getLocalState().selectedCharacter===this.props.id?'red':'black',
+            borderWidth: getLocalState().selectedCharacter===this.props.id?'3px':'2px',
+            borderColor: getLocalState().selectedCharacter===this.props.id?'#ffa62b':'black',
             padding: '0',
             backgroundImage:"url('/token_icons/"+getGameState().tokens[this.props.id].icon+"')",
             backgroundSize:"cover",

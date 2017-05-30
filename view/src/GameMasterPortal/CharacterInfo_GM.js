@@ -4,35 +4,22 @@ import {editToken} from '../System/Game';
 export default class CharacterInfo extends React.Component{
     
     constructor(props){
-        super();
+        super(props);
         this.sendChangesToGameState = this.sendChangesToGameState.bind(this);
         this.updateLocalState = this.updateLocalState.bind(this);
-        this.state = {
-            alert1 : props.char.stats.alerts1.value,
-            alert2 : props.char.stats.alerts2.value,
-            alert3 : props.char.stats.alerts3.value,
-            alert4 : props.char.stats.alerts4.value
-        };
+        this.state = props.char.alerts;
     }
     
     componentWillReceiveProps(nextProps){
         console.log('nextProps', nextProps);
-        this.setState({
-            alert1 : nextProps.char.stats.alerts1.value,
-            alert2 : nextProps.char.stats.alerts2.value,
-            alert3 : nextProps.char.stats.alerts3.value,
-            alert4 : nextProps.char.stats.alerts4.value
-        });
+        this.setState(nextProps.char.alerts);
     }
     
     sendChangesToGameState(){
-        var newToken = this.props.char;
-        console.log("sending state", newToken);
-        newToken.stats.alerts1.value = this.state.alert1;
-        newToken.stats.alerts2.value = this.state.alert2;
-        newToken.stats.alerts3.value = this.state.alert3;
-        newToken.stats.alerts4.value = this.state.alert4;
-        console.log("sending state", newToken);
+        var newToken = {
+            ...this.props.char,
+            alerts: this.state
+        }
 
         editToken(newToken);
     }
@@ -84,16 +71,26 @@ export default class CharacterInfo extends React.Component{
             textAlign: "right"
         };
 
+        
+
+        var alerts = [];
+
+        for (var propName in this.props.char.alerts){
+            const inputBoxStyle = {
+                backgroundColor: this.props.char.alerts[propName] === this.state[propName] ? "" : "red"
+            }
+
+            alerts.push( <input type="text" style={inputBoxStyle} name={propName} value={this.state[propName]} onChange={this.updateLocalState}/> )
+
+        }
+
         return(
             <div style={overallStyle}>
             
                 <div id="text" style={textHalf} >
                     <div style={statsStyle}>
                         <div onBlur={this.sendChangesToGameState}>
-                            <input type="text" name="alert1" value={this.state.alert1} onChange={this.updateLocalState}/>
-                            <input type="text" name="alert2" value={this.state.alert2} onChange={this.updateLocalState}/>
-                            <input type="text" name="alert3" value={this.state.alert3} onChange={this.updateLocalState}/>
-                            <input type="text" name="alert4" value={this.state.alert4} onChange={this.updateLocalState}/>
+                            {alerts}
                         </div>
                         
                     </div>

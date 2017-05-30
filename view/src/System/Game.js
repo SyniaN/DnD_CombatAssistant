@@ -61,86 +61,28 @@ let gameState = {
     			    "displayName": "Armor",
     			    "value" : "6"
     			},
-    			"alerts1": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts2": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts3": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts4": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                }  
+            },
+            alerts:{
+                "alert1": "",
+                "alert2": "",
+                "alert3": "",
+                "alert4": ""
+            },
+            inventory:{
+                "Weapons":[],
+                "Armor":[],
+                "Consumables":[],
+                "Other":[]
             }
 		},
-		1 : {
+		1: {
 			"id": 1,
-			"tokenType": "npc",
-			"position": [
-				18,
-				4
-			],
-			"width": "360px",
-			"height": "360px",
-			"color": "white",
-			"icon": "dragon.png",
-			stats: {
-			    "name": {
-			        "displayName": "Name",
-			        "value" : "Ancient Dragon"
-			    },
-    			"hp": {
-    			    "displayName": "HP",
-    			    "value" : "10"
-    			},
-                "maxHp":{
-                    "displayName": "Max HP",
-                    "value" : "30"
-                },
-    			"mp": {
-    			    "displayName": "Spell Count",
-    			    "value" : "1"
-    			},
-                "maxMp":{
-                    "displayName": "Max Spell Count",
-    			    "value": "3"
-                },
-    			"ac": {
-    			    "displayName": "Armor",
-    			    "value" : "6"
-    			},
-    			"alerts1": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts2": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts3": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts4": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                }  
-            }
-		},
-		2: {
-			"id": 2,
 			"tokenType": "player",
 			"position": [
 				9,
 				10
 			],
-			"color": "#ce3131",
+			"color": "#57b6f2",
 			"icon": "3.jpg",
 			"width": "60px",
 			"height": "60px",
@@ -168,80 +110,57 @@ let gameState = {
     			"ac": {
     			    "displayName": "Armor",
     			    "value" : "6"
-    			},
-    			"alerts1": {
-    			    "displayName": "Alerts",
-    			    "value" : "Cold"
-                },
-                "alerts2": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts3": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts4": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                }  
+    			}
+            },
+            alerts:{
+                "alert1": "Frightened",
+                "alert2": "Poisoned",
+                "alert3": "",
+                "alert4": ""
+            },
+            inventory:{
+                "Weapons":[
+                    {
+                        "displayName": "Long Bow",
+                        "icon":"",
+                        "count": 1
+                    },
+                    {
+                        "displayName":"Dagger",
+                        "icon":"",
+                        "count": 2
+                    }
+                    
+                ],
+                "Armor":[
+                    {
+                        "displayName": "Leather Armor",
+                        "icon":"",
+                        "count": 1
+                    }
+                ],
+                "Consumables":[
+                    {
+                        "displayName": "Small Health Potion",
+                        "icon":"",
+                        "count": 4
+                    },
+                    {
+                        "displayName": "Large Mana Potion",
+                        "icon":"",
+                        "count":2
+                    }
+                ],
+                "Other":[
+                    {
+                        "displayName": "Lucky Pendant",
+                        "icon":"",
+                        "count": 1
+                    }
+                ]
             }
-		},
-		3: {
-			"id": 3,
-			"tokenType": "player",
-			"position": [
-				13,
-				8
-			],
-			"color": "#8ad372",
-			"icon": "1.jpg",
-			"width": "60px",
-			"height": "60px",
-			stats: {
-			    "name": {
-			        "displayName": "Name",
-			        "value" : "Shepard"
-			    },
-    			"hp": {
-    			    "displayName": "HP",
-    			    "value" : "10"
-    			},
-                "maxHp":{
-                    "displayName": "Max HP",
-                    "value" : "30"
-                },
-    			"mp": {
-    			    "displayName": "Spell Count",
-    			    "value" : "1"
-    			},
-                "maxMp":{
-                    "displayName": "Max Spell Count",
-    			    "value": "3"
-                },
-    			"ac": {
-    			    "displayName": "Armor",
-    			    "value" : "6"
-    			},
-    			"alerts1": {
-    			    "displayName": "Alerts",
-    			    "value" : "frightened"
-                },
-                "alerts2": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts3": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                },
-                "alerts4": {
-    			    "displayName": "Alerts",
-    			    "value" : ""
-                }  
-            }
-        }
-    },
+		}
+    }
 };
 
 
@@ -350,6 +269,7 @@ export function addToken(token) {
     
     var newToken = {
         "id": gameState.nextId,
+        "uuid": token.uuid,
 		"tokenType": token.tokenType,
 		"position": [
 			token.positionX,
@@ -383,23 +303,64 @@ export function addToken(token) {
             "ac": {
                 "displayName": "Armor",
                 "value" : token.ac
-            },
-            "alerts1": {
-                "displayName": "Alerts",
-                "value" : ""
-            },
-            "alerts2": {
-                "displayName": "Alerts",
-                "value" : ""
-            },
-            "alerts3": {
-                "displayName": "Alerts",
-                "value" : ""
-            },
-            "alerts4": {
-                "displayName": "Alerts",
-                "value" : ""
-            }  
+            }
+        },
+        alerts:{
+            "alert1": "New Player",
+            "alert2": "",
+            "alert3": "",
+            "alert4": ""
+        },
+        inventory:{
+            "Weapons":[
+                {
+                    "displayName": "Long Bow",
+                    "icon":"",
+                    "count": 1
+                },
+                {
+                    "displayName":"Dagger",
+                    "icon":"",
+                    "count": 2
+                }
+                
+            ],
+            "Armor":[
+                {
+                    "displayName": "Leather Armor",
+                    "icon":"",
+                    "count": 1
+                },
+                {
+                    "displayName": "",
+                    "icon":"",
+                    "count": 0
+                }
+            ],
+            "Consumables":[
+                {
+                    "displayName": "Small Health Potion",
+                    "icon":"",
+                    "count": 4
+                },
+                {
+                    "displayName": "Large Mana Potion",
+                    "icon":"",
+                    "count":2
+                }
+            ],
+            "Other":[
+                {
+                    "displayName": "Lucky Pendant",
+                    "icon":"",
+                    "count": 1
+                },
+                {
+                    "displayName": "",
+                    "icon":"",
+                    "count": 0
+                }
+            ]
         }
     };
     
@@ -421,7 +382,6 @@ export function removeToken(id) {
 
 export function editToken(token) {
     if(db) console.log("editing " + token.id);
-    console.log('editing token');
     gameState.tokens[token.id] = token;
     emitChange(true);
 }
@@ -453,6 +413,21 @@ export function activateFogger() {
 export function deactivateFogger() {
     if (db) console.log('deactivateFogger()');
     gameState.fogOfWar.inAction = false;
+    emitChange(true);
+}
+
+export function incrementTokenInventoryItem(tokenId, section, item){
+    gameState.tokens[tokenId].inventory[section][item].count++;
+    emitChange(true);
+}
+
+export function decrementItemCount(tokenId, section, item){
+    gameState.tokens[tokenId].inventory[section][item].count--;
+    emitChange(true);
+}
+
+export function updateInventory(tokenId, newInventory){
+    gameState.tokens[tokenId].inventory = newInventory;
     emitChange(true);
 }
 
