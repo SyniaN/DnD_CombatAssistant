@@ -40,7 +40,7 @@ observe(() => {
           <div>
             <Route exact path="/" component={LoginPage}/>
             <Route exact path="/GameMaster" component={Portal_GM}/>
-            <Route exact path="/PC_TestGround" component={TestGround}/>
+            <Route exact path="/TestGround_PC" component={TestGround}/>
             <PrivateRoute path="/Player" component={Portal_PC}/>
           </div>
         </Router>,

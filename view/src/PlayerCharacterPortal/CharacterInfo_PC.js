@@ -15,7 +15,8 @@ export default class CharacterInfo extends React.Component{
             height:"100px",
             float:"left",
             //border: "5px solid " + this.props.char.color,
-            textShadow: "0px 0px 3px rgb(200, 200, 200)"
+            textShadow: "0px 0px 3px rgb(200, 200, 200)",            
+            position: "relative"
         };
         
         const textHalf = {
@@ -65,6 +66,24 @@ export default class CharacterInfo extends React.Component{
             width: (this.props.char.stats.stamina.value / this.props.char.stats.maxStamina.value)*100 + "%"
         }
 
+        const armorTagStyle = {
+            height: "30px",
+            width: "30px",
+            backgroundImage: "url('ui/shield.png')",
+            backgroundSize: "cover",
+            color: "rgb(30,30,30)",
+            position: "absolute",
+            left:"0px",
+            bottom:"0px"
+        }
+
+        const armorTextStyle = {
+            margin: "4px",
+            fontWeight: "bold",
+            fontSize: "15px",
+            textAlign: "center"
+        }
+
         return(
             <div style={overallStyle}>
             
@@ -81,6 +100,9 @@ export default class CharacterInfo extends React.Component{
                 </div>
                 
                 <div id="icon" style={photoHalf} >
+                    <div style={armorTagStyle}>
+                        <div style={armorTextStyle}>{this.props.char.stats.ac.value}</div>
+                    </div>
                     <div style={photoStyle}>
                         <div style={barStyle}>
                             <div className="progress" style={barMarginPadding} >
@@ -94,9 +116,10 @@ export default class CharacterInfo extends React.Component{
                             <div className="progress" style={barMarginPadding}>
                                 <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={staminaBarProgress}>
                                 </div>
-                            </div>
-                        </div>
+                            </div>                            
+                        </div>                        
                     </div>
+                    
                 </div>
             </div>
         );
