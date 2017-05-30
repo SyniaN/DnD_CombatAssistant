@@ -32,37 +32,35 @@ export default class CharacterInfo extends React.Component{
 
     render(){
 
-        const overallStyle = {
-            height: "125px",
-            width: "300px",
+ const overallStyle = {
+            width: "220px",
             float: "right",
             marginBottom: "5px"
         };
         
         const photoHalf= {
-            width:"100px",
-            height:"100%",
-            backgroundColor: this.props.char.color,
+            width:"80px",
+            height:"100px",
             float:"left",
-            border: "3px solid rgb(200, 200, 200)",
+            //border: "5px solid " + this.props.char.color,
             textShadow: "0px 0px 3px rgb(200, 200, 200)"
-        }
+        };
         
         const textHalf = {
-            width: "200px",
-            height: "100%",
+            width: "110px",
             float:"left",
-            color: 'rgb(20, 20, 20)',
+            color: 'rgb(50, 50, 50)',
             paddingRight: "10px",
-            textShadow: "0px 0px 5px #000000"
+            textShadow: "0px 0px 3px rgb(70, 70, 70)"
         };
 
         const photoStyle = {
             width: "100%",
-            height: "85%",
+            height: "100%",
             backgroundImage: "url('/token_icons/"+this.props.char.icon+"')",
             backgroundSize: "cover",
-            float: "left"
+            float: "left",
+            padding: "3px"
         };
 
         const statsStyle = {
@@ -70,17 +68,41 @@ export default class CharacterInfo extends React.Component{
             width: "100%",
             textAlign: "right"
         };
-
         
-
+        const barStyle = {
+            transformOrigin:"0% 100%",
+            transform: "rotate(-90deg) translate(-85px, 90px)",
+            height: "10px",
+            width: "100px"
+        };
+        
+        const barMarginPadding = {
+            marginBottom: "2px",
+            height: "10px"
+        };
+        
+        const hpBarProgress = {
+            width: (this.props.char.stats.hp.value / this.props.char.stats.maxHp.value)*100 + "%"
+        };
+        
+        const mpBarProgress = {
+            width: (this.props.char.stats.mp.value / this.props.char.stats.maxMp.value)*100 + "%"
+        };
+        
+        const staminaBarProgress = {
+            width: (this.props.char.stats.stamina.value / this.props.char.stats.maxStamina.value)*100 + "%"
+        };
+        
         var alerts = [];
 
         for (var propName in this.props.char.alerts){
             const inputBoxStyle = {
-                backgroundColor: this.props.char.alerts[propName] === this.state[propName] ? "" : "red"
-            }
+                backgroundColor: this.props.char.alerts[propName] === this.state[propName] ? "" : "red",
+                width: "105px",
+                height: "25px"
+            };
 
-            alerts.push( <input type="text" style={inputBoxStyle} name={propName} value={this.state[propName]} onChange={this.updateLocalState}/> )
+            alerts.push( <input type="text" style={inputBoxStyle} name={propName} value={this.state[propName]} onChange={this.updateLocalState}/> );
 
         }
 
@@ -98,9 +120,21 @@ export default class CharacterInfo extends React.Component{
             
                 <div id="icon" style={photoHalf} >
                     <div style={photoStyle}>
-                        
+                        <div style={barStyle}>
+                            <div className="progress" style={barMarginPadding} >
+                                <div className="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={hpBarProgress}>
+                                </div>
+                            </div>
+                            <div className="progress" style={barMarginPadding}>
+                                <div className="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={mpBarProgress}>
+                                </div>
+                            </div>
+                            <div className="progress" style={barMarginPadding}>
+                                <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={staminaBarProgress}>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p><label>HP: </label> {this.props.char.stats.hp.value}/{this.props.char.stats.maxHp.value}</p>
                 </div>
                 
             </div>
