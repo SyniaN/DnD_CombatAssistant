@@ -6,7 +6,7 @@ export default class TestGround extends React.Component {
     
     render(){
         
-        var token = getGameState().tokens[2];
+        var token = getGameState().tokens[1];
         
         return(
             <CharacterInfo char={token}></CharacterInfo>

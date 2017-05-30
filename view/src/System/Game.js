@@ -93,7 +93,7 @@ let gameState = {
 			    },
     			"hp": {
     			    "displayName": "HP",
-    			    "value" : "10"
+    			    "value" : "15"
     			},
                 "maxHp":{
                     "displayName": "Max HP",
@@ -101,11 +101,11 @@ let gameState = {
                 },
     			"mp": {
     			    "displayName": "Spell Count",
-    			    "value" : "1"
+    			    "value" : "8"
     			},
                 "maxMp":{
                     "displayName": "Max Spell Count",
-    			    "value": "3"
+    			    "value": "10"
                 },
     			"ac": {
     			    "displayName": "Armor",
