@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class PointsOrb extends React.Component{
     render(){
-        const size = "100px";
+        const size = this.props.size;
         const overallStyle ={
             height: size,
             width: size,
@@ -18,10 +19,10 @@ export default class PointsOrb extends React.Component{
             background: "transparent radial-gradient(circle at 30% 30% , rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4) 10%, transparent 60%) repeat scroll 0% 0%",
             position: "absolute"
         };
-        const secondaryHighlightStyle = {
+        const shadowStyle = {
             height: "100%",
             width:"100%",
-            background: "transparent radial-gradient(circle at 95% 70% , rgba(255, 255, 255, 0.5), transparent 30%) repeat scroll 0% 0%",
+            background: "transparent radial-gradient(circle at 60% 90% , rgba(57, 57, 57, 0.5), transparent 40%) repeat scroll 0% 0%",
             position: "absolute"
         };
         const pointsLiquidStyle = {
@@ -34,17 +35,25 @@ export default class PointsOrb extends React.Component{
         const backgroundStyle = {
             height:"100%",
             width:"100%",
-            backgroundColor: "rgb(85, 85, 85)",
+            backgroundColor: "rgb(20, 20, 20)",
             position: "absolute"
         }
         
         return(
             <div style={overallStyle}>
-                <div style={backgroundStyle}></div>
-                <div style={pointsLiquidStyle}></div>
-                <div style={mainHighlightStyle}></div>
-                <div style={secondaryHighlightStyle}></div>
+                <div id="background" style={backgroundStyle}></div>
+                <div id="liquid" style={pointsLiquidStyle}></div>
+                <div id="shadow" style={shadowStyle}></div>
+                <div id="highlight" style={mainHighlightStyle}></div>
+                
             </div>
         );
     }
+}
+
+PointsOrb.propTypes = {
+    current: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+    color: PropTypes.string.isRequired,
+    size: PropTypes.string.isRequired
 }
