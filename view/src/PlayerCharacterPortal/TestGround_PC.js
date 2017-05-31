@@ -1,5 +1,5 @@
 import React from 'react';
-import CharacterInfo from './CharacterInfo_PC';
+import PointsOrb from './PointsOrb_PC';
 import {getGameState} from '../System/Game';
 
 export default class TestGround extends React.Component {
@@ -7,9 +7,12 @@ export default class TestGround extends React.Component {
     render(){
         
         var token = getGameState().tokens[1];
+        var current = 6;
+        var max = 8;
+        var color = "blue";
         
         return(
-            <CharacterInfo char={token}></CharacterInfo>
+            <PointsOrb current={current} max={max} color={color}></PointsOrb>
         );
     }
 } 
