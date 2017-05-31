@@ -80,8 +80,12 @@ export default class LoginPage extends React.Component {
             icon: this.state.icon,
             width: "60px",
             height: "60px",
-            "hp": "10",
-            "hpMax": "10",
+            "hp": "16",
+            "hpMax": "20",
+            "mp": "4",
+            "mpMax": "10",
+            "stamina": "9",
+            "staminaMax": "12",
             "ac": "10"
         };
 
