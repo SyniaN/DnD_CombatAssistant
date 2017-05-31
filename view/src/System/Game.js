@@ -61,7 +61,7 @@ let gameState = {
     			    "displayName": "Stamina",
     			    "value": "30"
     			},
-    			"maxStamina": {
+    			"staminaMax": {
     			    "displayName": "Max Stamina",
     			    "value": "60"
     			},
@@ -119,7 +119,7 @@ let gameState = {
     			    "displayName": "Stamina",
     			    "value": "30"
     			},
-    			"maxStamina": {
+    			"staminaMax": {
     			    "displayName": "Max Stamina",
     			    "value": "60"
     			},
@@ -320,9 +320,9 @@ export function addToken(token) {
 			    "displayName": "Stamina",
 			    "value": token.stamina
 			},
-			"maxStamina": {
+			"staminaMax": {
 			    "displayName": "Max Stamina",
-			    "value": token.maxStamina
+			    "value": token.staminaMax
 			},
             "ac": {
                 "displayName": "Armor",
