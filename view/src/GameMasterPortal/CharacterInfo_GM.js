@@ -91,7 +91,7 @@ export default class CharacterInfo extends React.Component{
         };
         
         const staminaBarProgress = {
-            width: (this.props.char.stats.stamina.value / this.props.char.stats.maxStamina.value)*100 + "%"
+            width: (this.props.char.stats.stamina.value / this.props.char.stats.staminaMax.value)*100 + "%"
         };
         
         const armorTagStyle = {

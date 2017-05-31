@@ -22,7 +22,7 @@ export default class ActionBar extends React.Component {
         }
 
         const staminaBarProgress = {
-            width: (token.stats.stamina.value/token.stats.maxStamina.value)*100+"%"
+            width: (token.stats.stamina.value/token.stats.staminaMax.value)*100+"%"
         }
 
         const staminaBarOverall = {
