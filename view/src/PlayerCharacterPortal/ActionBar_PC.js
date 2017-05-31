@@ -5,6 +5,8 @@ export default class ActionBar extends React.Component {
 
     render(){
 
+        var token = this.props.token;
+
         const hpOrbStyle= {
             float: "left"
         }
@@ -20,7 +22,7 @@ export default class ActionBar extends React.Component {
         }
 
         const staminaBarProgress = {
-            width: "60%"
+            width: (token.stats.stamina.value/token.stats.maxStamina.value)*100+"%"
         }
 
         const staminaBarOverall = {
@@ -30,26 +32,36 @@ export default class ActionBar extends React.Component {
         const overallStyle={
             height:"150px",
             width: "900px",
-            position:"absolute",
-            bottom:"10px"
+            position:"fixed",
+            bottom:"0px",
+            left: "50%",
+            marginLeft: "-450px"
         }
 
         var actions = [];
-        for (var i = 0; i < 10; i++){
+        for (var i = 1; i < 11; i++){
             var actionStyle = {
-                width: "60px",
-                height:"60px",
-                border:"2px grey solid",
-                float: "left"
+                width: "57px",
+                height:"57px",
+                cursor: "pointer",
+                marginRight:"3px",
+                float: "left",
+                backgroundColor:"white"
             }
+            var textStyle = {
+                marginLeft: "2px"
+            }
+            var text = i < 10 ? i : 0;
             actions.push(
-                <div style={actionStyle}></div>
+                <div style={actionStyle}>
+                    <p style={textStyle}>{text}</p>
+                </div>
             )
         }
         return(
             <div id="ActionBar" style={overallStyle}>
                 <div style={hpOrbStyle}>
-                    <PointsOrb size="130px" color="red" current="2" max="10"></PointsOrb>
+                    <PointsOrb size="130px" color="red" current={token.stats.hp.value} max={token.stats.maxHp.value}></PointsOrb>
                 </div>
 
                 <div style={middleBlockStyle}>
@@ -62,7 +74,7 @@ export default class ActionBar extends React.Component {
                 </div>
 
                 <div style={mpOrbStyle}>
-                    <PointsOrb size="130px" color="blue" current="8" max="10"></PointsOrb>
+                    <PointsOrb size="130px" color="blue" current={token.stats.mp.value} max={token.stats.maxMp.value}></PointsOrb>
                 </div>
             </div>
         )

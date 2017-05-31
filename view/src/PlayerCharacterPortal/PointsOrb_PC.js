@@ -30,7 +30,8 @@ export default class PointsOrb extends React.Component{
             width:"100%",
             backgroundColor: this.props.color,
             position: "absolute",
-            bottom: 0
+            bottom: 0,
+            transitionDuration: "0.8s"
         }
         const backgroundStyle = {
             height:"100%",

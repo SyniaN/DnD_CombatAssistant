@@ -7,8 +7,6 @@ class Map extends React.Component {
  
     render(){
         
-        const overallStyle = this.props.style;
-
         const mapScale = getGameState().mapScale;
         const mapStyle = {
             width: "2240px",
@@ -28,16 +26,14 @@ class Map extends React.Component {
         };
         
         return (
-            <div style={overallStyle}>
-                <div className="container content" style={mapStyle}>
-                    <div>
-                        <img src={this.props.mapUrl} alt="" style={imageStyle} />
-                        
-                        <TileMap/>
-                        <PlayerMap/>
-                    </div>
+            <div className="container content" style={mapStyle}>
+                <div>
+                    <img src={this.props.mapUrl} alt="" style={imageStyle} />
                     
+                    <TileMap/>
+                    <PlayerMap/>
                 </div>
+                
             </div>
 
         );
