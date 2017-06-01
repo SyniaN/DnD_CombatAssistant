@@ -13,7 +13,7 @@ export default class ActionBar extends React.Component {
 
         const middleBlockStyle = {
             float: "left",
-            width: "640px",
+            width: "430px",
             padding: "0px 20px"
         }
 
@@ -31,32 +31,43 @@ export default class ActionBar extends React.Component {
 
         const overallStyle={
             height:"150px",
-            width: "900px",
+            width: "700px",
             position:"fixed",
             bottom:"0px",
             left: "50%",
-            marginLeft: "-450px"
+            marginLeft: "-350px"
+        }
+
+        const actionsStyle = {
+            margin: "auto",
+            width: Object.keys(token.skills).length * 70 + "px"
         }
 
         var actions = [];
-        for (var i = 1; i < 11; i++){
-            var actionStyle = {
-                width: "57px",
-                height:"57px",
-                cursor: "pointer",
-                marginRight:"3px",
-                float: "left",
-                backgroundColor:"white"
+        var i = 1;
+        for (var skill in token.skills){
+            if (token.skills.hasOwnProperty(skill)) {
+                var actionStyle = {
+                    width: "64px",
+                    height:"64px",
+                    cursor: "pointer",
+                    marginRight:"6px",
+                    float: "left",
+                    backgroundImage: "url('"+token.skills[skill].icon+"')"
+                }
+                var textStyle = {
+                    marginLeft: "2px"
+                }
+
+                var text = i < 10 ? i : 0;
+                actions.push(
+                    <div style={actionStyle} key={skill}>
+                        <p style={textStyle}>{text}</p>
+                    </div>
+                )
+                i++;
             }
-            var textStyle = {
-                marginLeft: "2px"
-            }
-            var text = i < 10 ? i : 0;
-            actions.push(
-                <div style={actionStyle}>
-                    <p style={textStyle}>{text}</p>
-                </div>
-            )
+            
         }
         return(
             <div id="ActionBar" style={overallStyle}>
@@ -68,7 +79,7 @@ export default class ActionBar extends React.Component {
                     <div className="progress" style={staminaBarOverall}>
                         <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={staminaBarProgress}></div>
                     </div>
-                    <div>
+                    <div style={actionsStyle}>
                         {actions}
                     </div>
                 </div>

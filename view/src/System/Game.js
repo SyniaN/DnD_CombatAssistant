@@ -81,6 +81,17 @@ let gameState = {
                 "Armor":[],
                 "Consumables":[],
                 "Other":[]
+            },
+            skills:{
+                "Melee Attack":{
+                    icon:"weapon-icons-64/sword_air_64.png"
+                },
+                "Ranged Attack":{
+                    icon:"weapon-icons-64/bow_air_64.png"
+                },
+                "Hunker down":{
+                    icon:"weapon-icons-64/shield_air_64.png"
+                }
             }
 		},
 		1: {
@@ -174,6 +185,17 @@ let gameState = {
                         "count": 1
                     }
                 ]
+            },
+            skills:{
+                "Melee Attack":{
+                    icon:"weapon-icons-64/sword_air_64.png"
+                },
+                "Ranged Attack":{
+                    icon:"weapon-icons-64/bow_air_64.png"
+                },
+                "Hunker down":{
+                    icon:"weapon-icons-64/shield_air_64.png"
+                }
             }
 		}
     }
@@ -385,7 +407,18 @@ export function addToken(token) {
                     "count": 0
                 }
             ]
-        }
+        },
+        skills:{
+                "Melee Attack":{
+                    icon:"weapon-icons-64/sword_air_64.png"
+                },
+                "Ranged Attack":{
+                    icon:"weapon-icons-64/bow_fire_64.png"
+                },
+                "Hunker down":{
+                    icon:"weapon-icons-64/shield_acid_64.png"
+                }
+            }
     };
     
     gameState.tokens[gameState.nextId] = newToken;
