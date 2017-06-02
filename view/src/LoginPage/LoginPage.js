@@ -84,8 +84,8 @@ export default class LoginPage extends React.Component {
             "hpMax": "20",
             "mp": "4",
             "mpMax": "10",
-            "stamina": "9",
-            "staminaMax": "12",
+            "experience": "9",
+            "experienceMax": "12",
             "ac": "10"
         };
 

@@ -21,11 +21,11 @@ export default class ActionBar extends React.Component {
             float: "left"
         }
 
-        const staminaBarProgress = {
-            width: (token.stats.stamina.value/token.stats.staminaMax.value)*100+"%"
+        const experienceBarProgress = {
+            width: (token.stats.experience.value/token.stats.experienceMax.value)*100+"%"
         }
 
-        const staminaBarOverall = {
+        const experienceBarOverall = {
             bottom: "0"
         }
 
@@ -76,8 +76,8 @@ export default class ActionBar extends React.Component {
                 </div>
 
                 <div style={middleBlockStyle}>
-                    <div className="progress" style={staminaBarOverall}>
-                        <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={staminaBarProgress}></div>
+                    <div className="progress" style={experienceBarOverall}>
+                        <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={experienceBarProgress}></div>
                     </div>
                     <div style={actionsStyle}>
                         {actions}

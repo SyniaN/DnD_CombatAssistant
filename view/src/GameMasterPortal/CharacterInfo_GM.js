@@ -90,8 +90,8 @@ export default class CharacterInfo extends React.Component{
             width: (this.props.char.stats.mp.value / this.props.char.stats.maxMp.value)*100 + "%"
         };
         
-        const staminaBarProgress = {
-            width: (this.props.char.stats.stamina.value / this.props.char.stats.staminaMax.value)*100 + "%"
+        const experienceBarProgress = {
+            width: (this.props.char.stats.experience.value / this.props.char.stats.experienceMax.value)*100 + "%"
         };
         
         const armorTagStyle = {
@@ -151,7 +151,7 @@ export default class CharacterInfo extends React.Component{
                                 </div>
                             </div>
                             <div className="progress" style={barMarginPadding}>
-                                <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={staminaBarProgress}>
+                                <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={experienceBarProgress}>
                                 </div>
                             </div>
                         </div>

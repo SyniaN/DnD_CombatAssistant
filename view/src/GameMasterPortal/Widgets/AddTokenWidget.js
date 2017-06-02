@@ -44,8 +44,8 @@ export default class AddTokenWidget extends React.Component {
 		    hpMax: "",
 		    mp: "",
 		    mpMax: "",
-		    stamina:"",
-		    staminaMax:"",
+		    experience:"",
+		    experienceMax:"",
 		    ac: ""});
     }
     
