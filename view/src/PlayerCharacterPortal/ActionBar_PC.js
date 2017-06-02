@@ -25,8 +25,14 @@ export default class ActionBar extends React.Component {
             width: (token.stats.experience.value/token.stats.experienceMax.value)*100+"%"
         }
 
+        const progressBarTextStyle = {
+            width: "100%",
+            position: "absolute",
+            color: "rgb(30, 30, 30)"
+        }
+
         const experienceBarOverall = {
-            bottom: "0"
+            position: "relative"
         }
 
         const overallStyle={
@@ -43,17 +49,28 @@ export default class ActionBar extends React.Component {
             width: Object.keys(token.skills).length * 70 + "px"
         }
 
+        const actionBorder = {
+            width: "64px",
+            height:"64px",
+            cursor: "pointer",
+            marginRight:"6px",
+            float: "left",
+            backgroundImage: "url('/weapon-icons-64/_frame_64.png')",
+            padding: "8px"
+        }
+
         var actions = [];
         var i = 1;
         for (var skill in token.skills){
             if (token.skills.hasOwnProperty(skill)) {
                 var actionStyle = {
-                    width: "64px",
-                    height:"64px",
+                    width: "46px",
+                    height:"46px",
                     cursor: "pointer",
                     marginRight:"6px",
                     float: "left",
-                    backgroundImage: "url('"+token.skills[skill].icon+"')"
+                    backgroundImage: "url('"+token.skills[skill].icon+"')",
+                    backgroundSize: "cover"
                 }
                 var textStyle = {
                     marginLeft: "2px"
@@ -61,8 +78,10 @@ export default class ActionBar extends React.Component {
 
                 var text = i < 10 ? i : 0;
                 actions.push(
-                    <div style={actionStyle} key={skill}>
-                        <p style={textStyle}>{text}</p>
+                    <div style={actionBorder}>
+                        <div style={actionStyle} key={skill}>
+                            <p style={textStyle}>{text}</p>
+                        </div>
                     </div>
                 )
                 i++;
@@ -77,7 +96,9 @@ export default class ActionBar extends React.Component {
 
                 <div style={middleBlockStyle}>
                     <div className="progress" style={experienceBarOverall}>
-                        <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={experienceBarProgress}></div>
+                        <div className="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={experienceBarProgress}>
+                            <div style={progressBarTextStyle}>{token.stats.experience.value}/{token.stats.experienceMax.value}</div>
+                        </div>
                     </div>
                     <div style={actionsStyle}>
                         {actions}
