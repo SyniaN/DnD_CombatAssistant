@@ -8,22 +8,22 @@ function makeActionCreator(type, ...argNames){
     }
 }
 
-const ADD_CHARACTER = "ADD_CHARACTER";
+//***Other constants ***//
+export const tokenTypes ={
+    PLAYER: "PLAYER",
+    NPC: "NPC",
+    OBJECT: "OBJECT"
+}
 
-export const addCharacter = makeActionCreator(ADD_CHARACTER,
-                                            "tokenType",
-                                            "positionX",
-                                            "positionY",
-                                            "color",
-                                            "icon",
-                                            "width",
-                                            "height",
-                                            "name",
-                                            "hp",
-                                            "hpMax",
-                                            "mp",
-                                            "mpMax",
-                                            "ac")
+//***ActionTypes ***//
+const ADD_TOKEN = "ADD_TOKEN";
+
+//***Action Creators ***//
+export const addToken = makeActionCreator(ADD_TOKEN,
+                            "uuid", "tokenType", "positionX", "positionY",
+                            "color", "icon", "width", "height",
+                            "name", "hp", "hpMax", "mp", "mpMax", "experience",
+                            "experienceMax", "ac")
 
 
 

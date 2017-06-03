@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Portal_PC from './PlayerCharacterPortal/Portal_PC';
-import TestGround from './PlayerCharacterPortal/TestGround_PC';
+import TestGround from './TestGround';
 import Portal_GM from './GameMasterPortal/Portal_GM';
 import LoginPage from './LoginPage/LoginPage';
 import { observe } from './System/Game';
