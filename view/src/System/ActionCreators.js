@@ -17,13 +17,15 @@ export const tokenTypes ={
 
 //***ActionTypes ***//
 const ADD_TOKEN = "ADD_TOKEN";
+const REMOVE_TOKEN = "REMOVE_TOKEN";
 
 //***Action Creators ***//
 export const addToken = makeActionCreator(ADD_TOKEN,
                             "uuid", "tokenType", "positionX", "positionY",
                             "color", "icon", "width", "height",
                             "name", "hp", "hpMax", "mp", "mpMax", "experience",
-                            "experienceMax", "ac")
+                            "experienceMax", "ac");
+export const removeToken = makeActionCreator(REMOVE_TOKEN, "id");
 
 
 

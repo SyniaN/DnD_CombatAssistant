@@ -1,6 +1,6 @@
 import React from 'react';
 import {initialTokenState, tokensReducer} from './System/Reducers';
-import {addToken} from './System/ActionCreators';
+import {addToken, removeToken} from './System/ActionCreators';
 
 export default class TestGround extends React.Component{
     render(){
@@ -12,6 +12,8 @@ export default class TestGround extends React.Component{
             "experienceMax", "ac"
         )
         console.log("modified", tokensReducer(initialTokenState, action));
+        var action2 = removeToken("0");
+        console.log("modified2", tokensReducer(initialTokenState, action2));
         return(<p>loaded</p>);
     }
 }
