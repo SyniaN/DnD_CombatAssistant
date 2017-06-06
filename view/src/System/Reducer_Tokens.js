@@ -1,5 +1,4 @@
 import {initialState} from './InitialState';
-import expect from 'expect';
 
 export function tokens(state = initialState.tokens, action){
     switch (action.type){
