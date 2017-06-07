@@ -50,23 +50,33 @@ const initialTokenState = [
             "alert3": "",
             "alert4": ""
         },
-        inventory:{
-            "Weapons":[],
-            "Armor":[],
-            "Consumables":[],
-            "Other":[]
-        },
-        skills:{
-            "Melee Attack":{
-                icon:"weapon-icons-64/sword_air_64.png"
+        inventory:[
+            {
+                "displayName": "Long Bow",
+                "icon":"",
+                "count": 1
             },
-            "Ranged Attack":{
-                icon:"weapon-icons-64/bow_air_64.png"
+            {
+                "displayName": "Leather Armor",
+                "icon":"",
+                "count": 1
             },
-            "Hunker down":{
-                icon:"weapon-icons-64/shield_air_64.png"
+            {
+                "displayName": "Small Health Potion",
+                "icon":"",
+                "count": 4
             }
-        }
+        ],
+        skills:[
+            {
+                "displayName":"Melee Attack",
+                "icon":"weapon-icons-64/sword_air_64.png"
+            },
+            {
+                "displayName":"Hunker down",
+                "icon":"weapon-icons-64/shield_air_64.png"
+            }
+        ]
     },
     {
         "id": 1,
@@ -119,58 +129,33 @@ const initialTokenState = [
             "alert3": "",
             "alert4": ""
         },
-        inventory:{
-            "Weapons":[
-                {
-                    "displayName": "Long Bow",
-                    "icon":"",
-                    "count": 1
-                },
-                {
-                    "displayName":"Dagger",
-                    "icon":"",
-                    "count": 2
-                }
-                
-            ],
-            "Armor":[
-                {
-                    "displayName": "Leather Armor",
-                    "icon":"",
-                    "count": 1
-                }
-            ],
-            "Consumables":[
-                {
-                    "displayName": "Small Health Potion",
-                    "icon":"",
-                    "count": 4
-                },
-                {
-                    "displayName": "Large Mana Potion",
-                    "icon":"",
-                    "count":2
-                }
-            ],
-            "Other":[
-                {
-                    "displayName": "Lucky Pendant",
-                    "icon":"",
-                    "count": 1
-                }
-            ]
-        },
-        skills:{
-            "Melee Attack":{
-                icon:"weapon-icons-64/sword_air_64.png"
+        inventory:[
+            {
+                "displayName": "Long Bow",
+                "icon":"",
+                "count": 1
             },
-            "Ranged Attack":{
-                icon:"weapon-icons-64/bow_air_64.png"
+            {
+                "displayName": "Leather Armor",
+                "icon":"",
+                "count": 1
             },
-            "Hunker down":{
-                icon:"weapon-icons-64/shield_air_64.png"
+            {
+                "displayName": "Small Health Potion",
+                "icon":"",
+                "count": 4
             }
-        }
+        ],
+        skills:[
+            {
+                "displayName":"Melee Attack",
+                "icon":"weapon-icons-64/sword_air_64.png"
+            },
+            {
+                "displayName":"Hunker down",
+                "icon":"weapon-icons-64/shield_air_64.png"
+            }
+        ]
     }
 ];
 

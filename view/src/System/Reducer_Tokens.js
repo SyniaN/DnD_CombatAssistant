@@ -122,10 +122,90 @@ export function tokens(state = initialState.tokens, action){
                 }
             ]
         case "REMOVE_TOKEN":
-            return [
-                ...state.slice(0, action.id),
-                ...state.slice(action.id+1)
-            ]
+            return state.filter( (token, index) => token.id !== action.id);
+        case "REPLACE_TOKEN":
+            return state.map( (item, index) => {
+                
+                if(item.id !== action.id) {
+                    // This isn't the item we care about - keep it as-is
+                    return item;
+                }
+                
+                // Otherwise, this is the one we want - return an updated value
+                return action.newToken;    
+            });
+        case "INCREMENT_INVENTORY_ITEM":
+            return state.map( (item, index) => {
+                if (item.id !== action.id){
+                    return item;
+                }
+                
+                return {
+                    ...item,
+                    inventory: 
+                        item.inventory.map( (item, index) => {
+                            if (item.displayName !== action.itemName){
+                                return item;
+                            }
+                            
+                            return {
+                                ...item,
+                                count: item.count+1
+                            };
+                        })
+                };
+            });
+        case "DECREMENT_INVENTORY_ITEM":
+            return state.map( (item, index) => {
+                if (item.id !== action.id){
+                    return item;
+                }
+                
+                return {
+                    ...item,
+                    inventory: 
+                        item.inventory.map( (item, index) => {
+                            if (item.displayName !== action.itemName){
+                                return item;
+                            }
+                            
+                            return {
+                                ...item,
+                                count: item.count-1
+                            };
+                        })
+                };
+            });  
+        case "ADD_INVENTORY_ITEM":
+            return state.map( (token, index) => {
+                if (token.id !== action.id){
+                    return token;
+                }
+                
+                return {
+                    ...token,
+                    inventory: [
+                        ...token.inventory,
+                        {
+                            displayName: action.item,
+                            icon: action.icon,
+                            count: 0
+                        }
+                    ]
+                };
+            });
+        case "REMOVE_INVENTORY_ITEM":
+            return state.map( (token, index) => {
+                if (token.id !== action.id){
+                    return token;
+                }
+                
+                return {
+                    ...token,
+                    inventory: 
+                        token.inventory.filter( (item, index) => item.displayName !== action.item)
+                }
+            });
         default:
             return state;            
     }

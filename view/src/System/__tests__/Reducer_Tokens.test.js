@@ -1,21 +1,23 @@
 /*global expect*/
 
 import {tokens} from '../Reducer_Tokens';
-import {removeToken, addToken} from '../ActionCreators';
-
-test('testing removeToken', () => {
-    var action = {type:"REMOVE_TOKEN", id:0}
-    expect(tokens([0,1,2], action)).toEqual([1,2]);
-});
+import {removeToken, 
+        addToken, 
+        replaceToken, 
+        incrementInventoryItem, 
+        decrementInventoryItem,
+        addInventoryItem,
+        removeInventoryItem
+} from '../ActionCreators';
 
 test('testing addToken', () => {
     var action = addToken("uuid", "tokenType", "positionX", "positionY",
                             "color", "icon", "width", "height",
                             "name", "hp", "hpMax", "mp", "mpMax", "experience",
                             "experienceMax", "ac");
+                            
     expect(tokens([{name:"Bob"}], action)).toEqual(
-        [ {name:"Bob"},
-            {
+        [   {name:"Bob"}, {
     			"id": 1,
     			"uuid": "uuid",
     			"tokenType": "tokenType",
@@ -129,9 +131,153 @@ test('testing addToken', () => {
                         icon:"weapon-icons-64/shield_acid_64.png"
                     }
                 }
-    		}
-    	]
+    		}	]
     );
+});
+
+test('testing removeToken', () => {
+    var action = removeToken(0);
+    expect(tokens([{id:1},{id:0},{id:3}], action)).toEqual([{id:1},{id:3}]);
+});
+
+test('testing replaceToken', ()=>{
+    var action = replaceToken(0, {name:"Bob"});
+    var state = [{id: 0, name:"John", age:"23"},{id: 1, name:"cat"}];
+    var expectedResult = [{name:"Bob"},{id: 1, name:"cat"}];
+    expect(tokens(state, action)).toEqual(expectedResult);
+});
+
+test('testing incrementInventoryItem', ()=>{
+    var action = incrementInventoryItem(0, "blade");
+    var state=  [
+                    {
+                        id:0,
+                        inventory:[
+                            {
+                                displayName:"blade",
+                                count:4
+                            },
+                            {
+                                displayName:"longBow",
+                                count:0
+                            }
+                        ]
+                    },
+                    {
+                        id:1,
+                        inventory:[
+                            {
+                                displayName:"blade",
+                                count:3
+                            }
+                        ]
+                    }
+                ]
+    var expectedResult = [
+                            {
+                                id:0,
+                                inventory:[
+                                    {
+                                        displayName:"blade",
+                                        count:5
+                                    },
+                                    {
+                                        displayName:"longBow",
+                                        count:0
+                                    }
+                                ]
+                            },
+                            {
+                                id:1,
+                                inventory:[
+                                    {
+                                        displayName:"blade",
+                                        count:3
+                                    }
+                                ]
+                            }
+                        ]
+    expect(tokens(state, action)).toEqual(expectedResult);
+});
+
+test('testing decrementInventoryItem', ()=>{
+    var action = decrementInventoryItem(0, "blade");
+    var state=  [
+                    {
+                        id:0,
+                        inventory:[
+                            {
+                                displayName:"blade",
+                                count:4
+                            },
+                            {
+                                displayName:"longBow",
+                                count:0
+                            }
+                        ]
+                    },
+                    {
+                        id:1,
+                        inventory:[
+                            {
+                                displayName:"blade",
+                                count:3
+                            }
+                        ]
+                    }
+                ]
+    var expectedResult = [
+                            {
+                                id:0,
+                                inventory:[
+                                    {
+                                        displayName:"blade",
+                                        count:3
+                                    },
+                                    {
+                                        displayName:"longBow",
+                                        count:0
+                                    }
+                                ]
+                            },
+                            {
+                                id:1,
+                                inventory:[
+                                    {
+                                        displayName:"blade",
+                                        count:3
+                                    }
+                                ]
+                            }
+                        ]
+    expect(tokens(state, action)).toEqual(expectedResult);
+});
+
+test('testing addInventoryItem', ()=>{
+    var action = addInventoryItem(1, "bag", "icon.jpg");
+    var state = [{id:0, inventory:[{}]}, {id: 1, inventory:[{}]}];
+    var expectedResult =[
+                            {id:0, inventory:[{}]},
+                            {id: 1, inventory:[{},{
+                                displayName : "bag",
+                                icon: "icon.jpg",
+                                count: 0
+                            }]}
+                        ];
+    expect(tokens(state, action)).toEqual(expectedResult);
+});
+
+test('testing removeInventoryItem', ()=>{
+    var action = removeInventoryItem(1, "knife");
+    var state = [
+                    {id:0, inventory:[{displayName:"knife"}]},
+                    {id: 1, inventory:[{displayName:"knife"}, {displayName: "book"}]}
+                ];
+    var expectedResult =    [
+                                {id:0, inventory:[{displayName:"knife"}]},
+                                {id: 1, inventory:[{displayName: "book"}]}
+                            ];
+    expect(tokens(state, action)).toEqual(expectedResult);
 });
 
 
