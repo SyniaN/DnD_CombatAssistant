@@ -1,17 +1,10 @@
 /*global expect*/
 
 import {tokens} from '../Reducer_Tokens';
-import {removeToken, 
-        addToken, 
-        replaceToken, 
-        incrementInventoryItem, 
-        decrementInventoryItem,
-        addInventoryItem,
-        removeInventoryItem
-} from '../ActionCreators';
+import * as creator from '../ActionCreators';
 
 test('testing addToken', () => {
-    var action = addToken("uuid", "tokenType", "positionX", "positionY",
+    var action = creator.addToken("uuid", "tokenType", "positionX", "positionY",
                             "color", "icon", "width", "height",
                             "name", "hp", "hpMax", "mp", "mpMax", "experience",
                             "experienceMax", "ac");
@@ -136,19 +129,33 @@ test('testing addToken', () => {
 });
 
 test('testing removeToken', () => {
-    var action = removeToken(0);
+    var action = creator.removeToken(0);
     expect(tokens([{id:1},{id:0},{id:3}], action)).toEqual([{id:1},{id:3}]);
 });
 
 test('testing replaceToken', ()=>{
-    var action = replaceToken(0, {name:"Bob"});
+    var action = creator.replaceToken(0, {name:"Bob"});
     var state = [{id: 0, name:"John", age:"23"},{id: 1, name:"cat"}];
     var expectedResult = [{name:"Bob"},{id: 1, name:"cat"}];
     expect(tokens(state, action)).toEqual(expectedResult);
 });
 
+test('testing moveToken', () => {
+    var action = creator.moveToken(1, 4, 6);
+    var state = [   {id:0, position:[3, 6]},
+                    {id:4, position:[7, 9]},
+                    {id:1, position:[8, 4]}
+                ];
+    var result = [
+                    {id:0, position:[3, 6]},
+                    {id:4, position:[7, 9]},
+                    {id:1, position:[4, 6]}
+                ];
+    expect(tokens(state,action)).toEqual(result);
+});
+
 test('testing incrementInventoryItem', ()=>{
-    var action = incrementInventoryItem(0, "blade");
+    var action = creator.incrementInventoryItem(0, "blade");
     var state=  [
                     {
                         id:0,
@@ -201,7 +208,7 @@ test('testing incrementInventoryItem', ()=>{
 });
 
 test('testing decrementInventoryItem', ()=>{
-    var action = decrementInventoryItem(0, "blade");
+    var action = creator.decrementInventoryItem(0, "blade");
     var state=  [
                     {
                         id:0,
@@ -254,7 +261,7 @@ test('testing decrementInventoryItem', ()=>{
 });
 
 test('testing addInventoryItem', ()=>{
-    var action = addInventoryItem(1, "bag", "icon.jpg");
+    var action = creator.addInventoryItem(1, "bag", "icon.jpg");
     var state = [{id:0, inventory:[{}]}, {id: 1, inventory:[{}]}];
     var expectedResult =[
                             {id:0, inventory:[{}]},
@@ -268,7 +275,7 @@ test('testing addInventoryItem', ()=>{
 });
 
 test('testing removeInventoryItem', ()=>{
-    var action = removeInventoryItem(1, "knife");
+    var action = creator.removeInventoryItem(1, "knife");
     var state = [
                     {id:0, inventory:[{displayName:"knife"}]},
                     {id: 1, inventory:[{displayName:"knife"}, {displayName: "book"}]}
@@ -279,7 +286,6 @@ test('testing removeInventoryItem', ()=>{
                             ];
     expect(tokens(state, action)).toEqual(expectedResult);
 });
-
 
 
 

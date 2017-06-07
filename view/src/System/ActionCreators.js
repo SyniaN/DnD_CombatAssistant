@@ -19,6 +19,7 @@ export const tokenTypes ={
 const ADD_TOKEN = "ADD_TOKEN";
 const REMOVE_TOKEN = "REMOVE_TOKEN";
 const REPLACE_TOKEN = "REPLACE_TOKEN";
+const MOVE_TOKEN = "MOVE_TOKEN";
 ////
 export const addToken = makeActionCreator(ADD_TOKEN,
                             "uuid", "tokenType", "positionX", "positionY",
@@ -27,6 +28,7 @@ export const addToken = makeActionCreator(ADD_TOKEN,
                             "experienceMax", "ac");
 export const removeToken = makeActionCreator(REMOVE_TOKEN, "id");
 export const replaceToken = makeActionCreator(REPLACE_TOKEN, "id", "newToken");
+export const moveToken = makeActionCreator(MOVE_TOKEN, "id", "xVal", "yVal");
 
 
 //***Inventory ActionTypes***//

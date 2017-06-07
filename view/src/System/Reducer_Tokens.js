@@ -124,26 +124,37 @@ export function tokens(state = initialState.tokens, action){
         case "REMOVE_TOKEN":
             return state.filter( (token, index) => token.id !== action.id);
         case "REPLACE_TOKEN":
-            return state.map( (item, index) => {
+            return state.map( (token, index) => {
                 
-                if(item.id !== action.id) {
+                if(token.id !== action.id) {
                     // This isn't the item we care about - keep it as-is
-                    return item;
+                    return token;
                 }
                 
                 // Otherwise, this is the one we want - return an updated value
                 return action.newToken;    
             });
-        case "INCREMENT_INVENTORY_ITEM":
-            return state.map( (item, index) => {
-                if (item.id !== action.id){
-                    return item;
+        case "MOVE_TOKEN":
+            return state.map( (token, index) => {
+                if (token.id !== action.id){
+                    return token;
                 }
                 
                 return {
-                    ...item,
+                    ...token,
+                    position: [action.xVal, action.yVal]
+                };
+            });
+        case "INCREMENT_INVENTORY_ITEM":
+            return state.map( (token, index) => {
+                if (token.id !== action.id){
+                    return token;
+                }
+                
+                return {
+                    ...token,
                     inventory: 
-                        item.inventory.map( (item, index) => {
+                        token.inventory.map( (item, index) => {
                             if (item.displayName !== action.itemName){
                                 return item;
                             }
@@ -156,15 +167,15 @@ export function tokens(state = initialState.tokens, action){
                 };
             });
         case "DECREMENT_INVENTORY_ITEM":
-            return state.map( (item, index) => {
-                if (item.id !== action.id){
-                    return item;
+            return state.map( (token, index) => {
+                if (token.id !== action.id){
+                    return token;
                 }
                 
                 return {
-                    ...item,
+                    ...token,
                     inventory: 
-                        item.inventory.map( (item, index) => {
+                        token.inventory.map( (item, index) => {
                             if (item.displayName !== action.itemName){
                                 return item;
                             }

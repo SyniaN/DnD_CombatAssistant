@@ -214,12 +214,6 @@ for (var i = 0; i < Math.floor(gameState.mapScale.height/gameState.mapScale.tile
 
 let observer = null;
 
-export function changePlayerInfo(id, name, hp){
-    gameState.tokens[id].stats.name.value = name;
-    gameState.tokens[id].stats.hp.value = hp;
-    emitChange(true);
-}
-
 //FUNCTIONS
 
 export function getGameState() {
@@ -285,7 +279,7 @@ export function changeMapScale(newMapScale) {
 export function changeMap(newUrl) {
     gameState.playMap = newUrl;
     emitChange(true);
-}
+} //done
 
 export function changeMapOptions(newOptions) {
     gameState.mapOptions = newOptions;
@@ -428,18 +422,33 @@ export function addToken(token) {
     emitChange(true);
 
     return returnId;
-}
+} //done
 
 export function removeToken(id) {
     if (db) console.log("deleteing " + id);
     delete gameState.tokens[id]
     deselectCharacter();
     emitChange(true);
-}
+} //done
 
 export function editToken(token) {
     if(db) console.log("editing " + token.id);
     gameState.tokens[token.id] = token;
+    emitChange(true);
+} //done
+
+export function incrementTokenInventoryItem(tokenId, section, item){
+    gameState.tokens[tokenId].inventory[section][item].count++;
+    emitChange(true);
+} //done
+
+export function decrementItemCount(tokenId, section, item){
+    gameState.tokens[tokenId].inventory[section][item].count--;
+    emitChange(true);
+} //done
+
+export function updateInventory(tokenId, newInventory){
+    gameState.tokens[tokenId].inventory = newInventory;
     emitChange(true);
 }
 
@@ -473,19 +482,6 @@ export function deactivateFogger() {
     emitChange(true);
 }
 
-export function incrementTokenInventoryItem(tokenId, section, item){
-    gameState.tokens[tokenId].inventory[section][item].count++;
-    emitChange(true);
-}
 
-export function decrementItemCount(tokenId, section, item){
-    gameState.tokens[tokenId].inventory[section][item].count--;
-    emitChange(true);
-}
-
-export function updateInventory(tokenId, newInventory){
-    gameState.tokens[tokenId].inventory = newInventory;
-    emitChange(true);
-}
 
 
