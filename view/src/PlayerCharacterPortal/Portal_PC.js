@@ -4,7 +4,6 @@ import SidePanel from './SidePanel_PC';
 import CharInfoPanel from './CharInfoPanel_PC';
 import { getGameState } from '../System/Game';
 import {getLocalState} from '../System/Game_Local';
-import ActionBar from './ActionBar_PC';
 
 
 //import CombatCalculator from './CombatCalculator';
@@ -22,7 +21,7 @@ export default class Portal_PC extends React.Component {
                     <SidePanel token={token} />                    
                     <Map playerPieces={tokens} mapUrl={playMap} mapOptions={mapOptions} />
                     <CharInfoPanel tokens={tokens} />
-                    <ActionBar token={token}/>
+                    {/*<ActionBar token={token}/>*/}
 
             </div>
         );

@@ -6,8 +6,8 @@ const db = true;
 let gameState = {
     v: 0,
     mapScale: {
-        width: 1920,
-        height: 1080,
+        width: 2160,
+        height: 2160,
         tileSize: 60
     },
     fogOfWar: {
@@ -21,7 +21,7 @@ let gameState = {
         gridLines: true,
         gridLabels: false
     },
-    playMap : "https://s-media-cache-ak0.pinimg.com/originals/40/99/94/40999419d04ec98f34f6039c5c28b261--dungeon-tiles-wilderness.jpg",
+    playMap : "http://orig08.deviantart.net/a904/f/2016/352/4/f/clean_sand_dungeon_battlemap_for_online_dnd_roll20_by_savingthrower-das235j.jpg",
     //playMap : "",
     nextId : null,
     tokens: {
@@ -29,7 +29,7 @@ let gameState = {
 			"id": 0,
 			"tokenType": "npc",
 			"position": [
-				24,
+				26,
 				11
 			],
 			"width": "120px",
@@ -98,8 +98,8 @@ let gameState = {
 			"id": 1,
 			"tokenType": "player",
 			"position": [
-				9,
-				10
+				7,
+				6
 			],
 			"color": "#57b6f2",
 			"icon": "3.jpg",

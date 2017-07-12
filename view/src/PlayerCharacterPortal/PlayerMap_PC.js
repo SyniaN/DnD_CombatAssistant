@@ -28,8 +28,8 @@ export default class PlayerMap extends React.Component {
         console.log('rendering PlayerMap');
         const playerPlacementStyle = {
             position: "absolute",
-            height: getGameState().fogOfWar.foggerSelected? "0px" : "1080px",
-            width: getGameState().fogOfWar.foggerSelected? "0px" : "1920px"
+            height: getGameState().fogOfWar.foggerSelected? "0px" : "2160px",
+            width: getGameState().fogOfWar.foggerSelected? "0px" : "2160px"
         };
         
         const tokensObj = getGameState().tokens;
