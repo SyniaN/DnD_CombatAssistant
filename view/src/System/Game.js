@@ -29,7 +29,7 @@ let gameState = {
 			"id": 0,
 			"tokenType": "npc",
 			"position": [
-				26,
+				7,
 				11
 			],
 			"width": "120px",
@@ -98,8 +98,8 @@ let gameState = {
 			"id": 1,
 			"tokenType": "player",
 			"position": [
-				7,
-				6
+				9,
+				4
 			],
 			"color": "#57b6f2",
 			"icon": "3.jpg",
